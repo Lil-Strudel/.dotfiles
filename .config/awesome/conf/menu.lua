@@ -31,7 +31,7 @@ M.main = awful.menu {
         { "restart", awesome.restart },
         { "quit", function() awesome.quit() end },
       }
-    }
+    },
     {
       "Exit",
       {
