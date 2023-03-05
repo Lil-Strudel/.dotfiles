@@ -1,4 +1,4 @@
-require("conf.apps")
+require("conf.config")
 require("conf.keyboard")
 require("conf.mouse")
 require("conf.client")
