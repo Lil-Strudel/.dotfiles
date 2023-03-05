@@ -10,26 +10,25 @@ local gfs = require("gears.filesystem")
 local theme_path = "~/.config/awesome/themes/tokyo-night/"
 local themes_path = "~/.config/awesome/themes/"
 
-
 local colors = {}
 
-colors.red = "#f7768e"
-colors.orange = "#ff9e64"
-colors.dark_orange = "#e0af68"
-colors.lime_green = "#9ece6a"
-colors.sea_green = "#73daca"
-colors.light_blue = "#b4f9f8"
-colors.blue = "#2ac3d3"
-colors.sky_blue = "#7dcfff"
-colors.lilac = "#7aa2f7"
-colors.purple = "#bb9af7"
-colors.off_white = "#c0caf5"
+colors.red            = "#f7768e"
+colors.orange         = "#ff9e64"
+colors.dark_orange    = "#e0af68"
+colors.lime_green     = "#9ece6a"
+colors.sea_green      = "#73daca"
+colors.light_blue     = "#b4f9f8"
+colors.blue           = "#2ac3d3"
+colors.sky_blue       = "#7dcfff"
+colors.lilac          = "#7aa2f7"
+colors.purple         = "#bb9af7"
+colors.off_white      = "#c0caf5"
 colors.off_light_grey = "#a9b1d6"
-colors.off_grey = "#9aa5ce"
-colors.eggshell = "#cfc9c2"
-colors.dark_text = "#565f89"
-colors.off_black = "#414868"
-colors.background = "#1a1b26"
+colors.off_grey       = "#9aa5ce"
+colors.eggshell       = "#cfc9c2"
+colors.dark_text      = "#565f89"
+colors.off_black      = "#414868"
+colors.background     = "#1a1b26"
 
 local theme = {}
 
@@ -98,7 +97,7 @@ theme.fg_minimize = "#ffffff"
 theme.useless_gap    = dpi(5)
 theme.border_width   = dpi(1)
 theme.border_normal  = "#000000"
-theme.border_focused = "#535d6c"
+theme.border_focus = "#535d6c"
 theme.border_marked  = "#91231c"
 
 -- Generate taglist squares:
