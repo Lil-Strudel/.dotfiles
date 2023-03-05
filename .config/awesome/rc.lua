@@ -163,4 +163,6 @@ end)
 -- }}}
 
 
-require("conf")
+require "conf"
+
+require "ui.bar"
