@@ -4,7 +4,7 @@ Guide to install arch the way I like it
 Steps:
 Install arch using archinstall 
   Dont forget to install networkmanager/pipewire/xorg through archinstall
-  Other packages to install - vim noto-fonts neofetch git openssh firefox kitty ttf-noto-nerd ttf-firacode-nerd
+  Other packages to install - vim noto-fonts neofetch git openssh firefox kitty
 
 Install awesome with pacman
 ```
