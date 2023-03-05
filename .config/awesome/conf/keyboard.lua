@@ -1,3 +1,7 @@
+local awful = require("awful")
+local hotkeys_popup = require("awful.hotkeys_popup")
+require("awful.hotkeys_popup.keys")
+
 -- {{{ Key bindings
 
 -- General Awesome keys
