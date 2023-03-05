@@ -1,4 +1,4 @@
-local awful = require("awful")
+local awful = require "awful"
 local hotkeys_popup = require("awful.hotkeys_popup")
 
 require("awful.hotkeys_popup.keys")
