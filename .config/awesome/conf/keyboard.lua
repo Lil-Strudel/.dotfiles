@@ -58,7 +58,7 @@ awful.keyboard.append_global_keybindings {
 
 -- Standard program
 awful.keyboard.append_global_keybindings {
-    awful.key({ modkey }, "Return", function () awful.spawn(terminal) end, {description = "open a terminal", group = "launcher"}),
+    awful.key({ modkey }, "Return", function () awful.spawn(C.terminal) end, {description = "open a terminal", group = "launcher"}),
 
     awful.key({ modkey, "Control" }, "r", awesome.restart, {description = "reload awesome", group = "awesome"}),
 
