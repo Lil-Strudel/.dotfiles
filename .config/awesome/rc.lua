@@ -30,7 +30,7 @@ end)
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-_G.theme = "tokyo-night"
+_G.theme = "forest"
 beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/" .. theme .. "/theme.lua")
 -- }}}
 
