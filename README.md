@@ -4,7 +4,7 @@ Guide to install arch the way I like it
 Steps:
 Install arch using archinstall 
   Dont forget to install networkmanager/pipewire/xorg through archinstall
-  Other packages to install - vim noto-fonts neofetch xterm
+  Other packages to install - vim noto-fonts neofetch xterm git
 
 Install awesome with pacman
 ```
@@ -34,4 +34,12 @@ Copy awesome config file to .config
 ```
 mkdir -p ~/.conifg/awesome
 cp /etc/xdg/awesome/rc.lua ~/.config/awesome/rc.lua
+```
+
+Setup dotfiles 
+```
+git init --bare $HOME/.dotfiles
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dotfiles config --local status.showUntrackedFiles no
+echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc
 ```
