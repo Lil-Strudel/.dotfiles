@@ -26,11 +26,11 @@ M.main = awful.menu {
       "Awesome",
       {
         { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-        { "manual", terminal .. " -e man awesome" },
-        { "edit config", editor_cmd .. " " .. awesome.conffile },
+        { "manual", C.terminal .. " -e man awesome" },
+        { "edit config", C.editor .. " " .. awesome.conffile },
         { "restart", awesome.restart },
         { "quit", function() awesome.quit() end },
-      }
+      },
     },
     {
       "Exit",
