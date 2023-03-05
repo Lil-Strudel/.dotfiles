@@ -12,11 +12,6 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
-local menubar = require("menubar")
-local hotkeys_popup = require("awful.hotkeys_popup")
--- Enable hotkeys help widget for VIM and other apps
--- when client with a matching name is opened:
-require("awful.hotkeys_popup.keys")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -44,9 +39,9 @@ end
 -- }}}
 
 -- {{{ Variable definitions
--- Themes define colours, icons, font and wallpapers.
 _G.theme = "tokyo-night"
 beautiful.init(gears.filesystem.get_configuration_dir().."themes/"..theme.."/theme.lua") 
+-- }}}
 
 -- {{{ Wibar
 -- Create a textclock widget
