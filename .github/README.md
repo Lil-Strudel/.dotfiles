@@ -6,9 +6,17 @@ Install arch using archinstall
   Dont forget to install networkmanager/pipewire/xorg through archinstall
   Other packages to install - vim noto-fonts neofetch git openssh firefox kitty
 
-Install awesome with pacman
+Install yay
 ```
-sudo pacman -Syu awesome
+pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
+```
+
+Install awesome-git with yay
+```
+yay -Syu awesome-git
 ```
 
 Get an xinitrc

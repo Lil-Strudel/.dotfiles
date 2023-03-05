@@ -1,5 +1,6 @@
 require("conf.apps")
 require("conf.keyboard")
+require("conf.mouse")
 require("conf.client")
 require("conf.layout")
 require("conf.menu")
