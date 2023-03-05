@@ -1,6 +1,7 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
 local gears = require("gears")
+local wibox = require("wibox")
 
 client.connect_signal("manage", function (c)
   -- Set the windows at the slave,
