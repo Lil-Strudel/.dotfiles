@@ -197,28 +197,6 @@ theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
 
-theme.tag_preview_widget_border_radius = 0
-theme.tag_preview_client_border_radius = 0
-theme.tag_preview_client_opacity = 0.5
-theme.tag_preview_client_bg = colors.red
-theme.tag_preview_client_border_color = colors.red
-theme.tag_preview_client_border_width = 3
-theme.tag_preview_widget_bg = colors.red
-theme.tag_preview_widget_border_color = colors.red
-theme.tag_preview_widget_border_width = 2
-theme.tag_preview_widget_margin = 10
-
-theme.task_preview_widget_border_radius = 0
-theme.task_preview_widget_bg = colors.red
-theme.task_preview_widget_border_color = colors.red
-theme.task_preview_widget_border_width = 3 
-theme.task_preview_widget_margin = 15
-
-theme.tabbar_radius = 0
-theme.tabbar_style = "default"
-theme.tabbar_size = 40
-theme.tabbar_postition = "top"
-
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
