@@ -1,6 +1,8 @@
 local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 
+require("awful.hotkeys_popup.keys")
+
 local modkey = C.modkey or "Mod4"
 
 -- General

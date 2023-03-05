@@ -1,6 +1,6 @@
-require "conf.apps"
-require "conf.keyboard"
-require "conf.client"
-require "conf.layout"
-require "conf.menu"
-require "conf.rules"
+require("conf.apps")
+require("conf.keyboard")
+require("conf.client")
+require("conf.layout")
+require("conf.menu")
+require("conf.rules")

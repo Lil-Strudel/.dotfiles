@@ -1,5 +1,5 @@
-local awful = require "awful"
-local bling = require "modules.bling"
+local awful = require("awful")
+local bling = require("modules.bling")
 local l = awful.layout.suit
 
 awful.layout.layouts = {

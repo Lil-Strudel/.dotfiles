@@ -1,6 +1,6 @@
 M = {}
 
-local awful = require "awful"
+local awful = require("awful")
 
 M.main = awful.menu {
   items = {
