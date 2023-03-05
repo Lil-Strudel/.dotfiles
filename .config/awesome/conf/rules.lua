@@ -1,5 +1,6 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
+local ruled = require("ruled")
 
 -- {{{ Rules
 -- Rules to apply to new clients.
