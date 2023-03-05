@@ -12,62 +12,64 @@ local themes_path = "~/.config/awesome/themes/"
 
 local colors = {}
 
-colors.red            = "#f7768e"
-colors.orange         = "#ff9e64"
-colors.dark_orange    = "#e0af68"
-colors.lime_green     = "#9ece6a"
-colors.sea_green      = "#73daca"
-colors.light_blue     = "#b4f9f8"
-colors.blue           = "#2ac3d3"
-colors.sky_blue       = "#7dcfff"
-colors.lilac          = "#7aa2f7"
-colors.purple         = "#bb9af7"
-colors.off_white      = "#c0caf5"
-colors.off_light_grey = "#a9b1d6"
-colors.off_grey       = "#9aa5ce"
-colors.eggshell       = "#cfc9c2"
-colors.dark_text      = "#565f89"
-colors.off_black      = "#414868"
-colors.background     = "#1a1b26"
+colors.red             = "#f7768e"
+colors.orange          = "#ff9e64"
+colors.dark_orange     = "#e0af68"
+colors.lime_green      = "#9ece6a"
+colors.sea_green       = "#73daca"
+colors.light_blue      = "#b4f9f8"
+colors.blue            = "#2ac3d3"
+colors.sky_blue        = "#7dcfff"
+colors.lilac           = "#7aa2f7"
+colors.purple          = "#bb9af7"
+colors.off_white       = "#c0caf5"
+colors.off_light_grey  = "#a9b1d6"
+colors.off_grey        = "#9aa5ce"
+colors.eggshell        = "#cfc9c2"
+colors.dark_text       = "#565f89"
+colors.off_black       = "#414868"
+colors.background      = "#1a1b26"
+colors.background_dark = "#16161e" 
 
 local theme = {}
 
 theme.font = "sans 8"
+theme.font_name = "sans "
 
-theme.bg_normal   = colors.background
-theme.bg_focus    = "#535d6c"
-theme.bg_urgent   = "#ff0000"
-theme.bg_minimize = "#444444"
+theme.bg_normal   = colors.background_dark
+theme.bg_focus    = theme.bg_normal
+theme.bg_urgent   = theme.bg_normal
+theme.bg_minimize = theme.bg_normal
 theme.bg_systray  = theme.bg_normal
 
-theme.fg_normal   = "#aaaaaa"
-theme.fg_focus    = "#ffffff"
-theme.fg_urgent   = "#ffffff"
-theme.fg_minimize = "#ffffff"
+theme.fg_normal   = colors.dark_text
+theme.fg_focus    = theme.fg_normal
+theme.fg_urgent   = theme.fg_normal
+theme.fg_minimize = theme.fg_normal
 
---theme.taglist_bg_focus    =
---theme.taglist_bg_urgent   =
---theme.taglist_bg_occupied =
---theme.taglist_bg_empty    =
---theme.taglist_bg_volatile =
+theme.taglist_bg_focus    = colors.off_black
+theme.taglist_bg_urgent   = colors.red
+theme.taglist_bg_occupied = colors.background_dark
+theme.taglist_bg_empty    = colors.background_dark
+theme.taglist_bg_volatile = colors.background_dark
 
---theme.taglist_fg_focus    =
---theme.taglist_fg_urgent   =
---theme.taglist_fg_occupied =
---theme.taglist_fg_empty    =
---theme.taglist_fg_volatile =
+theme.taglist_fg_focus    = colors.eggshell
+theme.taglist_fg_urgent   = colors.eggshell
+theme.taglist_fg_occupied = colors.eggshell
+theme.taglist_fg_empty    = colors.eggshell
+theme.taglist_fg_volatile = colors.eggshell
 
---theme.tasklist_bg_focus  =
---theme.tasklist_bg_urgent = 
+theme.tasklist_bg_focus  = colors.off_black
+theme.tasklist_bg_urgent = colors.red
 
---theme.tasklist_fg_focus  = 
---theme.tasklist_fg_urgent =
+theme.tasklist_fg_focus  = colors.eggshell
+theme.tasklist_fg_urgent = colors.eggshell
 
---theme.titlebar_bg_normal = 
---theme.titlebar_bg_focus  = 
+theme.titlebar_bg_normal = colors.background_dark
+theme.titlebar_bg_focus  = colors.off_black
 
---theme.titlebar_fg_normal = 
---theme.titlebar_fg_focus  = 
+theme.titlebar_fg_normal = colors.dark_text
+theme.titlebar_fg_focus  = colors.eggshell
 
 --theme.mouse_finder_color           =
 --theme.mouse_finder_timeout         =
@@ -94,11 +96,11 @@ theme.fg_minimize = "#ffffff"
 --theme.hotkeys_font             =
 --theme.hotkeys_description_font = 
 
-theme.useless_gap    = dpi(5)
-theme.border_width   = dpi(1)
-theme.border_normal  = "#000000"
-theme.border_focus = "#535d6c"
-theme.border_marked  = "#91231c"
+theme.useless_gap   = dpi(5)
+theme.border_width  = dpi(1)
+theme.border_normal = colors.background_dark
+theme.border_focus  = colors.red
+theme.border_marked = "#91231c"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
@@ -194,6 +196,28 @@ theme.layout_cornerse = themes_path.."defaults/layouts/cornersew.png"
 theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
+
+theme.tag_preview_widget_border_radius = 0
+theme.tag_preview_client_border_radius = 0
+theme.tag_preview_client_opacity = 0.5
+theme.tag_preview_client_bg = colors.red
+theme.tag_preview_client_border_color = colors.red
+theme.tag_preview_client_border_width = 3
+theme.tag_preview_widget_bg = colors.red
+theme.tag_preview_widget_border_color = colors.red
+theme.tag_preview_widget_border_width = 2
+theme.tag_preview_widget_margin = 10
+
+theme.task_preview_widget_border_radius = 0
+theme.task_preview_widget_bg = colors.red
+theme.task_preview_widget_border_color = colors.red
+theme.task_preview_widget_border_width = 3 
+theme.task_preview_widget_margin = 15
+
+theme.tabbar_radius = 0
+theme.tabbar_style = "default"
+theme.tabbar_size = 40
+theme.tabbar_postition = "top"
 
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
