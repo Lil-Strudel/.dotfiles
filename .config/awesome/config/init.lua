@@ -1,0 +1,7 @@
+require "config.config"
+require "config.keyboard"
+require "config.mouse"
+require "config.layout"
+require "config.menu"
+require "config.rules"
+require "config.wallpaper"

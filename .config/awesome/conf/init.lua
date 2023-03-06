@@ -1,6 +1,0 @@
-require "conf.config"
-require "conf.keyboard"
-require "conf.mouse"
-require "conf.layout"
-require "conf.menu"
-require "conf.rules"
