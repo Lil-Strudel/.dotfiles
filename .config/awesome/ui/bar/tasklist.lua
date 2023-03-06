@@ -4,9 +4,9 @@ return function(s)
   local wibox = require "wibox"
   bling.widget.task_preview.enable {
     placement_fn = function(c)
-      awful.placement.bottom(c, {
+      awful.placement.top(c, {
         margins = {
-          bottom = 50,
+          top = 50,
         },
       })
     end,

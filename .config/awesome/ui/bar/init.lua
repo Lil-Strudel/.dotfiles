@@ -204,7 +204,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
           action_icon,
           layout = wibox.layout.fixed.horizontal,
           spacing = 10,
-          bottom = 10,
+          top = 10,
         },
         layout = wibox.layout.align.horizontal,
         forced_height = 30,
