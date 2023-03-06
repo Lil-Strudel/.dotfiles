@@ -65,12 +65,16 @@ screen.connect_signal("request::desktop_decoration", function(s)
         }
     }
 
-    -- Create the wibox
-    s.mywibox = awful.wibar {
+    function round_wibox_shape(cr, width, height)
+	    gears.shape.rounded_rect(cr, width, height, 5)
+    end
+
+    -- Create the wiboxi
+    s.left_wibox = awful.wibar {
         position = "top",
         screen   = s,
-        shape    = gears.shape.rounded_rect,
-        margins  = dpi(10),
+        shape    = round_wibox_shape,
+        margins  = dpi(5),
         widget   = {
             layout = wibox.layout.align.horizontal,
             { -- Left widgets
@@ -79,14 +83,34 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 s.mytaglist,
                 s.mypromptbox,
             },
-            s.mytasklist, -- Middle widget
-            { -- Right widgets
-                layout = wibox.layout.fixed.horizontal,
-                mykeyboardlayout,
-                wibox.widget.systray(),
-                mytextclock,
-                s.mylayoutbox,
-            },
-        }
+        },
+    }
+
+    s.middle_wibox = awful.wibar {
+   	position = "top",
+	screen = s,
+	shape = round_wibox_shape,
+	margins = dpi(5),
+	widget = {
+		layout =wibox.layout.align.horizontal,
+		s.mytasklist,
+	},
+    }
+
+    s.right_wibox = awful.wibar {
+	    position = "top",
+	    screen = s,
+	    shape = round_wibox_shape,
+	    margins = dpi(5),
+	    widget = {
+		layout = wibox.layout.align.horizontal,
+		{ -- Right widgets
+		 layout = wibox.layout.fixed.horizontal,
+		 mykeyboardlayout,
+		 wibox.widget.systray(),
+		 mytextclock,
+		 s.mylayoutbox,
+		},
+	    },
     }
 end)
