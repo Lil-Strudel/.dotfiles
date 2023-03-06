@@ -1,5 +1,6 @@
 local awful = require("awful")
 local wibox = require("wibox")
+local gears = require("gears")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
@@ -68,7 +69,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mywibox = awful.wibar {
         position = "top",
         screen   = s,
-        margins  = dpi(5),
+        shape    = gears.shape.rounded_rect
+        margins  = dpi(10),
         widget   = {
             layout = wibox.layout.align.horizontal,
             { -- Left widgets
