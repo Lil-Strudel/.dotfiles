@@ -66,7 +66,7 @@ local battery_popup = awful.popup {
   border_width = 2,
   border_color = beautiful.bg_focus,
   placement = function(c)
-    (awful.placement.bottom_right)(c, { margins = { bottom = 55, right = 110 } })
+    (awful.placement.top_right)(c, { margins = { top = 55, right = 110 } })
   end,
   ontop = true,
 }
@@ -83,7 +83,7 @@ local battery = wibox.widget {
     bat_arcchart,
     widget = wibox.container.margin,
     margins = 7,
-    bottom = 8,
+    top = 8,
   },
 }
 
@@ -212,5 +212,5 @@ screen.connect_signal("request::desktop_decoration", function(s)
       widget = wibox.container.margin,
       margins = 8,
     },
-  }):struts { bottom = 40 }
+  }):struts { top = 40 }
 end)

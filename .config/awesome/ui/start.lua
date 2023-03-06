@@ -180,7 +180,7 @@ local start = awful.popup {
   },
   ontop = true,
   placement = function(c)
-    (awful.placement.bottom_left)(c, { margins = { bottom = 55, left = 10 } })
+    (awful.placement.top_left)(c, { margins = { top = 55, left = 10 } })
   end,
   visible = false,
   border_color = beautiful.bg_subtle,
