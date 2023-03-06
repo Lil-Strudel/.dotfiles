@@ -174,7 +174,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
   awful.popup({
     placement = function(c)
-      (awful.placement.bottom + awful.placement.maximize_horizontally)(c)
+      (awful.placement.top + awful.placement.maximize_horizontally)(c)
     end,
     screen = s,
     widget = {
