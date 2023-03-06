@@ -4,10 +4,10 @@ return function(s)
   local wibox = require "wibox"
   bling.widget.tag_preview.enable {
     placement_fn = function(c) -- Place the widget using awful.placement (this overrides x & y)
-      awful.placement.bottom_left(c, {
+      awful.placement.top_left(c, {
         margins = {
           left = 20,
-          bottom = 55,
+          top = 55,
         },
       })
     end,
