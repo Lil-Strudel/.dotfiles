@@ -69,7 +69,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mywibox = awful.wibar {
         position = "top",
         screen   = s,
-        shape    = gears.shape.rounded_rect
+        shape    = gears.shape.rounded_rect,
         margins  = dpi(10),
         widget   = {
             layout = wibox.layout.align.horizontal,
