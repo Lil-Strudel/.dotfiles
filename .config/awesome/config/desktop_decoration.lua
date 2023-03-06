@@ -1,6 +1,6 @@
 local awful = require("awful")
 local wibox = require("wibox")
-local xresources = require("beautifl.xresources")
+local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 -- Keyboard map indicator and switcher
