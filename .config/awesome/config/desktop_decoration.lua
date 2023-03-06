@@ -1,8 +1,6 @@
 local awful = require("awful")
 local wibox = require("wibox")
 
--- {{{ Wibar
-
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
@@ -87,6 +85,3 @@ screen.connect_signal("request::desktop_decoration", function(s)
         }
     }
 end)
-
--- }}}
-

@@ -4,8 +4,6 @@ require("awful.hotkeys_popup.keys")
 
 local modkey = C.modkey or "Mod4"
 
--- {{{ Key bindings
-
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -222,5 +220,3 @@ client.connect_signal("request::default_keybindings", function()
             {description = "(un)maximize horizontally", group = "client"}),
     })
 end)
-
--- }}}

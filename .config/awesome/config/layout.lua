@@ -2,7 +2,6 @@ local awful = require("awful")
 local bling = require("modules.bling")
 local l = awful.layout.suit
 
--- {{{ Tag layout
 -- Table of layouts to cover with awful.layout.inc, order matters.
 tag.connect_signal("request::default_layouts", function()
     awful.layout.append_default_layouts({
@@ -21,4 +20,3 @@ tag.connect_signal("request::default_layouts", function()
         awful.layout.suit.corner.nw,
     })
 end)
--- }}}

@@ -2,7 +2,6 @@ local awful = require("awful")
 local wibox = require("wibox")
 
 
--- {{{ Titlebars
 -- Add a titlebar if titlebars_enabled is set to true in the rules.
 client.connect_signal("request::titlebars", function(c)
     -- buttons for the titlebar
@@ -40,4 +39,3 @@ client.connect_signal("request::titlebars", function(c)
         layout = wibox.layout.align.horizontal
     }
 end)
--- }}}

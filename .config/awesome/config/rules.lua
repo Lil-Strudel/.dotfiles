@@ -2,7 +2,6 @@ local awful = require("awful")
 local beautiful = require("beautiful")
 local ruled = require("ruled")
 
--- {{{ Rules
 -- Rules to apply to new clients.
 ruled.client.connect_signal("request::rules", function()
     -- All clients will match this rule.
@@ -53,4 +52,3 @@ ruled.client.connect_signal("request::rules", function()
     --     properties = { screen = 1, tag = "2" }
     -- }
 end)
--- }}}
