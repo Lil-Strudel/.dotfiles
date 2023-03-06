@@ -9,8 +9,10 @@ local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
 
-local theme_path = "~/.config/awesome/themes/tokyo-night/"
-local themes_path = "~/.config/awesome/themes/"
+local base_path = gfs.get_configuration_dir() 
+
+local theme_path = base_path .. "/themes/tokyo-night/"
+local themes_path = base_path .. "/themes/"
 
 local colors = {}
 
@@ -120,7 +122,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."defaults/titleba
 theme.titlebar_maximized_button_normal_active = themes_path.."defaults/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."defaults/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = themes_path.."defaults/background.png"
+theme.wallpaper = theme_path.."background.jpg"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."defaults/layouts/fairhw.png"
