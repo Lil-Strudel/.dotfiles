@@ -1,5 +1,7 @@
 local awful = require("awful")
 local wibox = require("wibox")
+local xresources = require("beautifl.xresources")
+local dpi = xresources.apply_dpi
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -9,7 +11,7 @@ mytextclock = wibox.widget.textclock()
 
 screen.connect_signal("request::desktop_decoration", function(s)
     -- Each screen has its own tag table.
-    awful.tag({ "1", "2", "3", "4", "5", "6", "7", "8", "9" }, s, awful.layout.layouts[1])
+    awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
 
     -- Create a promptbox for each screen
     s.mypromptbox = awful.widget.prompt()
@@ -66,6 +68,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mywibox = awful.wibar {
         position = "top",
         screen   = s,
+        margins  = dpi(5)
         widget   = {
             layout = wibox.layout.align.horizontal,
             { -- Left widgets
