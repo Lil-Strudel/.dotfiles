@@ -1,12 +1,14 @@
 ---------------------------------------------
--- Lil Strudel's tokyo-night awesome theme --
+-- Lil Strudel's Tokyo Night awesome theme --
 ---------------------------------------------
 
 local theme_assets = require("beautiful.theme_assets")
 local xresources = require("beautiful.xresources")
+local rnotification = require("ruled.notification")
 local dpi = xresources.apply_dpi
 
 local gfs = require("gears.filesystem")
+
 local theme_path = "~/.config/awesome/themes/tokyo-night/"
 local themes_path = "~/.config/awesome/themes/"
 
@@ -33,74 +35,36 @@ colors.background_dark = "#16161e"
 
 local theme = {}
 
-theme.font = "sans 8"
-theme.font_name = "sans "
+theme.font          = "sans 8"
 
-theme.bg_normal   = colors.background_dark
-theme.bg_focus    = theme.bg_normal
-theme.bg_urgent   = theme.bg_normal
-theme.bg_minimize = theme.bg_normal
-theme.bg_systray  = theme.bg_normal
+theme.bg_normal     = "#222222"
+theme.bg_focus      = "#535d6c"
+theme.bg_urgent     = "#ff0000"
+theme.bg_minimize   = "#444444"
+theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal   = colors.dark_text
-theme.fg_focus    = theme.fg_normal
-theme.fg_urgent   = theme.fg_normal
-theme.fg_minimize = theme.fg_normal
+theme.fg_normal     = "#aaaaaa"
+theme.fg_focus      = "#ffffff"
+theme.fg_urgent     = "#ffffff"
+theme.fg_minimize   = "#ffffff"
 
-theme.taglist_bg_focus    = colors.off_black
-theme.taglist_bg_urgent   = colors.red
-theme.taglist_bg_occupied = colors.background_dark
-theme.taglist_bg_empty    = colors.background_dark
-theme.taglist_bg_volatile = colors.background_dark
+theme.useless_gap         = dpi(0)
+theme.border_width        = dpi(1)
+theme.border_color_normal = "#000000"
+theme.border_color_active = "#535d6c"
+theme.border_color_marked = "#91231c"
 
-theme.taglist_fg_focus    = colors.eggshell
-theme.taglist_fg_urgent   = colors.eggshell
-theme.taglist_fg_occupied = colors.eggshell
-theme.taglist_fg_empty    = colors.eggshell
-theme.taglist_fg_volatile = colors.eggshell
-
-theme.tasklist_bg_focus  = colors.off_black
-theme.tasklist_bg_urgent = colors.red
-
-theme.tasklist_fg_focus  = colors.eggshell
-theme.tasklist_fg_urgent = colors.eggshell
-
-theme.titlebar_bg_normal = colors.background_dark
-theme.titlebar_bg_focus  = colors.off_black
-
-theme.titlebar_fg_normal = colors.dark_text
-theme.titlebar_fg_focus  = colors.eggshell
-
---theme.mouse_finder_color           =
---theme.mouse_finder_timeout         =
---theme.mouse_finder_animate_timeout =
---theme.mouse_finder_radius          =
---theme.mouse_finder_factor          =
-
---theme.prompt_fg        =
---theme.prompt_bg        =
---theme.prompt_fg_cursor =
---theme.prompt_bg_cursor =
---theme.prompt_font      =
-
---theme.hotkeys_bg               = 
---theme.hotkeys_fg               =
---theme.hotkeys_border_width     =
---theme.hotkeys_border_color     =
---theme.hotkeys_shape            =
---theme.hotkeys_opacity          =
---theme.hotkeys_modifiers_fg     =
---theme.hotkeys_label_bg         =
---theme.hotkeys_label_fg         =
---theme.hotkeys_group_margin     =
---theme.hotkeys_font             =
---theme.hotkeys_description_font = 
-
-theme.useless_gap   = dpi(5)
-theme.border_width  = dpi(1)
-theme.border_normal = colors.background_dark
-theme.border_focus  = colors.red
-theme.border_marked = "#91231c"
+-- There are other variable sets
+-- overriding the defaults one when
+-- defined, the sets are:
+-- taglist_[bg|fg]_[focus|urgent|occupied|empty|volatile]
+-- tasklist_[bg|fg]_[focus|urgent]
+-- titlebar_[bg|fg]_[normal|focus]
+-- tooltip_[font|opacity|fg_color|bg_color|border_width|border_color]
+-- prompt_[fg|bg|fg_cursor|bg_cursor|font]
+-- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
+-- Example:
+--theme.taglist_bg_focus = "#ff0000"
 
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
@@ -112,30 +76,14 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 )
 
 -- Variables set for theming notifications:
--- theme.theme.notification_font = 
-
--- theme.notification_bg = 
--- theme.notification_fg = 
-
--- theme.notification_width  =
--- theme.notification_height = 
--- theme.notification_margin =
-
--- theme.notification_border_color =
--- theme.notification_border_width =
--- theme.notification_shape        =
--- theme.notification_opacity      =
+-- notification_font
+-- notification_[bg|fg]
+-- notification_[width|height|margin]
+-- notification_[border_color|border_width|shape|opacity]
 
 -- Variables set for theming the menu:
--- theme.menu_bg_normal =
--- theme.menu_bg_focus  =
-
--- theme.menu_fg_normal = 
--- theme.menu_fg_focus  = 
-
--- theme.menu_border_color =
--- theme.menu_border_width =
-
+-- menu_[bg|fg]_[normal|focus]
+-- menu_[border_color|border_width]
 theme.menu_submenu_icon = themes_path.."defaults/submenu.png"
 theme.menu_height = dpi(15)
 theme.menu_width  = dpi(100)
@@ -172,8 +120,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."defaults/titleba
 theme.titlebar_maximized_button_normal_active = themes_path.."defaults/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."defaults/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = theme_path.."background.jpg"
-theme.background = colors.lilac
+theme.wallpaper = themes_path.."defaults/background.png"
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."defaults/layouts/fairhw.png"
@@ -198,31 +145,17 @@ theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
 
-theme.tag_preview_widget_border_radius = 0
-theme.tag_preview_client_border_radius = 0
-theme.tag_preview_client_opacity = 0.5
-theme.tag_preview_client_bg = theme.bg_normal
-theme.tag_preview_client_border_color = theme.bg_subtle
-theme.tag_preview_client_border_width = 3
-theme.tag_preview_widget_bg = theme.bg_dark
-theme.tag_preview_widget_border_color = theme.bg_focus
-theme.tag_preview_widget_border_width = 2
-theme.tag_preview_widget_margin = 10
-
-theme.task_preview_widget_border_radius = 0
-theme.task_preview_widget_bg = theme.bg_dark
-theme.task_preview_widget_border_color = theme.bg_focus
-theme.task_preview_widget_border_width = 3
-theme.task_preview_widget_margin = 15
-
-theme.tabbar_radius = 0
-theme.tabbar_style = "default"
-theme.tabbar_size = 40
-theme.tabbar_position = "top"
-
 -- Define the icon theme for application icons. If not set then the icons
 -- from /usr/share/icons and /usr/share/icons/hicolor will be used.
 theme.icon_theme = nil
+
+-- Set different colors for urgent notifications.
+rnotification.connect_signal('request::rules', function()
+    rnotification.append_rule {
+        rule       = { urgency = 'critical' },
+        properties = { bg = '#ff0000', fg = '#ffffff' }
+    }
+end)
 
 return theme
 
