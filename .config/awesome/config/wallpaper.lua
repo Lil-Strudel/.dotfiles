@@ -1,5 +1,7 @@
 local awful = require("awful")
 local beautiful = require("beautiful")
+local wibox = require("wibox")
+
 -- {{{ Wallpaper
 screen.connect_signal("request::wallpaper", function(s)
     awful.wallpaper {
