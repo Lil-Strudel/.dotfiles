@@ -75,57 +75,34 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.left_wibox = awful.wibar {
         position = "top",
         screen   = s,
+        shape    = round_wibox_shape,
         margins  = dpi(5),
-        bg       = "#00000000",
         widget   = {
             layout = wibox.layout.align.horizontal,
             {
-                wibox.widget {
-                    widget = wibox.container.background,
-                    shape = round_wibox_shape,
-                    bg = "#ff0000",
-                    children = {
-                        layout = wibox.layout.fixed.horizontal,
-                        s.mytaglist,
-                        s.mypromptbox,
-                    },
-                }
-
+                layout = wibox.layout.fixed.horizontal,
+                s.mytaglist,
+                s.mypromptbox,
             },
+            wibox.widget.separator,
             {
-                wibox.widget {
-                    widget = wibox.container.background,
-                    shape = round_wibox_shape,
-                    bg = "#ff0000",
-                    children = {
-                        layout = wibox.layout.fixed.horizontal,
-                        s.mytasklist,
-                    },
-                }
-
+                layout = wibox.layout.fixed.horizontal,
+                s.mytasklist,
             },
+            wibox.widget.separator,
             {
-                wibox.widget {
-                    widget = wibox.container.background,
-                    shape = round_wibox_shape,
-                    bg = "#ff0000",
-                    children = {
-                        layout = wibox.layout.fixed.horizontal,
-                        mykeyboardlayout,
-                        wibox.widget.systray(),
-                        mytextclock,
-                        s.mylayoutbox,
-                    },
-                }
-
+                layout = wibox.layout.fixed.horizontal,
+                mykeyboardlayout,
+                wibox.widget.systray(),
+                mytextclock,
+                s.mylayoutbox,
             },
         },
     }
 
     -- s.middle_wibox = awful.wibar {
-    --     width = 200,
     --     stretch = false,
-    --     align = "left",
+    --     align = "center",
     --     position = "top",
     --     screen = s,
     --     shape = round_wibox_shape,
@@ -140,7 +117,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
     -- }
 
     -- s.right_wibox = awful.wibar {
-    --     width = 200,
     --     stretch = false,
     --     align = "right",
     --     position = "top",
