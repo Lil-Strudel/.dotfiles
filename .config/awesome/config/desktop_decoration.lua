@@ -70,24 +70,28 @@ screen.connect_signal("request::desktop_decoration", function(s)
         screen   = s,
         bg       = "#0000",
         widget   = {
+            expand = "none",
+            layout = wibox.layout.align.horizontal,
             {
+                widget = wibox.container.background,
+                bg = "#ff0000",
                 {
                     layout = wibox.layout.fixed.horizontal,
                     s.mytaglist,
                     s.mypromptbox,
                 },
-                widget = wibox.container.background,
-                bg = "#ff0000",
             },
             {
+                widget = wibox.container.background,
+                bg = "#ff0000",
                 {
                     layout = wibox.layout.fixed.horizontal,
                     s.mytasklist,
                 },
-                widget = wibox.container.background,
-                bg = "#ff0000",
             },
             {
+                widget = wibox.container.background,
+                bg = "#ff0000",
                 {
                     layout = wibox.layout.fixed.horizontal,
                     mykeyboardlayout,
@@ -95,8 +99,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
                     mytextclock,
                     s.mylayoutbox,
                 },
-                widget = wibox.container.background,
-                bg = "#ff0000",
             },
         }
     }
