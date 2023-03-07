@@ -1,5 +1,8 @@
 local awful = require("awful")
 local wibox = require("wibox")
+local gears = require("gears")
+local xresources = require("beautifl.xresources")
+local dpi = xresources.apply_dpi
 
 -- {{{ Wibar
 
@@ -64,6 +67,10 @@ screen.connect_signal("request::desktop_decoration", function(s)
         }
     }
 
+    function round_wibox_shape(cr, width, height)
+        gears.shape.rounded_rect(cr, width, height, 5)
+    end
+
     -- Create the wibox
     s.mywibox = awful.wibar {
         position = "top",
@@ -75,31 +82,46 @@ screen.connect_signal("request::desktop_decoration", function(s)
             {
                 widget = wibox.container.background,
                 bg = "#ff0000",
+                shape = round_wibox_shape,
                 {
-                    layout = wibox.layout.fixed.horizontal,
-                    s.mytaglist,
-                    s.mypromptbox,
-                },
+                    widget = wibox.container.margin,
+                    margins = dpi(5),
+                    {
+                        layout = wibox.layout.fixed.horizontal,
+                        s.mytaglist,
+                        s.mypromptbox,
+                    },
+                }
             },
             {
                 widget = wibox.container.background,
                 bg = "#ff0000",
+                shape = round_wibox_shape,
                 {
-                    layout = wibox.layout.fixed.horizontal,
-                    s.mytasklist,
-                },
+                    widget = wibox.container.margin,
+                    margins = dpi(5),
+                    {
+                        layout = wibox.layout.fixed.horizontal,
+                        s.mytasklist,
+                    },
+                }
             },
             {
                 widget = wibox.container.background,
                 bg = "#ff0000",
+                shape = round_wibox_shape,
                 {
-                    layout = wibox.layout.fixed.horizontal,
-                    mykeyboardlayout,
-                    wibox.widget.systray(),
-                    mytextclock,
-                    s.mylayoutbox,
+                    widget = wibox.container.margin,
+                    margins = dpi(5),
+                    {
+                        layout = wibox.layout.fixed.horizontal,
+                        mykeyboardlayout,
+                        wibox.widget.systray(),
+                        mytextclock,
+                        s.mylayoutbox,
+                    },
                 },
-            },
+            }
         }
     }
 end)
