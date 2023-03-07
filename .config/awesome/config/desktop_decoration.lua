@@ -73,18 +73,23 @@ screen.connect_signal("request::desktop_decoration", function(s)
             layout = wibox.layout.align.horizontal,
             expand = "none",
             {
-                -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
                 s.mytaglist,
                 s.mypromptbox,
                 widget = wibox.container.background,
                 bg = "#ff0000"
             },
-            s.mytasklist, -- Middle widget
             {
-                -- Right widgets
+                layout = wibox.layout.fixed.horizontal,
+                widget = wibox.container.background,
+                bg = "#ff0000",
+                s.mytasklist,
+            },
+            {
                 layout = wibox.layout.fixed.horizontal,
                 mykeyboardlayout,
+                widget = wibox.container.background,
+                bg = "#ff0000",
                 wibox.widget.systray(),
                 mytextclock,
                 s.mylayoutbox,
