@@ -84,12 +84,18 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 s.mytaglist,
                 s.mypromptbox,
             },
-            wibox.widget.separator,
+            wibox.widget {
+                widget = wibox.widget.separator,
+                orientation = "vertical",
+            },
             {
                 layout = wibox.layout.fixed.horizontal,
                 s.mytasklist,
             },
-            wibox.widget.separator,
+            wibox.widget {
+                widget = wibox.widget.separator,
+                orientation = "vertical",
+            },
             {
                 layout = wibox.layout.fixed.horizontal,
                 mykeyboardlayout,
