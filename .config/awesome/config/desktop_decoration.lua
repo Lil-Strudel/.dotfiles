@@ -71,7 +71,10 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     -- Create the wiboxi
     s.left_wibox = awful.wibar {
+        width    = 100,
+
         stretch  = false,
+        align    = "left",
         position = "top",
         screen   = s,
         shape    = round_wibox_shape,
@@ -89,7 +92,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
 
     s.middle_wibox = awful.wibar {
+        width = 100,
         stretch = false,
+        align = "center",
         position = "top",
         screen = s,
         shape = round_wibox_shape,
@@ -101,7 +106,10 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
 
     s.right_wibox = awful.wibar {
+        width = 100,
+
         stretch = false,
+        align = "right",
         position = "top",
         screen = s,
         shape = round_wibox_shape,
