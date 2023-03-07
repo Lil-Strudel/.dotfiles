@@ -79,17 +79,17 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 bg = "#ff0000"
             },
             {
+                s.mytasklist,
                 widget = wibox.container.background,
                 bg = "#ff0000",
-                s.mytasklist,
             },
             {
                 mykeyboardlayout,
-                widget = wibox.container.background,
-                bg = "#ff0000",
                 wibox.widget.systray(),
                 mytextclock,
                 s.mylayoutbox,
+                widget = wibox.container.background,
+                bg = "#ff0000",
             },
         }
     }
