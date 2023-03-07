@@ -77,6 +77,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 layout = wibox.layout.fixed.horizontal,
                 s.mytaglist,
                 s.mypromptbox,
+                widget = wibox.container.background,
+                bg = "#ff0000"
             },
             s.mytasklist, -- Middle widget
             {
