@@ -4,6 +4,8 @@ local gears = require("gears")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
+local modkey = C.modkey or "Mod4"
+
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
 
@@ -71,8 +73,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     -- Create the wiboxi
     s.left_wibox = awful.wibar {
-        width    = 100,
-
         stretch  = false,
         align    = "left",
         position = "top",
@@ -82,9 +82,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         widget   = {
             layout = wibox.layout.align.horizontal,
             {
-                -- Left widgets
                 layout = wibox.layout.fixed.horizontal,
-                mylauncher,
                 s.mytaglist,
                 s.mypromptbox,
             },
@@ -92,7 +90,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
 
     s.middle_wibox = awful.wibar {
-        width = 100,
         stretch = false,
         align = "center",
         position = "top",
@@ -101,13 +98,14 @@ screen.connect_signal("request::desktop_decoration", function(s)
         margins = dpi(5),
         widget = {
             layout = wibox.layout.align.horizontal,
-            s.mytasklist,
+            {
+                layout = wibox.layout.fixed.horizontal,
+                s.mytasklist,
+            }
         },
     }
 
     s.right_wibox = awful.wibar {
-        width = 100,
-
         stretch = false,
         align = "right",
         position = "top",
@@ -117,7 +115,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
         widget = {
             layout = wibox.layout.align.horizontal,
             {
-                -- Right widgets
                 layout = wibox.layout.fixed.horizontal,
                 mykeyboardlayout,
                 wibox.widget.systray(),
