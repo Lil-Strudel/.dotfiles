@@ -77,6 +77,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         screen   = s,
         shape    = round_wibox_shape,
         margins  = dpi(5),
+        bg       = "#00000000",
         widget   = {
             layout = wibox.layout.align.horizontal,
             {
