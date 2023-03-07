@@ -1,7 +1,7 @@
 local awful = require("awful")
 local wibox = require("wibox")
 local gears = require("gears")
-local xresources = require("beautifl.xresources")
+local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 -- {{{ Wibar
