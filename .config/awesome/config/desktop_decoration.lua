@@ -76,6 +76,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         position = "top",
         screen   = s,
         bg       = "#0000",
+	margins = dpi(5),
         widget   = {
             expand = "none",
             layout = wibox.layout.align.horizontal,
@@ -84,13 +85,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 bg = "#ff0000",
                 shape = round_wibox_shape,
                 {
-                    widget = wibox.container.margin,
-                    margins = dpi(5),
-                    {
-                        layout = wibox.layout.fixed.horizontal,
-                        s.mytaglist,
-                        s.mypromptbox,
-                    },
+			layout = wibox.layout.fixed.horizontal,
+			s.mytaglist,
+			s.mypromptbox,
                 }
             },
             {
@@ -98,12 +95,8 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 bg = "#ff0000",
                 shape = round_wibox_shape,
                 {
-                    widget = wibox.container.margin,
-                    margins = dpi(5),
-                    {
                         layout = wibox.layout.fixed.horizontal,
                         s.mytasklist,
-                    },
                 }
             },
             {
@@ -111,15 +104,11 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 bg = "#ff0000",
                 shape = round_wibox_shape,
                 {
-                    widget = wibox.container.margin,
-                    margins = dpi(5),
-                    {
                         layout = wibox.layout.fixed.horizontal,
                         mykeyboardlayout,
                         wibox.widget.systray(),
                         mytextclock,
                         s.mylayoutbox,
-                    },
                 },
             }
         }
