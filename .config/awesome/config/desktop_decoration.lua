@@ -74,7 +74,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 		layout = wibox.layout.fixed.horizontal,
 		shape = gears.shape.losange,
 		bg_empty = "#00000000",
-		bg_occupied = "#ffffff",
+		bg_occupied = "#ff00ff",
 		shape_border_width = dpi(1),
 		shape_border_color = "#ffffff",
 		shape_border_color_focus = "#0000ff",
@@ -118,7 +118,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
             layout = wibox.layout.align.horizontal,
             {
                 widget = wibox.container.background,
-                bg = "#ff0000",
+                bg = "#1e1e16",
                 shape = round_wibox_shape,
                 {
                     layout = wibox.layout.fixed.horizontal,
