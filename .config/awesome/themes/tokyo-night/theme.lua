@@ -32,6 +32,7 @@ colors.off_grey        = "#9aa5ce"
 colors.eggshell        = "#cfc9c2"
 colors.dark_text       = "#565f89"
 colors.off_black       = "#414868"
+colors.background_light = "#1c1d29"
 colors.background      = "#1a1b26"
 colors.background_dark = "#16161e" 
 
@@ -40,21 +41,17 @@ local theme = {}
 theme.font          = "sans 8"
 
 theme.bg_normal     = colors.background_dark
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
+theme.bg_focus      = colors.background_light
+theme.bg_urgent     = colors.red
+theme.bg_minimize   = theme.bg_normal
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = colors.off_black
-theme.fg_focus      = colors.eggshell
+theme.fg_normal     = colors.dark_text
+theme.fg_focus      = colors.off_grey
 theme.fg_urgent     = colors.red
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap         = dpi(5)
-theme.border_width        = dpi(0)
-theme.border_color_normal = "#000000"
-theme.border_color_active = "#535d6c"
-theme.border_color_marked = "#91231c"
 
 theme.tasklist_bg_focus = colors.off_black
 
@@ -69,15 +66,6 @@ theme.tasklist_bg_focus = colors.off_black
 -- hotkeys_[bg|fg|border_width|border_color|shape|opacity|modifiers_fg|label_bg|label_fg|group_margin|font|description_font]
 -- Example:
 --theme.taglist_bg_focus = "#ff0000"
-
--- Generate taglist squares:
-local taglist_square_size = dpi(4)
-theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
-)
-theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
-    taglist_square_size, theme.fg_normal
-)
 
 -- Variables set for theming notifications:
 -- notification_font
