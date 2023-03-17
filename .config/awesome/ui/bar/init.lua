@@ -37,19 +37,24 @@ local taglist_buttons = {
 
 
 local function update_tag(item, tag, index)
+    local outline_color
     if tag.selected then
-        item:get_children_by_id("icon_role")[1].stylesheet = "" ..
-                    "rect { stroke: " .. beautiful.fg_focus .. " }" ..
-                    "circle { fill: " .. beautiful.fg_focus .. " }"
-    elseif #tag:clients() > 0 then
-        item:get_children_by_id("icon_role")[1].stylesheet = "" ..
-                    "rect { stroke: " .. beautiful.fg_normal .. " }" ..
-                    "circle { fill: " .. beautiful.fg_normal .. " }"
+	    outline_color = beautiful.fg_focus
     else
-        item:get_children_by_id("icon_role")[1].stylesheet = "" ..
-                    "rect { stroke: " .. beautiful.fg_normal .. " }" ..
-                    "circle { fill: " .. "#0000" .. " }"
+	    outline_color = beautiful.fg_normal
     end
+
+    local fill_color
+    if  #tag:clients() > 0 then
+	    fill_color = outline_color
+    else
+	    fill_color = "#0000"
+    end
+
+
+    item:get_children_by_id("icon_role")[1].stylesheet = "" ..
+	    "rect { stroke: " .. outline_color .. " }" ..
+	    "circle { fill: " .. fill_color .. " }"
 end
 
 
