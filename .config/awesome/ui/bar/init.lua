@@ -81,6 +81,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
             {
                 id = 'markup_role',
                 image = base_path .. "/ui/bar/resources/ghost.svg",
+                stylesheet = "" ..
+                    "svg { fill: #ffff00 }"
+                ,
                 valign = 'center',
                 halign = 'center',
                 forced_height = 16,
