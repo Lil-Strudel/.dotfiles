@@ -38,11 +38,17 @@ local taglist_buttons = {
 
 local function update_tag(item, tag, index)
     if tag.selected then
-        item:get_children_by_id("tag")[1].markup = "<span foreground='" .. beautiful.fg .. "'>ur mom</span>"
+        item:get_children_by_id("icon_role")[1].stylesheet = "" ..
+                    "rect { stroke: " .. beautiful.fg_focus .. " }" ..
+                    "circle { fill: " .. beautiful.fg_focus .. " }"
     elseif #tag:clients() > 0 then
-        item:get_children_by_id("tag")[1].markup = "<span foreground='" .. beautiful.fg .. "'>has stuff</span>"
+        item:get_children_by_id("icon_role")[1].stylesheet = "" ..
+                    "rect { stroke: " .. beautiful.fg_normal .. " }" ..
+                    "circle { fill: " .. beautiful.fg_normal .. " }"
     else
-        item:get_children_by_id("tag")[1].markup = "<span foreground='" .. beautiful.fg .. "'>empty</span>"
+        item:get_children_by_id("icon_role")[1].stylesheet = "" ..
+                    "rect { stroke: " .. beautiful.fg_normal .. " }" ..
+                    "circle { fill: " .. "#0000" .. " }"
     end
 end
 
@@ -74,17 +80,13 @@ screen.connect_signal("request::desktop_decoration", function(s)
         buttons         = taglist_buttons,
         style           = {
             spacing = dpi(5),
-            bg_empty = "#00000000",
-            bg_occupied = "#ff00ff",
+            bg_empty = "#0000",
+	    bg_focus = "#0000",
         },
         widget_template = {
             {
-                id = 'markup_role',
+                id = 'icon_role',
                 image = base_path .. "/ui/bar/resources/diamond.svg",
-                stylesheet = "" ..
-                    "rect { stroke: " .. "#ffffff" .. " }" ..
-                    "circle { fill: " .. "#ffffff" .. " }"
-                ,
                 valign = 'center',
                 halign = 'center',
                 forced_height = 16,
@@ -94,6 +96,12 @@ screen.connect_signal("request::desktop_decoration", function(s)
             id = 'background_role',
             widget = wibox.container.background,
             shape = gears.shape.circle,
+	    create_callback = function(self, c3, index, objects)
+		update_tag(self, c3, index)
+	    end,
+            update_callback = function(self, c3, index, objects)
+		update_tag(self, c3, index)
+   	    end
         },
     }
 
