@@ -78,27 +78,28 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
 
     -- Create a taglist widget
-
     s.mytaglist = awful.widget.taglist {
         screen          = s,
         filter          = awful.widget.taglist.filter.all,
         buttons         = taglist_buttons,
         style           = {
-            spacing = dpi(5),
+            spacing = dpi(4),
             bg_empty = "#0000",
             bg_focus = "#0000",
         },
         widget_template = {
             {
-                id = 'icon_role',
-                image = base_path .. "/ui/bar/resources/diamond.svg",
-                valign = 'center',
-                halign = 'center',
-                forced_height = 16,
-                forced_width = 16,
-                widget = wibox.widget.imagebox,
-            },
-            id = 'background_role',
+
+		widget = wibox.container.margin,
+		margins = dpi(4),
+		{
+			id = 'icon_role',
+			image = base_path .. "/ui/bar/resources/diamond.svg",
+			valign = 'center',
+			halign = 'center',
+			widget = wibox.widget.imagebox,
+                }
+	    },
             widget = wibox.container.background,
             shape = gears.shape.circle,
             create_callback = function(self, c3, index, objects)
@@ -130,25 +131,25 @@ screen.connect_signal("request::desktop_decoration", function(s)
             layout = wibox.layout.fixed.horizontal
         },
         widget_template = {
-            {
-                {
-                    {
-                        id = "icon_role",
-                        widget = wibox.widget.imagebox,
-                    },
-                    margins = 2,
-                    widget = wibox.container.margin,
-                },
-                margins = dpi(4),
-                widget = wibox.container.margin
-            },
-            id = "background_role",
-            widget = wibox.container.background
+            widget = wibox.container.margin,
+	    margins = dpi(2),
+	    {
+		    {
+			{
+			    id = "icon_role",
+			    widget = wibox.widget.imagebox,
+			},
+			margins = dpi(1),
+			widget = wibox.container.margin
+		    },
+                id = "background_role",
+                widget = wibox.container.background
+            }
         }
     }
 
     function round_wibox_shape(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, 5)
+        gears.shape.rounded_rect(cr, width, height, dpi(5))
     end
 
     -- Create the wibox
@@ -162,7 +163,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
             layout = wibox.layout.align.horizontal,
             {
                 widget = wibox.container.background,
-                bg = "#1e1e16",
+                bg = beautiful.bg_normal,
+		border_width = 1,
+		border_color = "#101014",
                 shape = round_wibox_shape,
                 {
                     layout = wibox.layout.fixed.horizontal,
@@ -172,7 +175,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
             },
             {
                 widget = wibox.container.background,
-                bg = "#ff0000",
+                bg = beautiful.bg_normal,
+		border_width = 1,
+		border_color = "#101014",
                 shape = round_wibox_shape,
                 {
                     layout = wibox.layout.fixed.horizontal,
@@ -181,7 +186,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
             },
             {
                 widget = wibox.container.background,
-                bg = "#ff0000",
+                bg = beautiful.bg_normal,
+		border_width = 1,
+		border_color = "#101014",
                 shape = round_wibox_shape,
                 {
                     layout = wibox.layout.fixed.horizontal,
