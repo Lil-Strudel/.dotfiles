@@ -39,22 +39,22 @@ local taglist_buttons = {
 local function update_tag(item, tag, index)
     local outline_color
     if tag.selected then
-	    outline_color = beautiful.fg_focus
+        outline_color = beautiful.fg_focus
     else
-	    outline_color = beautiful.fg_normal
+        outline_color = beautiful.fg_normal
     end
 
     local fill_color
-    if  #tag:clients() > 0 then
-	    fill_color = outline_color
+    if #tag:clients() > 0 then
+        fill_color = outline_color
     else
-	    fill_color = "#0000"
+        fill_color = "#0000"
     end
 
 
     item:get_children_by_id("icon_role")[1].stylesheet = "" ..
-	    "rect { stroke: " .. outline_color .. " }" ..
-	    "circle { fill: " .. fill_color .. " }"
+        "rect { stroke: " .. outline_color .. " }" ..
+        "circle { fill: " .. fill_color .. " }"
 end
 
 
@@ -86,7 +86,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         style           = {
             spacing = dpi(5),
             bg_empty = "#0000",
-	    bg_focus = "#0000",
+            bg_focus = "#0000",
         },
         widget_template = {
             {
@@ -101,12 +101,12 @@ screen.connect_signal("request::desktop_decoration", function(s)
             id = 'background_role',
             widget = wibox.container.background,
             shape = gears.shape.circle,
-	    create_callback = function(self, c3, index, objects)
-		update_tag(self, c3, index)
-	    end,
+            create_callback = function(self, c3, index, objects)
+                update_tag(self, c3, index)
+            end,
             update_callback = function(self, c3, index, objects)
-		update_tag(self, c3, index)
-   	    end
+                update_tag(self, c3, index)
+            end
         },
     }
 
