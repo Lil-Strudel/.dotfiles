@@ -12,3 +12,4 @@ _G.theme = "tokyo-night"
 beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/" .. theme .. "/theme.lua")
 
 require "config"
+require "ui"
