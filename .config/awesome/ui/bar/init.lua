@@ -157,7 +157,11 @@ screen.connect_signal("request::desktop_decoration", function(s)
         position = "top",
         screen   = s,
         bg       = "#0000",
-        margins  = dpi(5),
+        margins  = {
+		top = beautiful.useless_gap * 2,
+		left = beautiful.useless_gap * 2,
+		right = beautiful.useless_gap * 2
+	},
         widget   = {
             expand = "none",
             layout = wibox.layout.align.horizontal,

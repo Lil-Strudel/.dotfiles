@@ -53,7 +53,7 @@ theme.fg_focus                                  = colors.off_grey
 theme.fg_urgent                                 = colors.red
 theme.fg_minimize                               = "#ffffff"
 
-theme.useless_gap                               = dpi(5)
+theme.useless_gap                               = dpi(3)
 
 theme.tasklist_bg_focus                         = colors.off_black
 

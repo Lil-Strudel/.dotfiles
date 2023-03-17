@@ -5,18 +5,12 @@ local wibox = require("wibox")
 screen.connect_signal("request::wallpaper", function(s)
     awful.wallpaper {
         screen = s,
-        widget = {
+        widget =
             {
                 image     = beautiful.wallpaper,
-                upscale   = true,
-                downscale = true,
-                resize    = true,
                 widget    = wibox.widget.imagebox,
+		horizontal_fit_policy = "fit",
+		vertical_fit_policy = "fit",
             },
-            valign = "center",
-            halign = "center",
-            tiled  = false,
-            widget = wibox.container.tile,
-        }
     }
 end)
