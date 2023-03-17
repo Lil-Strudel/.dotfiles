@@ -5,9 +5,11 @@ local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
+local gfs = require("gears.filesystem")
+local base_path = gfs.get_configuration_dir()
+
 local modkey = C.modkey or "Mod4"
 
--- {{{ Wibar
 
 -- Keyboard map indicator and switcher
 mykeyboardlayout = awful.widget.keyboardlayout()
@@ -69,23 +71,21 @@ screen.connect_signal("request::desktop_decoration", function(s)
     s.mytaglist = awful.widget.taglist {
         screen          = s,
         filter          = awful.widget.taglist.filter.all,
-        style           = {
-            spacing = dpi(5),
-            layout = wibox.layout.fixed.horizontal,
-            shape = gears.shape.losange,
-            bg_empty = "#00000000",
-            bg_occupied = "#ff00ff",
-            shape_border_width = dpi(1),
-            shape_border_color = "#ffffff",
-            shape_border_color_focus = "#0000ff",
-            bg_focus = "#0000ff",
-        },
+        buttons         = taglist_buttons,
         widget_template = {
-            id = "background_role",
+            {
+                id = 'markup_role',
+                image = base_path .. "/ui/bar/resources/ghost.svg",
+                valign = 'center',
+                halign = 'center',
+                forced_height = 16,
+                forced_width = 16,
+                widget = wibox.widget.imagebox,
+            },
+            id = 'background_role',
             widget = wibox.container.background,
-            forced_width = dpi(15),
+            shape = gears.shape.circle,
         },
-        buttons         = taglist_buttons
     }
 
     -- Create a tasklist widget
@@ -172,5 +172,3 @@ screen.connect_signal("request::desktop_decoration", function(s)
         }
     }
 end)
-
--- }}}
