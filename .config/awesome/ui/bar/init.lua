@@ -80,9 +80,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
         widget_template = {
             {
                 id = 'markup_role',
-                image = base_path .. "/ui/bar/resources/ghost.svg",
+                image = base_path .. "/ui/bar/resources/hollow-diamond.svg",
                 stylesheet = "" ..
-                    "svg { fill: #ffff00 }"
+                    "svg { fill: " .. beautiful.fg_normal .. " }"
                 ,
                 valign = 'center',
                 halign = 'center',
