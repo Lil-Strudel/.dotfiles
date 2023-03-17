@@ -7,12 +7,11 @@ screen.connect_signal("request::wallpaper", function(s)
         screen = s,
         widget = {
             {
-                image                 = beautiful.wallpaper,
-                upscale               = true,
-                downscale             = true,
-                horizontal_fit_policy = "fit",
-                vertical_fit_policy   = "fit",
-                widget                = wibox.widget.imagebox,
+                image     = beautiful.wallpaper,
+                upscale   = true,
+                downscale = true,
+                resize    = true,
+                widget    = wibox.widget.imagebox,
             },
             valign = "center",
             halign = "center",
