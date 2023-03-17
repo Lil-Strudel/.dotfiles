@@ -45,9 +45,9 @@ theme.bg_urgent     = "#ff0000"
 theme.bg_minimize   = "#444444"
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
+theme.fg_normal     = colors.lilac
+theme.fg_focus      = colors.blue
+theme.fg_urgent     = colors.red
 theme.fg_minimize   = "#ffffff"
 
 theme.useless_gap         = dpi(0)
