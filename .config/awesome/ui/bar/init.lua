@@ -168,8 +168,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
             {
                 widget = wibox.container.background,
                 bg = beautiful.bg_normal,
-		border_width = 1,
-		border_color = "#101014",
                 shape = round_wibox_shape,
                 {
                     layout = wibox.layout.fixed.horizontal,
@@ -180,8 +178,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
             {
                 widget = wibox.container.background,
                 bg = beautiful.bg_normal,
-		border_width = 1,
-		border_color = "#101014",
                 shape = round_wibox_shape,
                 {
                     layout = wibox.layout.fixed.horizontal,
@@ -191,8 +187,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
             {
                 widget = wibox.container.background,
                 bg = beautiful.bg_normal,
-		border_width = 1,
-		border_color = "#101014",
                 shape = round_wibox_shape,
                 {
                     layout = wibox.layout.fixed.horizontal,

@@ -9,8 +9,11 @@ screen.connect_signal("request::wallpaper", function(s)
             {
                 image     = beautiful.wallpaper,
                 widget    = wibox.widget.imagebox,
-		horizontal_fit_policy = "fit",
+		horizontal_fit_policy = "auto",
 		vertical_fit_policy = "fit",
+		upscale = true,
+		downscale = true, 
+		resize = true, 
             },
     }
 end)
