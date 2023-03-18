@@ -60,6 +60,11 @@ dotfiles config --local status.showUntrackedFiles no
 echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc
 ```
 
+Make ZSH the default Shell
+```
+chsh -s /bin/zsh
+```
+
 Install Zap
 ```
 zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh)
