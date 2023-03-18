@@ -90,7 +90,7 @@ theme.font          = "Mono Lisa 8"
 theme.bg_normal     = colors.bg
 theme.bg_focus      = colors.bg_highlight
 theme.bg_urgent     = colors.bg
-theme.bg_minimize   = colors.bg
+theme.bg_minimize   = colors.comment
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = colors.fg
@@ -99,7 +99,7 @@ theme.fg_urgent     = colors.red
 theme.fg_minimize   = colors.fg
 
 theme.useless_gap         = dpi(3)
-theme.border_width        = dpi(1)
+theme.border_width        = dpi(0)
 theme.border_color_normal = colors.border
 theme.border_color_active = colors.border_highlight
 theme.border_color_marked = colors.border_highlight

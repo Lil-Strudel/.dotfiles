@@ -83,7 +83,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         filter          = awful.widget.taglist.filter.all,
         buttons         = taglist_buttons,
         style           = {
-            spacing = dpi(4),
+            spacing = dpi(3),
             bg_empty = "#0000",
             bg_focus = "#0000",
         },
