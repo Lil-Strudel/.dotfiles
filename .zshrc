@@ -7,6 +7,7 @@ HISTFILE=/.zsh_history
 # source
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
+plug "$HOME/.config/zsh/starship.zsh"
 
 # plugins
 plug "zsh-users/zsh-autosuggestions"
@@ -16,4 +17,3 @@ plug "zap-zsh/supercharge"
 plug "zap-zsh/vim"
 plug "zap-zsh/exa"
 plug "lukechilds/zsh-nvm"
-eval "$(starship init zsh)"
