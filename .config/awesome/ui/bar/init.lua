@@ -53,8 +53,8 @@ local function update_tag(item, tag, index)
 
 
     item:get_children_by_id("icon_role")[1].stylesheet = "" ..
-        "rect { stroke: " .. outline_color .. " }" ..
-        "circle { fill: " .. fill_color .. " }"
+    "rect { stroke: " .. outline_color .. " }" ..
+    "circle { fill: " .. fill_color .. " }"
 end
 
 
@@ -103,16 +103,16 @@ screen.connect_signal("request::desktop_decoration", function(s)
         },
         widget_template = {
             {
-		widget = wibox.container.margin,
-		margins = dpi(4),
-		{
-			id = 'icon_role',
-			image = base_path .. "/ui/bar/resources/diamond.svg",
-			valign = 'center',
-			halign = 'center',
-			widget = wibox.widget.imagebox,
+                widget = wibox.container.margin,
+                margins = dpi(4),
+                {
+                    id = 'icon_role',
+                    image = base_path .. "/ui/bar/resources/diamond.svg",
+                    valign = 'center',
+                    halign = 'center',
+                    widget = wibox.widget.imagebox,
                 }
-	    },
+            },
             widget = wibox.container.background,
             create_callback = function(self, c3, index, objects)
                 update_tag(self, c3, index)
@@ -144,16 +144,16 @@ screen.connect_signal("request::desktop_decoration", function(s)
         },
         widget_template = {
             widget = wibox.container.margin,
-	    margins = dpi(2),
-	    {
-		    {
-			{
-			    id = "icon_role",
-			    widget = wibox.widget.imagebox,
-			},
-			margins = dpi(1),
-			widget = wibox.container.margin
-		    },
+            margins = dpi(2),
+            {
+                {
+                    {
+                        id = "icon_role",
+                        widget = wibox.widget.imagebox,
+                    },
+                    margins = dpi(1),
+                    widget = wibox.container.margin
+                },
                 id = "background_role",
                 widget = wibox.container.background
             }
@@ -163,53 +163,65 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
 
     -- Create the wibars
-    s.leftwibar = awful.wibar {
-        screen   = s,
-        bg       = beautiful.bg_normal,
-	stretch = false,
-	align = "left",
-	width = 150,
-	margins = {
-		top = gap, 
-		left = gap,
-	},
-	widget   = {
-		layout = wibox.layout.fixed.horizontal,
-		s.mytaglist,
+--    s.leftwibar = awful.wibar {
+--        screen   = s,
+--        bg       = beautiful.bg_normal,
+--        stretch = false,
+--        align = "left",
+--        width = 300,
+--        margins = {
+--            top = gap, 
+--            left = gap,
+--        },
+--        widget   = {
+--            layout = wibox.layout.fixed.horizontal,
+--            s.mytaglist,
+--        }
+--    }
+
+
+    s.leftpopup  = awful.popup {
+        screen = s,
+        placement = function(c, args)
+            args.offset = {x = gap, y = gap}
+            return awful.placement.top_left(c,args)
+        end,
+        maximum_height = dpi(25),
+        bg = beautiful.bg_normal,
+        widget = s.mytaglist 
+    }
+
+    s.leftpopup:struts({top = s.leftpopup.maximum_height + gap})
+
+    s.middlepopup  = awful.popup {
+        screen = s,
+        placement = function(c, args)
+            args.offset = {y = gap}
+            return awful.placement.top(c,args)
+        end,
+        maximum_height = dpi(25),
+        bg = beautiful.bg_normal,
+        widget = s.mytasklist 
+    }
+
+    s.middlepopup:struts({top = s.leftpopup.maximum_height + gap})
+
+    s.rightpopup  = awful.popup {
+        screen = s,
+        placement = function(c, args)
+            args.offset = {x = -gap, y = gap}
+            return awful.placement.top_right(c,args)
+        end,
+        maximum_height = dpi(25),
+        bg = beautiful.bg_normal,
+        widget   = {
+            layout = wibox.layout.fixed.horizontal,
+            mykeyboardlayout,
+            wibox.widget.systray(),
+            mytextclock,
+            s.mylayoutbox,
         }
     }
 
-    s.middlewibar = awful.wibar {
-        screen   = s,
-        bg       = beautiful.bg_normal,
-	stretch = false,
-	align = "center",
-	width = 200,
-	margins = {
-		top = gap, 
-	},
-	widget   = {
-		layout = wibox.layout.fixed.horizontal,
-		s.mytasklist,
-        }
-    }
-
-    s.rightwibar = awful.wibar {
-        screen   = s,
-        bg       = beautiful.bg_normal,
-	stretch = false,
-	align = "right",
-	width = 200,
-	margins = {
-		top = gap,
-		right = gap,
-	},
-	widget   = {
-		layout = wibox.layout.fixed.horizontal,
-	     mykeyboardlayout,
-             wibox.widget.systray(),
-             mytextclock,
-             s.mylayoutbox,
-        }
-    }
+    s.rightpopup:struts({top = s.leftpopup.maximum_height + gap})
 end)
