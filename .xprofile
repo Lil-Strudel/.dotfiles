@@ -12,7 +12,7 @@ export XDG_CACHE_HOME=$HOME/.cache
 export XDG_DATA_HOME=$HOME/.local/share
 
 # GTK Theme
-export GTK_THEME=Tokyonight-Dark-BL
+export GTK_THEME=TokyoNight
 
 #  Compositor
 picom -b 

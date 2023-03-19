@@ -162,24 +162,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
 
 
-    -- Create the wibars
---    s.leftwibar = awful.wibar {
---        screen   = s,
---        bg       = beautiful.bg_normal,
---        stretch = false,
---        align = "left",
---        width = 300,
---        margins = {
---            top = gap, 
---            left = gap,
---        },
---        widget   = {
---            layout = wibox.layout.fixed.horizontal,
---            s.mytaglist,
---        }
---    }
-
-
+    -- Create the "wibars"
+    -- The reason I am using popups is because they automagically set their
+    -- width based on the child widget
     s.leftpopup  = awful.popup {
         screen = s,
         placement = function(c, args)
