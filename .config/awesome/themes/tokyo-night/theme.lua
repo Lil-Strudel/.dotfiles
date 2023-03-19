@@ -90,7 +90,7 @@ theme.font          = "Mono Lisa 8"
 theme.bg_normal     = colors.bg
 theme.bg_focus      = colors.bg_highlight
 theme.bg_urgent     = colors.bg
-theme.bg_minimize   = colors.comment
+theme.bg_minimize   = colors.bg
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = colors.fg
@@ -104,6 +104,7 @@ theme.border_color_normal = colors.border
 theme.border_color_active = colors.border_highlight
 theme.border_color_marked = colors.border_highlight
 
+theme.hotkeys_modifiers_fg = colors.comment
 -- There are other variable sets
 -- overriding the defaults one when
 -- defined, the sets are:

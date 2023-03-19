@@ -58,6 +58,22 @@ local function update_tag(item, tag, index)
 end
 
 
+local gap = beautiful.useless_gap * 2
+local function placement_top_left_with_gap (d, args)
+    args.offset = { x = gap, y = gap }
+    return awful.placement.top_left(d, args)
+end
+
+local function placement_top_with_gap (d, args)
+    args.offset = { y = gap }
+    return awful.placement.top(d, args)
+end
+
+local function placement_top_right_with_gap (d, args)
+    args.offset = { y = gap, x = -gap }
+    return awful.placement.top_right(d, args)
+end
+
 screen.connect_signal("request::desktop_decoration", function(s)
     -- Each screen has its own tag table.
     awful.tag({ "1", "2", "3", "4", "5" }, s, awful.layout.layouts[1])
@@ -84,12 +100,9 @@ screen.connect_signal("request::desktop_decoration", function(s)
         buttons         = taglist_buttons,
         style           = {
             spacing = dpi(3),
-            bg_empty = "#0000",
-            bg_focus = "#0000",
         },
         widget_template = {
             {
-
 		widget = wibox.container.margin,
 		margins = dpi(4),
 		{
@@ -101,7 +114,6 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 }
 	    },
             widget = wibox.container.background,
-            shape = gears.shape.circle,
             create_callback = function(self, c3, index, objects)
                 update_tag(self, c3, index)
             end,
@@ -148,54 +160,56 @@ screen.connect_signal("request::desktop_decoration", function(s)
         }
     }
 
-    function round_wibox_shape(cr, width, height)
-        gears.shape.rounded_rect(cr, width, height, dpi(5))
-    end
 
-    -- Create the wibox
-    s.mywibox = awful.wibar {
-        position = "top",
+
+    -- Create the wibars
+    s.leftwibar = awful.wibar {
         screen   = s,
-        bg       = "#0000",
-        margins  = {
-		top = beautiful.useless_gap * 2,
-		left = beautiful.useless_gap * 2,
-		right = beautiful.useless_gap * 2
+        bg       = beautiful.bg_normal,
+	stretch = false,
+	align = "left",
+	width = 150,
+	margins = {
+		top = gap, 
+		left = gap,
 	},
-        widget   = {
-            expand = "none",
-            layout = wibox.layout.align.horizontal,
-            {
-                widget = wibox.container.background,
-                bg = beautiful.bg_normal,
-                shape = round_wibox_shape,
-                {
-                    layout = wibox.layout.fixed.horizontal,
-                    s.mytaglist,
-                    s.mypromptbox,
-                }
-            },
-            {
-                widget = wibox.container.background,
-                bg = beautiful.bg_normal,
-                shape = round_wibox_shape,
-                {
-                    layout = wibox.layout.fixed.horizontal,
-                    s.mytasklist,
-                }
-            },
-            {
-                widget = wibox.container.background,
-                bg = beautiful.bg_normal,
-                shape = round_wibox_shape,
-                {
-                    layout = wibox.layout.fixed.horizontal,
-                    mykeyboardlayout,
-                    wibox.widget.systray(),
-                    mytextclock,
-                    s.mylayoutbox,
-                },
-            }
+	widget   = {
+		layout = wibox.layout.fixed.horizontal,
+		s.mytaglist,
+        }
+    }
+
+    s.middlewibar = awful.wibar {
+        screen   = s,
+        bg       = beautiful.bg_normal,
+	stretch = false,
+	align = "center",
+	width = 200,
+	margins = {
+		top = gap, 
+	},
+	widget   = {
+		layout = wibox.layout.fixed.horizontal,
+		s.mytasklist,
+        }
+    }
+
+    s.rightwibar = awful.wibar {
+        screen   = s,
+        bg       = beautiful.bg_normal,
+	stretch = false,
+	align = "right",
+	width = 200,
+	margins = {
+		top = gap,
+		right = gap,
+	},
+	widget   = {
+		layout = wibox.layout.fixed.horizontal,
+	     mykeyboardlayout,
+             wibox.widget.systray(),
+             mytextclock,
+             s.mylayoutbox,
         }
     }
 end)
