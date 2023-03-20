@@ -88,8 +88,7 @@ local function worker(user_args)
                 position = position,
                 timeout = 5, hover_timeout = 0.5,
                 width = 200,
-                screen = mouse.screen,
-                border_width = 0,
+                screen = mouse.screen
             }
         end
         )
@@ -185,6 +184,11 @@ local function worker(user_args)
             batteryType = string.format(batteryType, '-charging')
         else
             batteryType = string.format(batteryType, '')
+        end
+        
+
+        if next(battery_info) == nil then
+            batteryType = "battery-missing-symbolic" 
         end
 
         widget.icon:set_image(path_to_icons .. batteryType .. ".svg")
