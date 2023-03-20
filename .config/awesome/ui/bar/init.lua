@@ -10,13 +10,7 @@ local base_path = gfs.get_configuration_dir()
 
 local modkey = C.modkey or "Mod4"
 
-
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
-
+local battery_widget = require("ui.bar.battery")
 
 local taglist_buttons = {
     awful.button({}, 1, function(t) t:view_only() end),
@@ -59,20 +53,6 @@ end
 
 
 local gap = beautiful.useless_gap * 2
-local function placement_top_left_with_gap (d, args)
-    args.offset = { x = gap, y = gap }
-    return awful.placement.top_left(d, args)
-end
-
-local function placement_top_with_gap (d, args)
-    args.offset = { y = gap }
-    return awful.placement.top(d, args)
-end
-
-local function placement_top_right_with_gap (d, args)
-    args.offset = { y = gap, x = -gap }
-    return awful.placement.top_right(d, args)
-end
 
 screen.connect_signal("request::desktop_decoration", function(s)
     -- Each screen has its own tag table.
@@ -107,7 +87,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
                 margins = dpi(4),
                 {
                     id = 'icon_role',
-                    image = base_path .. "/ui/bar/resources/diamond.svg",
+                    image = base_path .. "ui/bar/resources/diamond.svg",
                     valign = 'center',
                     halign = 'center',
                     widget = wibox.widget.imagebox,
@@ -139,19 +119,19 @@ screen.connect_signal("request::desktop_decoration", function(s)
             shape = gears.shape.circle,
         },
         layout          = {
-            spacing = dpi(5),
+            spacing = dpi(3),
             layout = wibox.layout.fixed.horizontal
         },
         widget_template = {
             widget = wibox.container.margin,
-            margins = dpi(2),
+            margins = dpi(4),
             {
                 {
                     {
                         id = "icon_role",
                         widget = wibox.widget.imagebox,
                     },
-                    margins = dpi(1),
+                    margins = dpi(0),
                     widget = wibox.container.margin
                 },
                 id = "background_role",
@@ -160,7 +140,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
         }
     }
 
-
+    s.mybatterywidget = battery_widget()
 
     -- Create the "wibars"
     -- The reason I am using popups is because they automagically set their
@@ -200,11 +180,14 @@ screen.connect_signal("request::desktop_decoration", function(s)
         maximum_height = dpi(25),
         bg = beautiful.bg_normal,
         widget   = {
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
+            widget = wibox.container.margin,
+            margins = dpi(4),
+            {
+                layout = wibox.layout.fixed.horizontal,
+                spacing = dpi(3),
+                s.mybatterywidget,
+                s.mylayoutbox,
+            }
         }
     }
 
