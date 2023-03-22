@@ -150,11 +150,39 @@ screen.connect_signal("request::desktop_decoration", function(s)
         end,
         maximum_height = dpi(25),
         bg = beautiful.bg_normal,
-        widget = s.mytaglist 
+        widget = s.mytaglist,
     }
 
     s.leftpopup:struts({top = s.leftpopup.maximum_height + gap})
 
+    s.leftsearchpopup  = awful.popup {
+        screen = s,
+        placement = function(c, args)
+            return awful.placement.next_to(c, 
+            {
+                preferred_positions = "right",
+                preferred_anchors = "middle",
+                geometry =  s.leftpopup,
+                offset = {x = gap}
+            })
+        end,
+        maximum_height = dpi(25),
+        bg = beautiful.bg_normal,
+        widget = {
+                widget = wibox.container.margin,
+                margins = dpi(6),
+                {
+                    id = 'icon_role',
+                    image = base_path .. "ui/bar/resources/search.svg",
+                    valign = 'center',
+                    halign = 'center',
+                    widget = wibox.widget.imagebox,
+                    stylesheet =  "svg { fill: " .. beautiful.fg_normal .. " }"                 }
+        },
+    }
+
+    s.leftsearchpopup:struts({top = s.leftsearchpopup.maximum_height + gap})
+   
     s.middlepopup  = awful.popup {
         screen = s,
         placement = function(c, args)
