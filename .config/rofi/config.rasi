@@ -97,7 +97,7 @@ listview {
     scrollbar:                   false;
     layout:                      vertical;
     reverse:                     false;
-    fixed-height:                true;
+    fixed-height:                false;
     fixed-columns:               true;
     
     spacing:                     5px;
@@ -109,12 +109,6 @@ listview {
     background-color:            @bg;
     text-color:                  @fg;
     cursor:                      "default";
-}
-scrollbar {
-    handle-width:                5px ;
-    handle-color:                @blue;
-    border-radius:               0px;
-    background-color:            @bghighlight;
 }
 
 /*****----- Elements -----*****/
