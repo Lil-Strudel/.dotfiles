@@ -2,6 +2,8 @@ local awful = require("awful")
 local hotkeys_popup = require("awful.hotkeys_popup")
 require("awful.hotkeys_popup.keys")
 
+local beautiful = require("beautiful")
+
 local modkey = C.modkey or "Mod4"
 
 -- General Awesome keys
@@ -26,10 +28,10 @@ awful.keyboard.append_global_keybindings({
               {description = "lua execute prompt", group = "awesome"}),
     awful.key({ modkey,           }, "Return", function () awful.spawn(C.terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
+    awful.key({ modkey },            "r",     function () awful.util.spawn("rofi -show drun") end,
               {description = "run prompt", group = "launcher"}),
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"}),
+--    awful.key({ modkey }, "p", function() menubar.show() end,
+--              {description = "show the menubar", group = "launcher"}),
 })
 
 -- Tags related keybindings
