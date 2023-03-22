@@ -26,8 +26,8 @@ window {
     anchor:                      north west;
     fullscreen:                  false;
     width:                       200px;
-    x-offset:                    150px;
-    y-offset:                    5px;
+    x-offset:                    148px;
+    y-offset:                    6px;
 
     enabled:                     true;
     margin:                      0px;
@@ -67,9 +67,11 @@ inputbar {
 }
 
 prompt {
-    enabled:                     false;
+    margin: -4px -3px -16px 3px;
+    enabled:                     true;
     background-color:            inherit;
     text-color:                  inherit;
+    font:                        "MonaLisa Nerd 16";
 }
 textbox-prompt-colon {
     enabled:                     true;
@@ -101,7 +103,7 @@ listview {
     fixed-columns:               true;
     
     spacing:                     5px;
-    margin:                      5px 0px 0px 0px;
+    margin:                      6px 0px 0px 0px;
     padding:                     5px;
     border:                      0px solid;
     border-radius:               5px;
