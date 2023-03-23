@@ -11,6 +11,7 @@ local base_path = gfs.get_configuration_dir()
 local modkey = C.modkey or "Mod4"
 
 local battery_widget = require("ui.bar.battery")
+local volume_widget = require("ui.bar.volume")
 
 local taglist_buttons = {
     awful.button({}, 1, function(t) t:view_only() end),
@@ -137,7 +138,10 @@ screen.connect_signal("request::desktop_decoration", function(s)
         }
     }
 
+    s.myvolumewidget = volume_widget()
     s.mybatterywidget = battery_widget()
+
+    s.myclockwidget = wibox.widget.textclock("%H:%M")
 
     -- Create the "wibars"
     -- The reason I am using popups is because they automagically set their
@@ -209,8 +213,10 @@ screen.connect_signal("request::desktop_decoration", function(s)
             margins = dpi(4),
             {
                 layout = wibox.layout.fixed.horizontal,
-                spacing = dpi(3),
+                spacing = dpi(6),
+                s.myvolumewidget,
                 s.mybatterywidget,
+                s.myclockwidget,
                 s.mylayoutbox,
             }
         }

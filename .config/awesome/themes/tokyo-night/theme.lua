@@ -7,6 +7,7 @@ local xresources = require("beautiful.xresources")
 local rnotification = require("ruled.notification")
 local dpi = xresources.apply_dpi
 
+local gcolor = require("gears.color")
 local gfs = require("gears.filesystem")
 
 local base_path = gfs.get_configuration_dir()
@@ -174,22 +175,22 @@ theme.titlebar_maximized_button_focus_active  = themes_path.."defaults/titlebar/
 theme.wallpaper = themes_path .. "/wallpapers/" .. wallpaper
 
 -- You can use your own layout icons like this:
-theme.layout_fairh = themes_path.."defaults/layouts/fairhw.png"
-theme.layout_fairv = themes_path.."defaults/layouts/fairvw.png"
-theme.layout_floating  = themes_path.."defaults/layouts/floatingw.png"
-theme.layout_magnifier = themes_path.."defaults/layouts/magnifierw.png"
-theme.layout_max = themes_path.."defaults/layouts/maxw.png"
-theme.layout_fullscreen = themes_path.."defaults/layouts/fullscreenw.png"
-theme.layout_tilebottom = themes_path.."defaults/layouts/tilebottomw.png"
-theme.layout_tileleft   = themes_path.."defaults/layouts/tileleftw.png"
-theme.layout_tile = themes_path.."defaults/layouts/tilew.png"
-theme.layout_tiletop = themes_path.."defaults/layouts/tiletopw.png"
-theme.layout_spiral  = themes_path.."defaults/layouts/spiralw.png"
-theme.layout_dwindle = themes_path.."defaults/layouts/dwindlew.png"
-theme.layout_cornernw = themes_path.."defaults/layouts/cornernww.png"
-theme.layout_cornerne = themes_path.."defaults/layouts/cornernew.png"
-theme.layout_cornersw = themes_path.."defaults/layouts/cornersww.png"
-theme.layout_cornerse = themes_path.."defaults/layouts/cornersew.png"
+theme.layout_fairh = gcolor.recolor_image(themes_path.."defaults/layouts/fairhw.png", theme.fg_normal)
+theme.layout_fairv = gcolor.recolor_image(themes_path.."defaults/layouts/fairvw.png", theme.fg_normal)
+theme.layout_floating  = gcolor.recolor_image(themes_path.."defaults/layouts/floatingw.png", theme.fg_normal)
+theme.layout_magnifier = gcolor.recolor_image(themes_path.."defaults/layouts/magnifierw.png", theme.fg_normal)
+theme.layout_max = gcolor.recolor_image(themes_path.."defaults/layouts/maxw.png", theme.fg_normal)
+theme.layout_fullscreen = gcolor.recolor_image(themes_path.."defaults/layouts/fullscreenw.png", theme.fg_normal)
+theme.layout_tilebottom = gcolor.recolor_image(themes_path.."defaults/layouts/tilebottomw.png", theme.fg_normal)
+theme.layout_tileleft   = gcolor.recolor_image(themes_path.."defaults/layouts/tileleftw.png", theme.fg_normal)
+theme.layout_tile = gcolor.recolor_image(themes_path.."defaults/layouts/tilew.png", theme.fg_normal)
+theme.layout_tiletop = gcolor.recolor_image(themes_path.."defaults/layouts/tiletopw.png", theme.fg_normal)
+theme.layout_spiral  = gcolor.recolor_image(themes_path.."defaults/layouts/spiralw.png", theme.fg_normal)
+theme.layout_dwindle = gcolor.recolor_image(themes_path.."defaults/layouts/dwindlew.png", theme.fg_normal)
+theme.layout_cornernw = gcolor.recolor_image(themes_path.."defaults/layouts/cornernww.png", theme.fg_normal)
+theme.layout_cornerne = gcolor.recolor_image(themes_path.."defaults/layouts/cornernew.png", theme.fg_normal)
+theme.layout_cornersw = gcolor.recolor_image(themes_path.."defaults/layouts/cornersww.png", theme.fg_normal)
+theme.layout_cornerse = gcolor.recolor_image(themes_path.."defaults/layouts/cornersew.png", theme.fg_normal)
 
 -- Generate Awesome icon:
 theme.awesome_icon = theme_assets.awesome_icon(
