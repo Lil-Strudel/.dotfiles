@@ -140,6 +140,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     s.myvolumewidget = volume_widget()
     s.mybatterywidget = battery_widget()
+    s.mysystray = wibox.widget.systray()
 
     s.myclockwidget = wibox.widget.textclock("%H:%M")
 
@@ -214,6 +215,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
             {
                 layout = wibox.layout.fixed.horizontal,
                 spacing = dpi(6),
+                s.mysystray,
                 s.myvolumewidget,
                 s.mybatterywidget,
                 s.myclockwidget,
