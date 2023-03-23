@@ -100,7 +100,7 @@ theme.fg_urgent     = colors.red
 theme.fg_minimize   = colors.fg
 
 theme.useless_gap         = dpi(3)
-theme.border_width        = dpi(0)
+theme.border_width        = dpi(2)
 theme.border_color_normal = colors.border
 theme.border_color_active = colors.border_highlight
 theme.border_color_marked = colors.border_highlight
