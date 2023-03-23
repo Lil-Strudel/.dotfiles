@@ -1,6 +1,8 @@
-# arch-install
+# .dotfiles
 
-Guide to install arch the way I like it
+Here are my dotfiles!
+
+If you would like to setup your linux env just like mine, here's how you can do that!
 
 Steps:
 Install arch using archinstall
@@ -25,42 +27,18 @@ Install aur packages with yay
 yay -Syu awesome-git neovim-git nvim-packer-git picom-git
 ```
 
-Get an xinitrc
-
+Setup Git
 ```
-cp /etc/X11/xinit/xinitrc ~/.xinitrc
-```
-
-Remove Unneeded commands from xinitrc
-
-```
-twm &
-xclock -geometry 50x50-1+1 &
-xterm -geometry 80x50+494+51 &
-xterm -geometry 80x20+494-0 &
-exec xterm -geometry 80x66+0+0 -name login
-```
-
-Add awesome to xinitrc
-
-```
-exec awesome
-```
-
-Copy awesome config file to .config
-
-```
-mkdir -p ~/.conifg/awesome
-cp /etc/xdg/awesome/rc.lua ~/.config/awesome/rc.lua
+You're on your own for this one
 ```
 
 Setup dotfiles
-
+You may have to delete conflicting files!
 ```
-git init --bare $HOME/.dotfiles
+git clone --bare <git-repo-url> $HOME/.dotfiles
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+dotfiles checkout
 dotfiles config --local status.showUntrackedFiles no
-echo "alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'" >> $HOME/.bashrc
 ```
 
 Make ZSH the default Shell
