@@ -9,7 +9,7 @@ Install arch using archinstall
 Dont forget to install networkmanager/pipewire/xorg through archinstall
 Other packages to install 
 ```
-noto-fonts git openssh firefox kitty thunar tmux unzip starship acpi feh rofi pavucontrol
+noto-fonts git openssh firefox kitty thunar tmux unzip starship acpi feh rofi pavucontrol picom
 ```
 
 Install yay
@@ -24,7 +24,7 @@ makepkg -si
 Install aur packages with yay
 
 ```
-yay -Syu awesome-git neovim-git nvim-packer-git picom-git
+yay -Syu awesome-git neovim-git nvim-packer-git
 ```
 
 Setup Git
