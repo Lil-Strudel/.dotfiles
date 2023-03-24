@@ -9,7 +9,7 @@ Install arch using archinstall
 Dont forget to install networkmanager/pipewire/xorg through archinstall
 Other packages to install 
 ```
-noto-fonts git openssh firefox kitty thunar tmux unzip starship acpi feh rofi pavucontrol picom
+noto-fonts git openssh firefox kitty thunar tmux unzip starship acpi feh rofi pavucontrol picom zsh
 ```
 
 Install yay
