@@ -1,5 +1,5 @@
 # Monitor Config
-# xrandr
+xrandr --output DP-0 --mode 5120x1440
 
 # Env Vars
 export EDITOR="nvim"
