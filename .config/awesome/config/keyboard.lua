@@ -6,6 +6,16 @@ local beautiful = require("beautiful")
 
 local modkey = C.modkey or "Mod4"
 
+
+-- Media Keybinds
+awful.keyboard.append_global_keybindings({
+    awful.key({}, "XF86AudioNext", function () awful.util.spawn_with_shell("playerctl next") end, {description = "next song", group = "media"}),
+    awful.key({}, "XF86AudioPrev", function () awful.util.spawn_with_shell("playerctl previous") end, {description = "previous song", group = "media"}),
+    awful.key({}, "XF86AudioPlay", function () awful.util.spawn_with_shell("playerctl play-pause") end, {description = "toggle play/pause", group = "media"}),
+    awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn_with_shell("pactl set-sink-volume @DEFAULT_SINK@ +5%") end, {description = "raise volume", group = "media"}),
+    awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn_with_shell("pactl set-sink-volume @DEFAULT_SINK@ -5%") end, {description = "lower volume", group = "media"}),
+})
+
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
