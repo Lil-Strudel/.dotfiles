@@ -4,40 +4,73 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
+    -- Packer can manage itself
+    use 'wbthomason/packer.nvim'
 
-  use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  }
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.1',
+        -- or                            , branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
 
-  use 'folke/tokyonight.nvim'
+    use 'folke/tokyonight.nvim'
 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
-  use 'theprimeagen/harpoon'
-  
-  use 'tpope/vim-fugitive'
+    use 'theprimeagen/harpoon'
 
-  use {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v2.x',
-  requires = {
-    -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {'williamboman/mason.nvim'},           -- Optional
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    use 'tpope/vim-fugitive'
 
-    -- Autocompletion
-    {'hrsh7th/nvim-cmp'},         -- Required
-    {'hrsh7th/cmp-nvim-lsp'},     -- Required
-    {'hrsh7th/cmp-buffer'},       -- Optional
-    {'hrsh7th/cmp-path'},         -- Optional
+    use 'nvim-tree/nvim-web-devicons'
 
-    -- Snippets
-    {'L3MON4D3/LuaSnip'},             -- Required
-  }
-}
+    use {
+        'nvim-lualine/lualine.nvim',
+        requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+    }
+
+    use {
+        "folke/trouble.nvim",
+        requires = { "nvim-tree/nvim-web-devicons" },
+    }
+
+    use "folke/which-key.nvim"
+
+    use {
+        "folke/todo-comments.nvim",
+        requires = { "nvim-lua/plenary.nvim" },
+    }
+
+    use "windwp/nvim-autopairs"
+
+    use "windwp/nvim-ts-autotag"
+
+    use {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v2.x",
+        requires = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+            "MunifTanjim/nui.nvim",
+        }
+    }
+
+    use {
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
+        requires = {
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },             -- Required
+            { 'williamboman/mason.nvim' },           -- Optional
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },     -- Required
+            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            { 'hrsh7th/cmp-buffer' },   -- Optional
+            { 'hrsh7th/cmp-path' },     -- Optional
+
+            -- Snippets
+            { 'L3MON4D3/LuaSnip' }, -- Required
+        }
+    }
 end)
