@@ -12,7 +12,7 @@ local gfs = require("gears.filesystem")
 
 local base_path = gfs.get_configuration_dir()
 
-local wallpaper = "anime-balcony.png"
+local wallpaper = "stickbug.jpg"
 
 local theme_path = base_path .. "/themes/tokyo-night/"
 
