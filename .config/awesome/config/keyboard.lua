@@ -16,6 +16,11 @@ awful.keyboard.append_global_keybindings({
     awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn_with_shell("pactl set-sink-volume @DEFAULT_SINK@ -5%") end, {description = "lower volume", group = "media"}),
 })
 
+-- custom keybinds
+awful.keyboard.append_global_keybindings({
+    awful.key({ modkey, "Control", "Shift" }, "l", function () awful.util.spawn_with_shell("xsecurelock") end, {description = "lock session", group = "custom"})
+})
+
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
