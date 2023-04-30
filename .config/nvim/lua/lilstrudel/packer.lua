@@ -21,8 +21,6 @@ return require('packer').startup(function(use)
 
     use 'tpope/vim-fugitive'
     
-    use 'RRethy/vim-illuminate'
-
     use 'nvim-tree/nvim-web-devicons'
 
     use {
