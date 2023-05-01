@@ -42,8 +42,6 @@ return require('packer').startup(function(use)
 
     use "windwp/nvim-autopairs"
 
-    use "windwp/nvim-ts-autotag"
-
     use {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
