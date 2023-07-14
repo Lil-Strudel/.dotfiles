@@ -17,7 +17,7 @@ return require('packer').startup(function(use)
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
 
-    use 'theprimeagen/harpoon'
+    -- use 'theprimeagen/harpoon'
 
     use 'tpope/vim-fugitive'
     
@@ -43,6 +43,18 @@ return require('packer').startup(function(use)
     use "windwp/nvim-autopairs"
 
     use {
+        'Equilibris/nx.nvim',
+        requires = {
+            'nvim-telescope/telescope.nvim',
+        },
+        config = function()
+            require("nx").setup {
+                nx_cmd_root = 'npx nx'
+            }
+        end
+    }
+
+    use {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
         requires = {
@@ -65,9 +77,47 @@ return require('packer').startup(function(use)
         }
     }
 
+    use 'christoomey/vim-tmux-navigator' 
+
+    use({
+        "jackMort/ChatGPT.nvim",
+        config = function()
+            require("chatgpt").setup({
+                api_key_cmd = "cat " .. vim.env.HOME .. "/secrets/chatgpt.txt"
+            })
+        end,
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim"
+        }
+    })
+
+
     use {'dsznajder/vscode-es7-javascript-react-snippets',
         run = 'yarn install --frozen-lockfile && yarn compile'
     }
+
+    use {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("copilot").setup({
+                suggestion = { enabled = false },
+                panel = { enabled = false },
+            })
+        end
+    }
+
+    use {
+        "zbirenbaum/copilot-cmp",
+        after = { "copilot.lua" },
+        config = function ()
+            require("copilot_cmp").setup()
+        end
+    }
+
 
     use {
         'VonHeikemen/lsp-zero.nvim',
