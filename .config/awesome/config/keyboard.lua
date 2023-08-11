@@ -21,6 +21,10 @@ awful.keyboard.append_global_keybindings({
     awful.key({ modkey, "Control", "Shift" }, "l", function () awful.util.spawn_with_shell("xsecurelock") end, {description = "lock session", group = "custom"})
 })
 
+awful.keyboard.append_global_keybindings({
+    awful.key({}, "Print", function () awful.util.spawn_with_shell("flameshot gui") end, {description = "take a screenshot", group = "custom"})
+})
+
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
