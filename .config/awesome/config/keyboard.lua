@@ -25,6 +25,7 @@ awful.keyboard.append_global_keybindings({
     awful.key({}, "Print", function () awful.util.spawn_with_shell("flameshot gui") end, {description = "take a screenshot", group = "custom"})
 })
 
+
 -- General Awesome keys
 awful.keyboard.append_global_keybindings({
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -55,10 +56,10 @@ awful.keyboard.append_global_keybindings({
 
 -- Tags related keybindings
 awful.keyboard.append_global_keybindings({
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
-              {description = "view previous", group = "tag"}),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
-              {description = "view next", group = "tag"}),
+    -- awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
+    --           {description = "view previous", group = "tag"}),
+    -- awful.key({ modkey,           }, "Right",  awful.tag.viewnext,
+    --           {description = "view next", group = "tag"}),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
 })
@@ -197,6 +198,19 @@ awful.keyboard.append_global_keybindings({
 })
 
 client.connect_signal("request::default_keybindings", function()
+    -- Resizing and moving clients
+    awful.keyboard.append_client_keybindings({
+        awful.key({ modkey, "Control" }, "Down",  function (c) c:relative_move(  0,  0,   0,  20) end),
+        awful.key({ modkey, "Control" }, "Up",    function (c) c:relative_move(  0,  0,   0, -20) end),
+        awful.key({ modkey, "Control" }, "Left",  function (c) c:relative_move(  0,  0, -20,   0) end),
+        awful.key({ modkey, "Control" }, "Right", function (c) c:relative_move(  0,  0,  20,   0) end),
+
+        awful.key({ modkey }, "Down",  function (c) c:relative_move(  0,  20,   0,   0) end),
+        awful.key({ modkey }, "Up",    function (c) c:relative_move(  0, -20,   0,   0) end),
+        awful.key({ modkey }, "Left",  function (c) c:relative_move(-20,   0,   0,   0) end),
+        awful.key({ modkey }, "Right", function (c) c:relative_move( 20,   0,   0,   0) end),
+    })
+
     awful.keyboard.append_client_keybindings({
         awful.key({ modkey,           }, "f",
             function (c)
