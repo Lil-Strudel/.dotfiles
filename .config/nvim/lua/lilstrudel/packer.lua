@@ -44,18 +44,6 @@ return require('packer').startup(function(use)
     use "windwp/nvim-autopairs"
 
     use {
-        'Equilibris/nx.nvim',
-        requires = {
-            'nvim-telescope/telescope.nvim',
-        },
-        config = function()
-            require("nx").setup {
-                nx_cmd_root = 'npx nx'
-            }
-        end
-    }
-
-    use {
         "nvim-neo-tree/neo-tree.nvim",
         branch = "v2.x",
         requires = {
