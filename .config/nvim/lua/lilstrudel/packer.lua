@@ -82,6 +82,13 @@ return require('packer').startup(function(use)
         }
     })
 
+    use({
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup({})
+        end,
+    })
+
 
     use {'dsznajder/vscode-es7-javascript-react-snippets',
         run = 'yarn install --frozen-lockfile && yarn compile'
