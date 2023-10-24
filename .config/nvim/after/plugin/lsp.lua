@@ -4,6 +4,11 @@ lsp.preset("recommended")
 
 lsp.on_attach(function(client, bufnr)
     lsp.default_keymaps({ buffer = bufnr })
+
+     vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', {buffer = bufnr})
+     vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', {buffer = bufnr})
+     vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<cr>', {buffer = bufnr})
+     vim.keymap.set('n', 'go', '<cmd>Telescope lsp_type_definitions<cr>', {buffer = bufnr})
 end)
 
 lsp.set_sign_icons({
