@@ -137,7 +137,8 @@ return require('packer').startup(function(use)
             require("copilot_cmp").setup()
         end
     }
-
+    
+    use "jbyuki/instant.nvim"
 
     use {
         'VonHeikemen/lsp-zero.nvim',
