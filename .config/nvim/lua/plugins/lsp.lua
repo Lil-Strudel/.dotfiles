@@ -115,7 +115,9 @@ return {
                 jsonc = { { "prettierd", "prettier" } },
                 yaml = { { "prettierd", "prettier" } },
                 markdown = { { "prettierd", "prettier" } },
-                graphql = { { "prettierd", "prettier" } }
+                graphql = { { "prettierd", "prettier" } },
+                astro = { { "prettier" } },
+                svelte = { { "prettier" } }
             },
             format_on_save = { timeout_ms = 3000, lsp_fallback = true }
         }
