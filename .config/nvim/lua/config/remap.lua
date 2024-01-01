@@ -24,8 +24,5 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 -- vim.api.nvim_set_keymap('n', 'q:', '<nop>', { noremap = true, silent = true }) -- Makes q automap lag
 vim.api.nvim_set_keymap('n', 'Q', '<nop>', { noremap = true, silent = true })
 
--- Formats the buffer
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
-
 -- Find and replace word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

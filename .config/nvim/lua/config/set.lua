@@ -4,18 +4,14 @@ vim.g.mapleader = " "
 -- Makes the cursor a block always
 vim.opt.guicursor = "a:block"
 
--- Enables line numbers
+-- Enables relative line numbers
 vim.opt.nu = true
-
--- Makes line numbers relative
 vim.opt.relativenumber = true
 
--- Makes tab with 4
+-- Makes tab width 4 spaces
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-
--- Replaces tabs with spaces
 vim.opt.expandtab = true
 
 -- Automatically indents
@@ -32,10 +28,8 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- Shows search as you're typing
+-- Shows search as you're typing not after
 vim.opt.incsearch = true
-
--- Removes highlight after search
 vim.opt.hlsearch = false
 
 -- Enables true color support
