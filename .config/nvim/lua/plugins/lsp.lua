@@ -102,7 +102,6 @@ return {
             }
         },
         opts = {
-            quiet = true,
             formatters_by_ft = {
                 javascript = { { "prettierd", "prettier" } },
                 javascriptreact = { { "prettierd", "prettier" } },
@@ -120,7 +119,7 @@ return {
                 astro = { { "prettier" } },
                 svelte = { { "prettier" } }
             },
-            format_on_save = { timeout_ms = 3000, lsp_fallback = true }
+            format_on_save = { timeout_ms = 3000, lsp_fallback = true, quiet = true }
         }
     }
 }

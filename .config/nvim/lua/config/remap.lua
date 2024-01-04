@@ -1,3 +1,6 @@
+-- Open netrw
+vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
 -- Moves selected lines up and down with indentation
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
