@@ -117,7 +117,8 @@ return {
                 markdown = { { "prettierd", "prettier" } },
                 graphql = { { "prettierd", "prettier" } },
                 astro = { { "prettier" } },
-                svelte = { { "prettier" } }
+                svelte = { { "prettier" } },
+                go = { { "gofumpt" } }
             },
             format_on_save = { timeout_ms = 3000, lsp_fallback = true, quiet = true }
         }
