@@ -17,5 +17,5 @@ plug "zsh-users/zsh-completions"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/vim"
 plug "zap-zsh/exa"
-plug "lukechilds/zsh-nvm"
+plug "dominik-schwabe/zsh-fnm"
 
