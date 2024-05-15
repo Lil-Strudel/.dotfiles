@@ -1,0 +1,7 @@
+[user]
+	name = Lil-Strudel
+	email = 42657503+Lil-Strudel@users.noreply.github.com
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
