@@ -218,4 +218,8 @@ bar {
     swaybar_command waybar
 }
 
+exec swww-daemon
+
+exec sww img ~/.config/wallpapers/anime-balcony.png
+
 include @sysconfdir@/sway/config.d/*
