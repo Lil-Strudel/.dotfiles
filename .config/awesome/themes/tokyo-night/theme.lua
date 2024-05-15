@@ -11,6 +11,7 @@ local gcolor = require("gears.color")
 local gfs = require("gears.filesystem")
 
 local base_path = gfs.get_configuration_dir()
+local config_path = gfs.get_xdg_config_home()
 
 local wallpaper = "stickbug.jpg"
 
@@ -172,7 +173,7 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."defaults/titleba
 theme.titlebar_maximized_button_normal_active = themes_path.."defaults/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."defaults/titlebar/maximized_focus_active.png"
 
-theme.wallpaper = themes_path .. "/wallpapers/" .. wallpaper
+theme.wallpaper =  config_path .. "/wallpapers/" .. wallpaper
 
 -- You can use your own layout icons like this:
 theme.layout_fairh = gcolor.recolor_image(themes_path.."defaults/layouts/fairhw.png", theme.fg_normal)
