@@ -1,0 +1,13 @@
+# Monitor Config
+xrandr --output DP-0 --mode 5120x1440 --dpi 96x96
+xrandr --output eDP-1 --dpi 144x144
+xrandr --output DP-2 --scale 1.5x1.5
+
+# GTK Theme
+export GTK_THEME=TokyoNight
+
+# Fixing Gnome-Keyring
+source /etc/X11/xinit/xinitrc.d/50-systemd-user.sh
+
+#  Compositor
+picom -b 
