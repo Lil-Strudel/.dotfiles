@@ -1,0 +1,44 @@
+## name: Strhuedel
+## license: MIT
+## author: Lil-Strudel
+## upstream: https://github.com/Lil-Strudel/.dotfiles/blob/main/.config/kitty/current-theme.conf%23%23class.Strhuedel
+
+background #313030
+selection_background #403E3E
+
+foreground #F4EEDE
+selection_foreground #F4EEDE
+
+cursor #F4EEDE
+
+# Black
+color0 #2B2B29
+color8 #6B6361
+
+# Red
+color1 #F46B73
+color9 #F46B73
+
+# Green
+color2  #A9DD97
+color10 #A9DD97
+
+# Yellow
+color3  #FBC574
+color11 #FBC574
+
+# Blue
+color4  #3E8FB0
+color12 #3E8FB0
+
+# Magenta
+color5  #C4A7E7
+color13 #C4A7E7
+
+# Cyan
+color6  #9CCFD8
+color14 #9CCFD8
+
+# White
+color7  #F4EEDE
+color15 #F4EEDE
