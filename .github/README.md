@@ -2,6 +2,12 @@
 
 Here are my dotfiles!
 
+They are managed by YADM
+
+Originally this was just an awesomewm conf for Xorg, but now I am playing with sway.
+
+Thats why I migrated everything to YADM so I can use classes to control which configs get applied
+
 If you would like to setup your linux env just like mine, here's how you can do that!
 
 Steps:
