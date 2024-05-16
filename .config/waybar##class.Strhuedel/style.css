@@ -1,0 +1,102 @@
+* {
+  border: none;
+  border-radius: 0;
+  font-family: MonoLisa Nerd Font;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+window#waybar {
+  background-color: #313030;
+  color: #F4EEDE;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  border-bottom: solid 0px #313030;
+}
+
+window#waybar.hidden {
+  opacity: 0.2;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  color: #F4EEDE;
+  border-radius: 5px;
+}
+
+#workspaces button.focused {
+  background-color: #F4EEDE;
+  color: #313030;
+  border-bottom: none;
+}
+
+#workspaces button.urgent {
+  background-color: #F46B73;
+}
+
+widget > * {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.modules-left > widget > * {
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.modules-left > widget:first-child > * {
+  margin-left: 6px;
+}
+
+.modules-left > widget:last-child > * {
+  margin-right: 18px;
+}
+
+.modules-right > widget > * {
+  padding: 0 12px;
+  margin-left: 0;
+  margin-right: 0;
+  color: #313030;
+  background-color: #F4EEDE;
+}
+
+.modules-right > widget:first-child > * {
+  border-radius: 5px 0 0 5px;
+}
+
+.modules-right > widget:last-child > * {
+  border-radius: 0 5px 5px 0;
+  margin-right: 6px;
+}
+
+#mode {
+  background: transparent;
+  color: #F46B73;
+}
+
+@keyframes blink {
+  to {
+    color: #F4EEDE;
+  }
+}
+
+#battery.critical:not(.charging) {
+  animation-name: blink;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+label:focus {
+  background-color: #313030;
+}
+
+tooltip {
+  border-radius: 5px;
+  background: #313030;
+}
+
+tooltip label {
+  color: #F4EEDE;
+}
