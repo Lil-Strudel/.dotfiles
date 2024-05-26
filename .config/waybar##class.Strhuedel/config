@@ -2,6 +2,7 @@
   "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
   "modules-right": ["pulseaudio", "backlight", "network", "battery", "clock"],
   "clock": {
+    "timezone": "America/Denver",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
     "format": "{:%b %d(%H:%M) 󰃰}"
   },
