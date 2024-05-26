@@ -4,7 +4,7 @@
 ## upstream: https://github.com/Lil-Strudel/.dotfiles/blob/main/.config/kitty/current-theme.conf%23%23class.Strhuedel
 
 background #272520
-selection_background #35332c
+selection_background #35332C
 
 foreground #FEF6E6
 selection_foreground #FEF6E6
