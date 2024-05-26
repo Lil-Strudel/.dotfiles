@@ -12,4 +12,3 @@ plug "zap-zsh/supercharge"
 plug "zap-zsh/vim"
 plug "zap-zsh/exa"
 plug "dominik-schwabe/zsh-fnm"
-

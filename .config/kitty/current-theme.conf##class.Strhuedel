@@ -3,17 +3,17 @@
 ## author: Lil-Strudel
 ## upstream: https://github.com/Lil-Strudel/.dotfiles/blob/main/.config/kitty/current-theme.conf%23%23class.Strhuedel
 
-background #313030
-selection_background #403E3E
+background #272520
+selection_background #35332c
 
-foreground #F4EEDE
-selection_foreground #F4EEDE
+foreground #FEF6E6
+selection_foreground #FEF6E6
 
-cursor #F4EEDE
+cursor #FEF6E6
 
 # Black
-color0 #2B2B29
-color8 #6B6361
+color0 #1B1A18
+color8 #5E5B55
 
 # Red
 color1 #F46B73
@@ -24,12 +24,12 @@ color2  #A9DD97
 color10 #A9DD97
 
 # Yellow
-color3  #FBC574
-color11 #FBC574
+color3  #FCD68C
+color11 #FCD68C
 
 # Blue
-color4  #3E8FB0
-color12 #3E8FB0
+color4  #5E8C9F
+color12 #5E8C9F
 
 # Magenta
 color5  #C4A7E7
@@ -40,5 +40,5 @@ color6  #9CCFD8
 color14 #9CCFD8
 
 # White
-color7  #F4EEDE
+color7  #FEF6E6
 color15 #F4EEDE

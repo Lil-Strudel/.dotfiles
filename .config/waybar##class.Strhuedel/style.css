@@ -7,11 +7,11 @@
 }
 
 window#waybar {
-  background-color: #313030;
-  color: #F4EEDE;
+  background-color: #272520;
+  color: #f4eede;
   transition-property: background-color;
   transition-duration: 0.5s;
-  border-bottom: solid 0px #313030;
+  border-bottom: solid 0px #272520;
 }
 
 window#waybar.hidden {
@@ -20,18 +20,18 @@ window#waybar.hidden {
 
 #workspaces button {
   padding: 0 5px;
-  color: #F4EEDE;
+  color: #fef6e6;
   border-radius: 5px;
 }
 
 #workspaces button.focused {
-  background-color: #F4EEDE;
-  color: #313030;
+  background-color: #fef6e6;
+  color: #272520;
   border-bottom: none;
 }
 
 #workspaces button.urgent {
-  background-color: #F46B73;
+  background-color: #f46b73;
 }
 
 widget > * {
@@ -56,8 +56,8 @@ widget > * {
   padding: 0 12px;
   margin-left: 0;
   margin-right: 0;
-  color: #313030;
-  background-color: #F4EEDE;
+  color: #272520;
+  background-color: #fef6e6;
 }
 
 .modules-right > widget:first-child > * {
@@ -71,12 +71,12 @@ widget > * {
 
 #mode {
   background: transparent;
-  color: #F46B73;
+  color: #f46b73;
 }
 
 @keyframes blink {
   to {
-    color: #F4EEDE;
+    color: #fef6e6;
   }
 }
 
@@ -89,7 +89,7 @@ widget > * {
 }
 
 label:focus {
-  background-color: #313030;
+  background-color: #272520;
 }
 
 tooltip {
@@ -98,5 +98,5 @@ tooltip {
 }
 
 tooltip label {
-  color: #F4EEDE;
+  color: #fef6e6;
 }
