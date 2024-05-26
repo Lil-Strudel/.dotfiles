@@ -137,7 +137,7 @@ TODO: Write this
 packages to install
 
 ```
-sudo apt install yadm network-manager sway neovim firefox-esr zsh waybar wofi brightnessctl swayidle swaylock kitty gnupg2 curl build-essential unzip eza
+sudo apt install yadm network-manager sway neovim firefox-esr zsh waybar wofi brightnessctl swayidle swaylock kitty gnupg2 curl build-essential unzip eza tmux wl-clipboard ripgrep
 ```
 
 Change the shell to zsh.
@@ -207,6 +207,12 @@ bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/bins
 gvm install go1.22.3 -B # or whatever is latest
 gvm use go1.22.3 --default
 
+```
+
+[Install TPM](https://github.com/tmux-plugins/tpm)
+
+```
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 ```
 
 #### Windows 10
