@@ -134,6 +134,81 @@ zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) 
 
 TODO: Write this
 
+packages to install
+
+```
+sudo apt install yadm network-manager sway neovim firefox-esr zsh waybar wofi brightnessctl swayidle swaylock kitty gnupg2 curl build-essential unzip eza
+```
+
+Change the shell to zsh.
+
+```
+chsh -s /bin/zsh
+```
+
+And [install Zap](https://github.com/zap-zsh/zap) to manage the zsh plugins
+
+```
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+```
+
+Clone the dotfiles as per the instructions above
+
+Install SWWW
+
+- Clone the repo
+- Install Rust
+- Install make dependancies
+
+Clone the repo
+
+```
+git clone https://github.com/LGFae/swww.git
+```
+
+[Rust](https://www.rust-lang.org/tools/install)
+
+```
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+```
+
+Make Dependancies
+
+```
+sudo apt install liblz4-dev pkg-config
+
+```
+
+[Build the Binary](https://github.com/LGFae/swww)
+
+```
+cargo build --release
+```
+
+Move Binary to bin
+
+```
+cd ./target/release
+sudo mv -t /usr/local/bin swww swww-daemon
+```
+
+[Install starship](https://starship.rs/)
+
+```
+curl -sS https://starship.rs/install.sh | sh
+```
+
+[Install Go](https://github.com/moovweb/gvm)
+
+```
+sudo apt-get install bison
+bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+gvm install go1.22.3 -B # or whatever is latest
+gvm use go1.22.3 --default
+
+```
+
 #### Windows 10
 
 Despite it being insecure, I like to install Windows on an offline account. Windows only has my games so I don't really care if its not the most secure setup.
