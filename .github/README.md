@@ -80,6 +80,8 @@ Ok I guess not anymore.
 
 I used Arch for 2-3 years and I love it! Maybe a little too much. I feel I've gotten too confortable with Arch and Awesome. Thats why I am making a push to try out Debian and Sway instead. I think I might appreciate the stability of Debian (especially for my work laptop).
 
+SYKE!!! Switching back to arch on my Desktop. Its a bit to rough trying to work with Debian
+
 Additionally I almost always dual boot with Windows 10. I gamed on Arch and it worked near perfectly. The problem I had is Valorant only runs on Windows, and you can't have 240hz over DisplayPort with Linuxes scuffed Nvidia support.
 
 ### Installing operating systems
@@ -134,10 +136,12 @@ zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) 
 
 TODO: Write this
 
+Might be giving up on Debian tbh.... AUR is too nice.
+
 packages to install
 
 ```
-sudo apt install yadm network-manager sway neovim firefox-esr zsh waybar wofi brightnessctl swayidle swaylock kitty gnupg2 curl build-essential unzip eza tmux wl-clipboard ripgrep xwayland
+sudo apt install yadm network-manager sway neovim firefox-esr zsh waybar wofi brightnessctl swayidle swaylock kitty gnupg2 curl build-essential unzip eza tmux wl-clipboard ripgrep xwayland fonts-noto-cjk fonts-noto-color-emoji pavucontrol
 ```
 
 Change the shell to zsh.
