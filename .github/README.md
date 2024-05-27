@@ -137,7 +137,7 @@ TODO: Write this
 packages to install
 
 ```
-sudo apt install yadm network-manager sway neovim firefox-esr zsh waybar wofi brightnessctl swayidle swaylock kitty gnupg2 curl build-essential unzip eza tmux wl-clipboard ripgrep
+sudo apt install yadm network-manager sway neovim firefox-esr zsh waybar wofi brightnessctl swayidle swaylock kitty gnupg2 curl build-essential unzip eza tmux wl-clipboard ripgrep xwayland
 ```
 
 Change the shell to zsh.
