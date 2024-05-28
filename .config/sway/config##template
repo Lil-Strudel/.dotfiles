@@ -33,8 +33,8 @@ default_border pixel 4
 #   output HDMI-A-1 resolution 1920x1080 position 1920,0
 #
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-output DP-3 {
-    mode 5120x1440@119.999Hz
+output DP-1 {
+    mode --custom 5120x1440@119.999Hz
 }
 
 ### Idle configuration

@@ -84,6 +84,81 @@ SYKE!!! Switching back to arch on my Desktop. Its a bit to rough trying to work 
 
 Additionally I almost always dual boot with Windows 10. I gamed on Arch and it worked near perfectly. The problem I had is Valorant only runs on Windows, and you can't have 240hz over DisplayPort with Linuxes scuffed Nvidia support.
 
+### Installing Window Managers
+
+#### Sway on Arch
+
+Install arch using archinstall:
+
+- Mirrors: United States
+- Bootloader: Grub
+- Swap: False
+- Profile: Minimal
+- Audio: Pipewire
+- Kernels: Linux
+- Network configuration: Copy ISO
+- Optional repositories: multilib
+
+Additional packages:
+General:
+
+```
+yadm sway polkit swaylock swayidle waybar wofi brightnessctl pavucontrol git openssh zsh kitty starship neovim firefox curl tmux wl-clipboard eza fzf ripgrep unzip noto-fonts noto-fonts-cjk noto-fonts-emoji
+```
+
+Nvidia Specific:
+
+```
+mesa xf86-video-nouveau libva-mesa-driver mesa-vdpau vulkan-icd-loader vulkan-nouveau
+```
+
+Clone dotfiles as per above
+
+Select theme as per above
+
+[Install yay from binary](https://github.com/Jguer/yay?tab=readme-ov-file#binary)
+
+```
+pacman -S --needed git base-devel
+git clone https://aur.archlinux.org/yay-bin.git
+cd yay-bin
+makepkg -si
+```
+
+Install aur specific lovelies
+
+```
+yay -S swww
+```
+
+Change the shell to zsh.
+
+```
+chsh -s /bin/zsh
+```
+
+And [install Zap](https://github.com/zap-zsh/zap) to manage the zsh plugins
+
+```
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1 --keep
+```
+
+[Install Go](https://github.com/moovweb/gvm)
+
+```
+sudo apt-get install bison
+bash < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+gvm install go1.22.3 -B # or whatever is latest
+gvm use go1.22.3 --default
+
+```
+
+[Install TPM](https://github.com/tmux-plugins/tpm)
+
+```
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
+```
+
 ### Installing operating systems
 
 #### Arch Linux
@@ -129,7 +204,7 @@ chsh -s /bin/zsh
 And [install Zap](https://github.com/zap-zsh/zap) to manage the zsh plugins
 
 ```
-zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1
+zsh <(curl -s https://raw.githubusercontent.com/zap-zsh/zap/master/install.zsh) --branch release-v1 --keep
 ```
 
 #### Debian
@@ -266,3 +341,33 @@ and make a sym link
 ```
 ln -s /strudel ~/strudel
 ```
+
+If you installed grub and want to add windows to it
+
+```
+sudo pacman -S os-prober
+```
+
+```
+sudo nvim /etc/default/grub
+```
+
+Remove the # on the line GRUB_DISABLE_OS_PROBER=false
+
+```
+sudo mkdir /mnt/windows
+sudo mount -t ntfs3 /dev/nvme0n1p3 /mnt/windows
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+If that doesn't work, it might because you partition the EFI partition.... Don't ask me how I know.
+
+We're gonna use [bcdboot](<https://learn.microsoft.com/en-us/previous-versions/windows/it-pro/windows-8.1-and-8/hh824874(v=win.10)?redirectedfrom=MSDN>) to fix it
+
+To fix that you are going to need a bootable windows media, repair this computer, troubleshoot, command-line
+
+```
+bcdboot D:\Windows
+```
+
+Retry the grub steps now
