@@ -103,7 +103,7 @@ Additional packages:
 General:
 
 ```
-yadm sway polkit swaylock swayidle waybar wofi brightnessctl pavucontrol git openssh zsh kitty starship neovim firefox curl tmux wl-clipboard eza fzf ripgrep unzip noto-fonts noto-fonts-cjk noto-fonts-emoji
+yadm sway polkit swaylock swayidle xorg-xwayland waybar wofi mako brightnessctl pavucontrol git openssh zsh kitty starship neovim firefox curl tmux wl-clipboard eza fzf ripgrep unzip noto-fonts noto-fonts-cjk noto-fonts-emoji
 ```
 
 Nvidia Specific:
