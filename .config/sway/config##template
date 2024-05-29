@@ -233,4 +233,6 @@ exec swww-daemon
 
 exec swww img ~/.config/wallpapers/gruv-street.jpg
 
+exec mako
+
 include @sysconfdir@/sway/config.d/*
