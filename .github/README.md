@@ -387,5 +387,5 @@ sudo apt install i3 xorg
 ```
 
 ```
-sudo apt install neovim xclip yadm firefox-est kitty zsh gnupg2 curl build-essential unzip eza tmux ripgrep fonts-noto-cjk fonts-noto-color-emoji pavucontrol fzf rofi polybar
+sudo apt install neovim xclip yadm firefox-est kitty zsh gnupg2 curl build-essential unzip eza tmux ripgrep fonts-noto-cjk fonts-noto-color-emoji pavucontrol fzf rofi polybar feh
 ```
