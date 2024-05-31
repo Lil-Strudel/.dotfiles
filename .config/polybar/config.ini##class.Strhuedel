@@ -48,7 +48,7 @@ border-color = ${colors.background}
 ; separator = |
 ; separator-foreground = ${colors.disabled}
 
-font-0 = MonolisaNerdFont:size=10;2
+font-0 = MonolisaNerdFont:size=10.5;2
 
 modules-left = xworkspaces spacer-dark xwindow
 modules-right = small-spacer pulseaudio spacer wlan eth spacer date small-spacer
