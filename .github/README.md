@@ -372,6 +372,12 @@ bcdboot D:\Windows
 
 Retry the grub steps now
 
+To fix times being screwy when switching between oses, run this in an admin powershell
+
+```
+reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation" /v RealTimeIsUniversal /d 1 /t REG_DWORD /f
+```
+
 ####
 
 I3 on debian (this is getting out of hand)
