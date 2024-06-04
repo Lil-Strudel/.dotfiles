@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+time_stamp=$(date +%Y-%m-%d)
+mkdir -p "./${time_stamp}"
