@@ -33,3 +33,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
         vim.highlight.on_yank()
     end
 })
+
+-- Close QF window on select
+vim.api.nvim_create_autocmd('FileType', {
+    group = augroup('close_on_select'),
+    pattern = {
+        "qf"
+    },
+    command = [[nnoremap <buffer> <CR> <CR>:cclose<CR>]]
+})
