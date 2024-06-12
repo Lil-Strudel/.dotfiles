@@ -51,6 +51,9 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec brightnessctl set -10
 bindsym XF86MonBrightnessDown exec brightnessctl set +10
 
+# Screenshot
+bindsym Print exec flameshot gui
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 

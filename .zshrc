@@ -4,6 +4,7 @@ plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
 plug "$HOME/.config/zsh/starship.zsh"
 plug "$HOME/.config/zsh/conda.zsh"
+plug "$HOME/.config/zsh/zoxide.zsh"
 
 plug "zsh-users/zsh-autosuggestions"
 plug "zsh-users/zsh-syntax-highlighting"
