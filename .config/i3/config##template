@@ -9,8 +9,8 @@ font pango:monospace 8
 #font pango:DejaVu Sans Mono 8
 
 # Set display resolution depending on hostname
-{% if yadm.hostname == "strudel-debian" %}
-exec --no-startup-id xrandr --output DP-3 --mode 5120x1440
+{% if yadm.hostname == "strudel-desktop" %}
+exec --no-startup-id xrandr --output DP-0 --mode 5120x1440
 {% endif %}
 
 # Useless gaps
