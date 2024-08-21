@@ -51,6 +51,9 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86MonBrightnessUp exec brightnessctl set -10
 bindsym XF86MonBrightnessDown exec brightnessctl set +10
 
+# Lock the session
+bindsym Ctrl+Shift+l exec i3lock -c 000000
+
 # Screenshot
 bindsym Print exec flameshot gui
 
