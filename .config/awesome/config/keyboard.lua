@@ -191,34 +191,38 @@ awful.keyboard.append_global_keybindings({
 
 -- Layout related keybindings
 awful.keyboard.append_global_keybindings({
-    awful.key({ modkey, "Control" }, "h", function()
+    awful.key({ modkey, "Shift" }, "h", function()
         awful.client.swap.bydirection("left")
         if client.focus then client.focus:raise() end
     end, { description = "swap left", group = "layout" }),
 
-    awful.key({ modkey, "Control" }, "j", function()
+    awful.key({ modkey, "Shift" }, "j", function()
         awful.client.swap.bydirection("down")
         if client.focus then client.focus:raise() end
     end, { description = "swap down", group = "layout" }),
 
-    awful.key({ modkey, "Control" }, "k", function()
+    awful.key({ modkey, "Shift" }, "k", function()
         awful.client.swap.bydirection("up")
         if client.focus then client.focus:raise() end
     end, { description = "swap up", group = "layout" }),
 
-    awful.key({ modkey, "Control" }, "l", function()
+    awful.key({ modkey, "Shift" }, "l", function()
         awful.client.swap.bydirection("right")
         if client.focus then client.focus:raise() end
     end, { description = "swap right", group = "layout" }),
 
-    awful.key({ modkey, "Shift" }, "l", function() awful.tag.incmwfact(0.05) end,
+    awful.key({ modkey, "Control" }, "l", function() awful.tag.incmwfact(0.05) end,
         { description = "increase master width factor", group = "layout" }),
 
-    awful.key({ modkey, "Shift" }, "h", function() awful.tag.incmwfact(-0.05) end,
+    awful.key({ modkey, "Control" }, "h", function() awful.tag.incmwfact(-0.05) end,
         { description = "decrease master width factor", group = "layout" }),
+
+    awful.key({ modkey, "Control" }, "k", function() awful.tag.incncol(1, nil, true) end,
+        { description = "increase the number of columns", group = "layout" }),
+
+    awful.key({ modkey, "Control" }, "j", function() awful.tag.incncol(-1, nil, true) end,
+        { description = "decrease the number of columns", group = "layout" }),
 })
-
-
 
 client.connect_signal("request::default_keybindings", function()
     -- Resizing and moving clients
