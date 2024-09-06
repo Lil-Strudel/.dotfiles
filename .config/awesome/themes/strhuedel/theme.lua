@@ -13,100 +13,55 @@ local gfs                                       = require("gears.filesystem")
 local base_path                                 = gfs.get_configuration_dir()
 local config_path                               = gfs.get_xdg_config_home()
 
-local wallpaper                                 = "anime-balcony.png"
+local wallpaper                                 = "gruv-street.jpg"
 
-local theme_path                                = base_path .. "/themes/tokyo-night/"
+local theme_path                                = base_path .. "/themes/strhuedel/"
 
 local themes_path                               = base_path .. "/themes/"
 
--- https://github.com/folke/tokyonight.nvim/blob/main/extras/lua/tokyonight_night.lua
-local colors                                    = {
-    bg = "#1a1b26",
-    bg_dark = "#16161e",
-    bg_float = "#16161e",
-    bg_highlight = "#292e42",
-    bg_popup = "#16161e",
-    bg_search = "#3d59a1",
-    bg_sidebar = "#16161e",
-    bg_statusline = "#16161e",
-    bg_visual = "#33467c",
-    black = "#15161e",
-    blue = "#7aa2f7",
-    blue0 = "#3d59a1",
-    blue1 = "#2ac3de",
-    blue2 = "#0db9d7",
-    blue5 = "#89ddff",
-    blue6 = "#b4f9f8",
-    blue7 = "#394b70",
-    border = "#15161e",
-    border_highlight = "#27a1b9",
-    comment = "#565f89",
-    cyan = "#7dcfff",
-    dark3 = "#545c7e",
-    dark5 = "#737aa2",
-    diff = {
-        add = "#20303b",
-        change = "#1f2231",
-        delete = "#37222c",
-        text = "#394b70"
-    },
-    error = "#db4b4b",
-    fg = "#c0caf5",
-    fg_dark = "#a9b1d6",
-    fg_float = "#c0caf5",
-    fg_gutter = "#3b4261",
-    fg_sidebar = "#a9b1d6",
-    git = {
-        add = "#4097a3",
-        change = "#506d9b",
-        delete = "#c47981",
-        ignore = "#545c7e"
-    },
-    gitSigns = {
-        add = "#399a96",
-        change = "#6382bd",
-        delete = "#c25d64"
-    },
-    green = "#9ece6a",
-    green1 = "#73daca",
-    green2 = "#41a6b5",
-    hint = "#1abc9c",
-    info = "#0db9d7",
-    magenta = "#bb9af7",
-    magenta2 = "#ff007c",
-    none = "NONE",
-    orange = "#ff9e64",
-    purple = "#9d7cd8",
-    red = "#f7768e",
-    red1 = "#db4b4b",
-    teal = "#1abc9c",
-    terminal_black = "#414868",
-    warning = "#e0af68",
-    yellow = "#e0af68"
-}
+local bg_light                                  = '#35332C'
+local bg                                        = '#272520'
+local bg_dark                                   = '#1B1A18'
+
+local fg                                        = '#FEF6E6'
+local fg_dark                                   = '#DED2BA'
+local fg_darkest                                = '#A39C8F'
+
+local ghost                                     = '#5E5B55'
+local ghost_dark                                = '#484743'
+
+local red                                       = '#F46B73'
+local orange                                    = '#F2A77D'
+local yellow                                    = '#FCD68C'
+local green                                     = '#A9DD97'
+local blue                                      = '#3E8FB0'
+local light_blue                                = '#9CCFD8'
+local purple                                    = '#C4A7E7'
+local pink                                      = '#ED8B9D'
+local light_pink                                = '#FCB9D5'
 
 local theme                                     = {}
 
 theme.font                                      = "MonoLisa Medium 10"
 
-theme.bg_normal                                 = colors.bg
-theme.bg_focus                                  = colors.bg_highlight
-theme.bg_urgent                                 = colors.bg
-theme.bg_minimize                               = colors.bg
+theme.bg_normal                                 = bg
+theme.bg_focus                                  = bg_light
+theme.bg_urgent                                 = bg
+theme.bg_minimize                               = bg
 theme.bg_systray                                = theme.bg_normal
 
-theme.fg_normal                                 = colors.fg
-theme.fg_focus                                  = colors.blue
-theme.fg_urgent                                 = colors.red
-theme.fg_minimize                               = colors.fg
+theme.fg_normal                                 = fg
+theme.fg_focus                                  = blue
+theme.fg_urgent                                 = red
+theme.fg_minimize                               = fg
 
 theme.useless_gap                               = dpi(3)
 theme.border_width                              = dpi(2)
-theme.border_color_normal                       = colors.border
-theme.border_color_active                       = colors.border_highlight
-theme.border_color_marked                       = colors.border_highlight
+theme.border_color_normal                       = bg_dark
+theme.border_color_active                       = blue
+theme.border_color_marked                       = orange
 
-theme.hotkeys_modifiers_fg                      = colors.comment
+theme.hotkeys_modifiers_fg                      = ghost
 -- There are other variable sets
 -- overriding the defaults one when
 -- defined, the sets are:

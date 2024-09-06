@@ -8,7 +8,7 @@ require("awful.autofocus")
 
 require "config.error_handling"
 
-_G.theme = "tokyo-night"
+_G.theme = "strhuedel"
 beautiful.init(gears.filesystem.get_configuration_dir() .. "themes/" .. theme .. "/theme.lua")
 
 require "config"
