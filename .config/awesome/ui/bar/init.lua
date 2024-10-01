@@ -48,8 +48,8 @@ local function update_tag(item, tag, index)
 
 
     item:get_children_by_id("icon_role")[1].stylesheet = "" ..
-    "rect { stroke: " .. outline_color .. " }" ..
-    "circle { fill: " .. fill_color .. " }"
+        "rect { stroke: " .. outline_color .. " }" ..
+        "circle { fill: " .. fill_color .. " }"
 end
 
 
@@ -61,7 +61,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
 
     -- Create an imagebox widget which will contain an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
-    s.mylayoutbox = awful.widget.layoutbox {
+    s.mylayoutbox     = awful.widget.layoutbox {
         screen  = s,
         buttons = {
             awful.button({}, 1, function() awful.layout.inc(1) end),
@@ -72,7 +72,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
 
     -- Create a taglist widget
-    s.mytaglist = awful.widget.taglist {
+    s.mytaglist       = awful.widget.taglist {
         screen          = s,
         filter          = awful.widget.taglist.filter.all,
         buttons         = taglist_buttons,
@@ -102,7 +102,7 @@ screen.connect_signal("request::desktop_decoration", function(s)
     }
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
+    s.mytasklist      = awful.widget.tasklist {
         screen          = s,
         filter          = awful.widget.tasklist.filter.currenttags,
         buttons         = {
@@ -138,78 +138,48 @@ screen.connect_signal("request::desktop_decoration", function(s)
         }
     }
 
-    s.myvolumewidget = volume_widget()
+    s.myvolumewidget  = volume_widget()
     s.mybatterywidget = battery_widget()
-    s.mysystray = wibox.widget.systray()
+    s.mysystray       = wibox.widget.systray()
 
-    s.myclockwidget = wibox.widget.textclock("%H:%M")
+    s.myclockwidget   = wibox.widget.textclock("%H:%M")
 
     -- Create the "wibars"
     -- The reason I am using popups is because they automagically set their
     -- width based on the child widget
-    s.leftpopup  = awful.popup {
+    s.leftpopup       = awful.popup {
         screen = s,
         placement = function(c, args)
-            args.offset = {x = gap, y = gap}
-            return awful.placement.top_left(c,args)
+            args.offset = { x = gap, y = gap }
+            return awful.placement.top_left(c, args)
         end,
         maximum_height = dpi(25),
         bg = beautiful.bg_normal,
         widget = s.mytaglist,
     }
 
-    s.leftpopup:struts({top = s.leftpopup.maximum_height + gap})
-
-    s.leftsearchpopup  = awful.popup {
+    s.middlepopup     = awful.popup {
         screen = s,
         placement = function(c, args)
-            return awful.placement.next_to(c, 
-            {
-                preferred_positions = "right",
-                preferred_anchors = "middle",
-                geometry =  s.leftpopup,
-                offset = {x = gap}
-            })
+            args.offset = { y = gap }
+            return awful.placement.top(c, args)
         end,
         maximum_height = dpi(25),
         bg = beautiful.bg_normal,
-        widget = {
-                widget = wibox.container.margin,
-                margins = dpi(6),
-                {
-                    id = 'icon_role',
-                    image = base_path .. "ui/bar/resources/search.svg",
-                    valign = 'center',
-                    halign = 'center',
-                    widget = wibox.widget.imagebox,
-                    stylesheet =  "svg { fill: " .. beautiful.fg_normal .. " }"                 }
-        },
+        widget = s.mytasklist
     }
 
-    s.leftsearchpopup:struts({top = s.leftsearchpopup.maximum_height + gap})
-   
-    s.middlepopup  = awful.popup {
-        screen = s,
-        placement = function(c, args)
-            args.offset = {y = gap}
-            return awful.placement.top(c,args)
+    s.middlepopup:struts({ top = s.leftpopup.maximum_height + gap })
+
+    s.rightpopup = awful.popup {
+        screen         = s,
+        placement      = function(c, args)
+            args.offset = { x = -gap, y = gap }
+            return awful.placement.top_right(c, args)
         end,
         maximum_height = dpi(25),
-        bg = beautiful.bg_normal,
-        widget = s.mytasklist 
-    }
-
-    s.middlepopup:struts({top = s.leftpopup.maximum_height + gap})
-
-    s.rightpopup  = awful.popup {
-        screen = s,
-        placement = function(c, args)
-            args.offset = {x = -gap, y = gap}
-            return awful.placement.top_right(c,args)
-        end,
-        maximum_height = dpi(25),
-        bg = beautiful.bg_normal,
-        widget   = {
+        bg             = beautiful.bg_normal,
+        widget         = {
             widget = wibox.container.margin,
             margins = dpi(4),
             {
@@ -224,5 +194,5 @@ screen.connect_signal("request::desktop_decoration", function(s)
         }
     }
 
-    s.rightpopup:struts({top = s.leftpopup.maximum_height + gap})
+    s.rightpopup:struts({ top = s.leftpopup.maximum_height + gap })
 end)
