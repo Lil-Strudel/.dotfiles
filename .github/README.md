@@ -346,8 +346,7 @@ ln -s /strudel ~/strudel
 **General OS Setup**
 
 ```bash
-yay -S zoxide feh playerctl brightnessctl pavucontrol curl unzip eza ripgrep fzf openssh git
-noto-fonts noto-fonts-cjk noto-fonts-emoji
+yay -S zoxide feh playerctl brightnessctl pavucontrol curl zip unzip eza ripgrep fzf openssh git noto-fonts noto-fonts-cjk noto-fonts-emoji rofi
 ```
 
 <details>
@@ -538,7 +537,10 @@ yay -S rose-pine-gtk-theme-full lxappearance
 <details>
 <summary>SDDM</summary>
 
-// TODO: this
+```bash
+yay -S sddm
+sudo systemctl enable sddm
+```
 
 </details>
 <details>
@@ -565,7 +567,7 @@ yay -S thunar gvfs thunar-volman
 <summary>Other Apps</summary>
 
 ```bash
-yay -S slack-desktop spotify-launcher discord obsidian flameshot winbox
+yay -S slack-desktop spotify-launcher discord obsidian flameshot winbox steam
 ```
 
 </details>
@@ -573,8 +575,24 @@ yay -S slack-desktop spotify-launcher discord obsidian flameshot winbox
 <summary>Keyring</summary>
 
 ```bash
-yay -S gnome-keycring libsecret seahorse
+yay -S gnome-keyring libsecret seahorse
 ```
+
+</details>
+<details>
+<summary>Pacman</summary>
+
+```bash
+sudo nvim /etc/pacman.conf
+```
+
+Un comment the line with "Color"
+
+```bash
+sudo nvim /etc/makepkg.conf
+```
+
+change "debug" to "!debug"
 
 </details>
 
