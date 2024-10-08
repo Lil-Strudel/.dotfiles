@@ -389,8 +389,8 @@ Host gitlab.com
 ```
 
 ```bash
-cat ~/.ssh/ied_ed25519.GitHub.pub
-cat ~/.ssh/ied_ed25519.GitLab.pub
+cat ~/.ssh/id_ed25519.GitHub.pub
+cat ~/.ssh/id_ed25519.GitLab.pub
 ```
 
 Copy the public keys into your respective Git providers
