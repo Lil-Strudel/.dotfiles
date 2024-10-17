@@ -13,7 +13,7 @@ local gfs                                       = require("gears.filesystem")
 local base_path                                 = gfs.get_configuration_dir()
 local config_path                               = gfs.get_xdg_config_home()
 
-local wallpaper                                 = "gruv-street.jpg"
+local wallpaper                                 = "spirited-away-frog.jpg"
 
 local theme_path                                = base_path .. "/themes/strhuedel/"
 
