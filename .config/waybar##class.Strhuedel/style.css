@@ -7,11 +7,11 @@
 }
 
 window#waybar {
-  background-color: #272520;
+  background-color: #262321;
   color: #f4eede;
   transition-property: background-color;
   transition-duration: 0.5s;
-  border-bottom: solid 0px #272520;
+  border-bottom: solid 0px #262321;
 }
 
 window#waybar.hidden {
@@ -26,7 +26,7 @@ window#waybar.hidden {
 
 #workspaces button.focused {
   background-color: #fef6e6;
-  color: #272520;
+  color: #262321;
   border-bottom: none;
 }
 
@@ -56,7 +56,7 @@ widget > * {
   padding: 0 12px;
   margin-left: 0;
   margin-right: 0;
-  color: #272520;
+  color: #262321;
   background-color: #fef6e6;
 }
 
@@ -89,7 +89,7 @@ widget > * {
 }
 
 label:focus {
-  background-color: #272520;
+  background-color: #262321;
 }
 
 tooltip {
