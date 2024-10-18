@@ -6,7 +6,9 @@ awful.mouse.append_global_mousebindings({
 
     -- Activate client on mouse click
     awful.button({}, 1, function(c)
-        c:activate { context = "mouse_click" }
+        if c then
+            c:activate { context = "mouse_click" }
+        end
     end),
 })
 
