@@ -1,8 +1,7 @@
 C = {}
 
 C.terminal = "kitty"
-C.browser = "firefox"
+C.browser = "chromium"
 C.editor = "nvim"
 C.filebrowser = "thunar"
 C.modkey = "Mod4"
-
