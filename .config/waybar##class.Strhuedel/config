@@ -1,5 +1,5 @@
 {
-  "modules-left": ["sway/workspaces", "sway/window", "sway/mode"],
+  "modules-left": ["hyprland/workspaces", "hyprland/window", "hyprland/submap"],
   "modules-right": ["pulseaudio", "backlight", "network", "battery", "clock"],
   "clock": {
     "timezone": "America/Denver",
@@ -52,7 +52,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50
   },
-  "sway/workspaces": {
+  "hyprland/workspaces": {
     "disable-scroll": true
   }
 }
