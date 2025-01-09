@@ -15,7 +15,13 @@
 ################
 
 # See https://wiki.hyprland.org/Configuring/Monitors/
+{% if yadm.hostname == "strudel-desktop" %}
+monitor=DP-1, 5120x1440@240, 0x0, 1
+{% endif %}
+
+{% if yadm.hostname == "strudel-framework" %}
 monitor=eDP-1, 2560x1600@165, 0x0, 1.25
+{% endif %}
 
 # unscale XWayland
 xwayland {
@@ -29,7 +35,7 @@ xwayland {
 # See https://wiki.hyprland.org/Configuring/Keywords/
 
 # Set programs that you use
-$terminal = kitty
+$terminal = ghostty
 $fileManager = dolphin
 $menu = rofi -show drun
 
@@ -43,7 +49,9 @@ $menu = rofi -show drun
 
 # exec-once = $terminal
 # exec-once = nm-applet &
-# exec-once = waybar 
+exec-once = waybar 
+exec-once = systemctl --user start hyprpolkitagent
+exec-once = swww-daemon
 
 exec = gsettings set org.gnome.desktop.interface gtk-theme "rose-pine-gtk"   # for GTK3 apps
 exec = gsettings set org.gnome.desktop.interface color-scheme "prefer-dark"   # for GTK4 apps
@@ -59,6 +67,12 @@ env = QT_QPA_PLATFORMTHEME,qt6ct   # for Qt apps
 
 env = XCURSOR_SIZE,24
 env = HYPRCURSOR_SIZE,24
+
+{% if yadm.hostname == "strudel-desktop" %}
+env = LIBVA_DRIVER_NAME,nvidia
+env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+env = NVD_BACKEND,direct
+{% endif %}
 
 
 #####################
@@ -220,6 +234,7 @@ bind = $mainMod, Space, togglefloating,
 bind = $mainMod, D, exec, $menu
 # bind = $mainMod, P, pseudo, # dwindle
 # bind = $mainMod, J, togglesplit, # dwindle
+bind = $mainMod SHIFT, L, exec, hyprlock
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, h, movefocus, l

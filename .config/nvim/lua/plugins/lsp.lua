@@ -10,21 +10,6 @@ return {
         end
     },
     {
-        "zbirenbaum/copilot-cmp",
-        event = { "InsertEnter", "LspAttach" },
-        fix_pairs = true,
-        config = true,
-        dependencies = {
-            {
-                "zbirenbaum/copilot.lua",
-                opts = {
-                    suggestion = { enabled = false },
-                    panel = { enabled = false }
-                }
-            }
-        }
-    },
-    {
         "hrsh7th/nvim-cmp",
         event = "InsertEnter",
         dependencies = {
@@ -32,10 +17,6 @@ return {
                 "L3MON4D3/LuaSnip",
                 dependencies = {
                     "saadparwaiz1/cmp_luasnip",
-                    {
-                        "r5n-dev/vscode-react-javascript-snippets",
-                        build = "yarn install --frozen-lockfile && yarn compile"
-                    }
                 }
             }
         },
