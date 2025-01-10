@@ -1,5 +1,5 @@
 {
-  "modules-left": ["hyprland/workspaces", "hyprland/window", "hyprland/submap"],
+  "modules-left": ["hyprland/workspaces", "hyprland/submap"],
   "modules-right": ["pulseaudio", "backlight", "network", "battery", "clock"],
   "clock": {
     "timezone": "America/Denver",
