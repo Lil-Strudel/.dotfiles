@@ -29,3 +29,8 @@ vim.api.nvim_set_keymap('n', 'Q', '<nop>', { noremap = true, silent = true })
 
 -- Find and replace word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+-- Show diagnostic (lsp errors) in floating dialog
+vim.keymap.set('n', 'gl', function()
+    vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+end)

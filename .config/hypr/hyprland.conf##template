@@ -105,7 +105,7 @@ decoration {
 
     # Change transparency of focused and unfocused windows
     active_opacity = 1.0
-    inactive_opacity = 1.0
+    inactive_opacity = 0.99
 
     shadow {
         enabled = true
@@ -232,13 +232,19 @@ bind = $mainMod, Space, togglefloating,
 bind = $mainMod, D, exec, $menu
 # bind = $mainMod, P, pseudo, # dwindle
 # bind = $mainMod, J, togglesplit, # dwindle
-bind = $mainMod SHIFT, L, exec, hyprlock
+bind = $mainMod SHIFT CTRL, L, exec, hyprlock
 
 # Move focus with mainMod + arrow keys
 bind = $mainMod, h, movefocus, l
 bind = $mainMod, l, movefocus, r
 bind = $mainMod, k, movefocus, u
 bind = $mainMod, j, movefocus, d
+
+# Move window with mainMod + arrow keys
+bind = $mainMod SHIFT, h, movewindow, l
+bind = $mainMod SHIFT, l, movewindow, r
+bind = $mainMod SHIFT, k, movewindow, u
+bind = $mainMod SHIFT, j, movewindow, d
 
 # Switch workspaces with mainMod + [0-9]
 bind = $mainMod, 1, workspace, 1

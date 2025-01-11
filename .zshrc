@@ -3,6 +3,7 @@
 plug "$HOME/.config/zsh/aliases.zsh"
 plug "$HOME/.config/zsh/exports.zsh"
 plug "$HOME/.config/zsh/starship.zsh"
+plug "$HOME/.config/zsh/tmux.zsh"
 plug "$HOME/.config/zsh/zoxide.zsh"
 
 plug "zsh-users/zsh-autosuggestions"
@@ -11,3 +12,4 @@ plug "zsh-users/zsh-completions"
 plug "zap-zsh/supercharge"
 plug "zap-zsh/vim"
 plug "zap-zsh/exa"
+plug "zap-zsh/fnm"

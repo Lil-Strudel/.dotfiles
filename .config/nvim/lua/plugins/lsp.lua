@@ -1,74 +1,32 @@
 return {
     {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = "v3.x",
-        lazy = true,
-        config = false,
-        init = function()
-            vim.g.lsp_zero_extend_cmp = 0
-            vim.g.lsp_zero_extend_lspconfig = 0
-        end
+        'saghen/blink.cmp',
+        dependencies = 'rafamadriz/friendly-snippets',
+        version = '*',
+        opts = {
+            keymap = { preset = 'default' },
+            appearance = {
+                use_nvim_cmp_as_default = true,
+                nerd_font_variant = 'mono'
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+        },
+        opts_extend = { "sources.default" }
     },
     {
-        "hrsh7th/nvim-cmp",
-        event = "InsertEnter",
-        dependencies = {
-            {
-                "L3MON4D3/LuaSnip",
-                dependencies = {
-                    "saadparwaiz1/cmp_luasnip",
-                }
+        'neovim/nvim-lspconfig',
+        dependencies = { 'saghen/blink.cmp', 'williamboman/mason.nvim', "williamboman/mason-lspconfig.nvim" },
+        config = function()
+            require("mason").setup()
+            require("mason-lspconfig").setup()
+
+            require("mason-lspconfig").setup_handlers {
+                function(server_name)
+                    require("lspconfig")[server_name].setup {}
+                end,
             }
-        },
-        config = function()
-            local lsp_zero = require("lsp-zero")
-            lsp_zero.extend_cmp()
-
-            require('luasnip.loaders.from_vscode').lazy_load()
-
-            local cmp = require("cmp")
-            cmp.setup({
-                sources = {
-                    { name = "luasnip",  priority = 10 },
-                    { name = "copilot",  priority = 9 },
-                    { name = "nvim_lsp", priority = 8 }
-                },
-                preselect = 'item',
-                completion = {
-                    completeopt = 'menu,menuone,noinsert'
-                }
-            })
-        end
-    },
-    {
-        "williamboman/mason.nvim",
-        lazy = false,
-        config = true
-    },
-    {
-        "neovim/nvim-lspconfig",
-        cmd = { "LspInfo", "LspInstall", "LspStart" },
-        event = { "BufReadPre", "BufNewFile" },
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "williamboman/mason-lspconfig.nvim"
-        },
-        config = function()
-            local lsp_zero = require("lsp-zero")
-            lsp_zero.extend_lspconfig()
-
-            lsp_zero.on_attach(function(_, bufnr)
-                lsp_zero.default_keymaps({
-                    buffer = bufnr,
-                    exclude = { "f" }
-                })
-            end)
-
-            require("mason-lspconfig").setup({
-                handlers = {
-                    lsp_zero.default_setup
-                }
-            })
         end
     },
     {
