@@ -58,7 +58,7 @@ return {
                 graphql = { "prettierd", "prettier", stop_after_first = true },
                 astro = { "prettier" },
                 svelte = { "prettier" },
-                go = { "prettier" }
+                go = { "gofumpt" }
             },
             format_on_save = { timeout_ms = 3000, lsp_fallback = true, quiet = true }
         }

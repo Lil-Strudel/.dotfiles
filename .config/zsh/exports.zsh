@@ -12,6 +12,9 @@ export XDG_DATA_HOME=$HOME/.local/share
 
 export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
+export GOPATH=$HOME/.go
+export PATH="$GOROOT/bin:$GOPATH/bin":$PATH
+
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
 
@@ -20,3 +23,4 @@ export GPG_TTY=$(tty)
 export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
+
