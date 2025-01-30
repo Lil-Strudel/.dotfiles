@@ -224,7 +224,7 @@ Reboot!
 **Dual Booting? Configure grub to show windows**
 
 ```bash
-sudo pacman -S os-prober
+sudo pacman -S os-prober fuse3
 ```
 
 ```bash
@@ -640,3 +640,78 @@ reg add "HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\TimeZoneInformation
 ```
 
 </details>
+
+# Starting hyprland rough docs
+
+Install arch minimal
+
+edit /etc/pacman.conf
+edit /etc/makepkg.conf
+
+install yay
+
+install fonts
+
+```
+yay -S noto-fonts noto-fonts-cjk noto-fonts-emoji
+```
+
+install hyprland + packages
+
+```
+yay -Syu hyprland uwsm sddm ghostty rofi-wayland dunst xdg-desktop-portal-hyprland hyprpolkitagent qt5-wayland qt6-wayland waybar swww hypridle hyprlock
+```
+
+enable sddm
+
+```
+sudo systemctl enable sddm
+```
+
+clone dots
+
+```
+yadm clone https://github.com/Lil-Strudel/.dotfiles.git
+
+yadm config local.class Strhuedel
+```
+
+configure display drivers
+
+```
+yay -Syu nvidia-dkms nvidia-utils lib32-nvidia-utils egl-wayland libva-nvidia-driver
+```
+
+```
+yay -Syu linux-headers
+```
+
+add nvidia to /etc/mkinitcpio.conf
+
+```
+MODULES=(... nvidia nvidia_modeset nvidia_uvm nvidia_drm ...)
+```
+
+create /etc/modprobe.d/nvidia.conf
+
+```
+options nvidia_drm modeset=1 fbdev=1
+```
+
+rebuild initramfs
+
+```
+sudo mkinitcpio -P
+```
+
+```
+reboot
+```
+
+install things
+
+```
+yay -S fnm pnpm go rustup openssh eza fzf ripgrep zoxide wl-clipboard neovim tmux firefox
+```
+
+switch to zsh
