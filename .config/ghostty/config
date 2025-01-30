@@ -1,0 +1,8 @@
+font-family = MonoLisa Nerd Font
+font-family-bold = MonoLisa Nerd Font
+font-family-italic = MonoLisa Nerd Font
+font-family-bold-italic = MonoLisa Nerd Font
+
+gtk-titlebar = false
+
+theme = strhuedel
