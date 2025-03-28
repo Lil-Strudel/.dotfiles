@@ -24,13 +24,41 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
 -- Removes that stupid popup window that shows up when you press q: instead of :q
--- vim.api.nvim_set_keymap('n', 'q:', '<nop>', { noremap = true, silent = true }) -- Makes q automap lag
-vim.api.nvim_set_keymap('n', 'Q', '<nop>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("n", "q:", "<nop>", { noremap = true, silent = true }) -- Makes q automap lag
+vim.api.nvim_set_keymap("n", "Q", "<nop>", { noremap = true, silent = true })
 
 -- Find and replace word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Show diagnostic (lsp errors) in floating dialog
-vim.keymap.set('n', 'gl', function()
+vim.keymap.set("n", "gl", function()
     vim.diagnostic.open_float(nil, { focus = false, scope = "line" })
 end)
+
+-- Go to definition
+vim.keymap.set("n", "gd", "<cmd>lua vim.lsp.buf.definition()<cr>")
+
+-- Go to declaration
+vim.keymap.set("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<cr>")
+
+-- Go to implementation
+vim.keymap.set("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<cr>")
+
+-- Go to type definition
+vim.keymap.set("n", "go", "<cmd>lua vim.lsp.buf.type_definition()<cr>")
+
+-- Go to reference
+vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>")
+
+-- Rename symbol
+vim.keymap.set("n", "<F2>", "<cmd>lua vim.lsp.buf.rename()<cr>")
+
+-- Format file
+vim.keymap.set("n", "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>")
+
+-- Format selection
+vim.keymap.set("x", "<F3>", "<cmd>lua vim.lsp.buf.format({async = true})<cr>")
+
+-- Execute code action
+vim.keymap.set("n", "<F4>", "<cmd>lua vim.lsp.buf.code_action()<cr>")
+
