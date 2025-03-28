@@ -6,3 +6,5 @@ font-family-bold-italic = MonoLisa Nerd Font
 gtk-titlebar = false
 
 theme = strhuedel
+
+confirm-close-surface = false

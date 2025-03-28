@@ -32,5 +32,5 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><
 
 -- Show diagnostic (lsp errors) in floating dialog
 vim.keymap.set('n', 'gl', function()
-    vim.diagnostic.open_float(nil, { focus = false, scope = "cursor" })
+    vim.diagnostic.open_float(nil, { focus = false, scope = "line" })
 end)
