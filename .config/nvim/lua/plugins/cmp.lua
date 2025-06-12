@@ -1,33 +1,19 @@
 return {
     {
         'saghen/blink.cmp',
-        dependencies = 'rafamadriz/friendly-snippets',
-        version = '*',
+        dependencies = {},
+        version = '1.*',
         opts = {
             keymap = { preset = 'default' },
             appearance = {
-                use_nvim_cmp_as_default = true,
                 nerd_font_variant = 'mono'
             },
             sources = {
                 default = { 'lsp', 'path', 'snippets', 'buffer' },
             },
+            fuzzy = { implementation = "prefer_rust_with_warning" }
         },
         opts_extend = { "sources.default" }
-    },
-    {
-        'neovim/nvim-lspconfig',
-        dependencies = { 'saghen/blink.cmp', 'williamboman/mason.nvim', "williamboman/mason-lspconfig.nvim" },
-        config = function()
-            require("mason").setup()
-            require("mason-lspconfig").setup()
-
-            require("mason-lspconfig").setup_handlers {
-                function(server_name)
-                    require("lspconfig")[server_name].setup {}
-                end,
-            }
-        end
     },
     {
         "stevearc/conform.nvim",
