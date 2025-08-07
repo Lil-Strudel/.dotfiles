@@ -3,5 +3,10 @@
     "prefix": ["clg"],
     "body": ["console.log(${1})"],
     "description": "Console log"
+  },
+  "imd": {
+    "prefix": ["imd"],
+    "body": ["import { ${2} } from \"${1}\";"],
+    "description": "Import destructured"
   }
 }

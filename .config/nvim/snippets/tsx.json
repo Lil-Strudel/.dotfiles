@@ -1,1 +1,19 @@
-{}
+{
+  "sfced": {
+    "prefix": "sfced",
+    "body": [
+      "import { type Component } from \"solid-js\";",
+      "",
+      "const ${1}: Component = () => {",
+      "  return (",
+      "    <div>",
+      "      $0",
+      "    </div>",
+      "  );",
+      "};",
+      "",
+      "export default ${1};"
+    ],
+    "description": "SolidJS functional component with default export"
+  }
+}

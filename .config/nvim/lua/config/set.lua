@@ -55,3 +55,6 @@ vim.opt.isfname:append("@-@")
 
 -- Configure username in instant.nvim
 vim.g.instant_username = "lilstrudel"
+
+-- Add border to dialog windows
+vim.opt.winborder = "rounded"

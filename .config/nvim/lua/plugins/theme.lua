@@ -1,7 +1,7 @@
 return {
-    "Lil-Strudel/strhuedel.nvim",
+    "rebelot/kanagawa.nvim",
     priority = 1000,
     config = function()
-        vim.cmd([[colorscheme strhuedel]])
+        vim.cmd([[colorscheme kanagawa-dragon]])
     end
 }

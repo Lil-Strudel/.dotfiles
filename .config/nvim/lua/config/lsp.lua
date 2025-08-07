@@ -5,7 +5,7 @@
 -- gopls
 -- lua-language-server
 -- prettierd
--- typescript-language-server
+-- vtsls
 
 vim.lsp.enable({
     "astro",
@@ -13,5 +13,16 @@ vim.lsp.enable({
     "gopls",
     "lua_ls",
     "tailwindcss",
-    "ts_ls"
+    "vtsls"
+})
+
+-- Remove lua_ls warnings on all vim global variables
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            workspace = {
+                library = vim.api.nvim_get_runtime_file("", true)
+            }
+        }
+    }
 })
