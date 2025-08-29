@@ -50,9 +50,6 @@ vim.opt.scrolloff = 8
 -- Makes the sign column always visable
 vim.opt.signcolumn = "yes"
 
--- I have no idea tbh
-vim.opt.isfname:append("@-@")
-
 -- Configure username in instant.nvim
 vim.g.instant_username = "lilstrudel"
 

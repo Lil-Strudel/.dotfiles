@@ -5,6 +5,6 @@ font-family-bold-italic = MonoLisa Nerd Font
 
 gtk-titlebar = false
 
-theme = strhuedel
+theme = kanagawa-dragon
 
 confirm-close-surface = false

@@ -5,6 +5,7 @@
 -- gopls
 -- lua-language-server
 -- prettierd
+-- tailwind-language-server
 -- vtsls
 
 vim.lsp.enable({
