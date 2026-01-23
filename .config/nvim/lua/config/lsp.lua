@@ -6,6 +6,7 @@
 -- lua-language-server
 -- prettierd
 -- tailwind-language-server
+-- terraform-ls
 -- vtsls
 
 vim.lsp.enable({
@@ -14,6 +15,7 @@ vim.lsp.enable({
     "gopls",
     "lua_ls",
     "tailwindcss",
+    "terraformls",
     "vtsls"
 })
 
