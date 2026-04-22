@@ -23,7 +23,7 @@ return {
             {
                 "<leader>f",
                 function()
-                    require("conform").format({ async = true, lsp_fallback = true, quiet = true })
+                    require("conform").format({ async = true, lsp_format = "fallback", quiet = true })
                 end
             }
         },
@@ -45,8 +45,11 @@ return {
                 astro = { "prettier" },
                 svelte = { "prettier" },
                 go = { "gofumpt" },
+                terraform = { "terraform_fmt" },
+                tf = { "terraform_fmt" },
+                hcl = { "terraform_fmt" },
             },
-            format_on_save = { timeout_ms = 3000, lsp_fallback = true, quiet = true }
+            format_on_save = { timeout_ms = 3000, lsp_format = "fallback", quiet = true }
         }
     }
 }

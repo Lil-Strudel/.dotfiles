@@ -7,3 +7,5 @@ alias tff='terraform fmt'
 alias c='clear'
 
 alias cd='z'
+
+alias ssh='TERM=xterm-256color ssh'

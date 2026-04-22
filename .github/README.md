@@ -715,3 +715,36 @@ yay -S fnm pnpm go rustup openssh eza fzf ripgrep zoxide wl-clipboard neovim tmu
 ```
 
 switch to zsh
+
+Install win11. Change the disk size to half when setting up the partition.
+Finish install with offline account cuz fuck microsoft
+
+Boot arch iso
+
+Connect to wifi
+
+run archinstall
+
+chroot into install and run
+
+efibootmgr --create --disk /dev/nvme0n1 --part 1 \
+ --label "Linux Boot Manager" \
+ --loader '\EFI\systemd\systemd-bootx64.efi'
+
+Reboot
+
+Erase all secure boot keys in bios
+
+reboot
+
+connect to internet
+
+sudo pacman -Syu sbctl
+
+sudo sbctl create-keys
+
+sudo sbctl enroll-keys -m -f
+
+sudo sbctl sign -s -o /usr/lib/systemd/boot/efi/systemd-bootx64.efi.signed /usr/lib/systemd/boot/efi/systemd-bootx64.efi
+sudo sbctl sign -S /boot/EFI/Linux/arch-linux.efi
+sudo bootctl install
