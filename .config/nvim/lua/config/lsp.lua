@@ -8,12 +8,14 @@
 -- tailwind-language-server
 -- terraform-ls
 -- vtsls
+-- pyright
 
 vim.lsp.enable({
     "astro",
     "eslint",
     "gopls",
     "lua_ls",
+    "pyright",
     "tailwindcss",
     "terraformls",
     "vtsls"

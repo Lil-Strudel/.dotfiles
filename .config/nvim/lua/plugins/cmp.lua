@@ -48,6 +48,7 @@ return {
                 terraform = { "terraform_fmt" },
                 tf = { "terraform_fmt" },
                 hcl = { "terraform_fmt" },
+                python = { "black" },
             },
             format_on_save = { timeout_ms = 3000, lsp_format = "fallback", quiet = true }
         }

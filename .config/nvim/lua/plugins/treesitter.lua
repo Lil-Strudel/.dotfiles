@@ -8,7 +8,8 @@ return {
             install_dir = vim.fn.stdpath("data") .. "/site",
         })
 
-        require("nvim-treesitter").install({ "lua", "javascript", "typescript", "tsx", "go" })
+        require("nvim-treesitter").install({ "lua", "javascript", "typescript", "tsx", "go", "terraform", "python",
+            "yaml", "astro" })
 
         vim.api.nvim_create_autocmd("FileType", {
             callback = function()
