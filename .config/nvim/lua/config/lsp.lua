@@ -1,5 +1,6 @@
 -- Tools to install with mason:
 -- astro-language-server
+-- black
 -- eslint-lsp
 -- gofumpt
 -- gopls
