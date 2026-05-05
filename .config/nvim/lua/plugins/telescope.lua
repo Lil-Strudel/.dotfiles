@@ -1,6 +1,5 @@
 return {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.5",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
         -- nvim-treesitter removed ft_to_lang; shim it for telescope 0.1.5 compatibility
