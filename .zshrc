@@ -13,3 +13,9 @@ plug "zap-zsh/supercharge"
 plug "zap-zsh/vim"
 plug "zap-zsh/exa"
 plug "zap-zsh/fnm"
+
+if [[ "$(hostname)" == "strudel-rx" ]]; then
+    plug "$HOME/Documents/code/infra-live/completions/pu.plugin.zsh"
+    plug "$HOME/Documents/code/infra-org/completions/pu.plugin.zsh"
+fi
+

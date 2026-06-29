@@ -1,1 +1,1 @@
-eval "$(zoxide init zsh)"
+[[ -z "$CLAUDECODE" ]] && eval "$(zoxide init zsh)"

@@ -1,6 +1,6 @@
 {
   "modules-left": ["hyprland/workspaces", "hyprland/submap"],
-  "modules-right": ["pulseaudio", "backlight", "network", "battery", "clock"],
+  "modules-right": ["tray", "pulseaudio", "backlight", {% if yadm.hostname == "strudel-rx" %}"custom/netbird", {% endif %}"network", "battery", "clock"],
   "clock": {
     "timezone": "America/Denver",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -8,7 +8,7 @@
   },
   "backlight": {
     "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
     "on-scroll-up": "light -A 1",
     "on-scroll-down": "light -U 1"
   },
@@ -19,40 +19,47 @@
     },
     "format": "{capacity}% {icon}",
     "format-charging": "{capacity}% 󰢝",
-    "format-plugged": "{capacity}% ",
+    "format-plugged": "{capacity}% ",
     "format-alt": "{time} {icon}",
-    "format-icons": ["", "", "", "", ""]
+    "format-icons": ["", "", "", "", ""]
   },
   "pulseaudio": {
     "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
-    "format-bluetooth-muted": "󰝟 {icon} {format_source}",
+    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format-bluetooth-muted": "󰝟 {icon} {format_source}",
     "format-muted": "󰝟 {format_source}",
-    "format-source": "{volume}% ",
-    "format-source-muted": "",
+    "format-source": "{volume}% ",
+    "format-source-muted": "",
     "format-icons": {
-      "headphone": "",
+      "headphone": "",
       "hands-free": "󱠰",
       "headset": "󰋎",
-      "phone": "",
-      "portable": "",
-      "car": "",
-      "default": ["", "", ""]
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["", "", ""]
     },
     "on-click": "pavucontrol"
   },
   "network": {
     "format": "{ifname}",
-    "format-wifi": "Connected ",
+    "format-wifi": "Connected ",
     "format-ethernet": "{ipaddr}/{cidr} 󰈀",
     "format-disconnected": "Disconnected 󱛅", //An empty format will hide the module.
     "tooltip-format": "{ifname} via {gwaddr} 󰛳",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
-    "tooltip-format-ethernet": "{ifname} ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
+    "tooltip-format-ethernet": "{ifname} ",
     "tooltip-format-disconnected": "Disconnected",
     "max-length": 50
   },
   "hyprland/workspaces": {
     "disable-scroll": true
-  }
+  }{% if yadm.hostname == "strudel-rx" %},
+  "custom/netbird": {
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/netbird-waybar.sh status",
+    "on-click": "~/.config/waybar/scripts/netbird-waybar.sh toggle-action",
+    "interval": 5,
+    "tooltip": true
+  }{% endif %}
 }

@@ -1,0 +1,7 @@
+[user]
+	name = Aaron Santo
+	email = 281754851+aaron-santo-rx@users.noreply.github.com
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
