@@ -4,7 +4,11 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
+{% if yadm.hostname == "strudel-rx" %}
     selected=$(find ~/Documents/code -mindepth 1 -maxdepth 1 -type d | fzf)
+{% else %}
+    selected=$(find ~/Documents/code/work ~/Documents/code/personal ~/Documents/code/people/* -mindepth 1 -maxdepth 1 -type d | fzf)
+{% endif %}
 fi
 
 if [[ -z $selected ]]; then

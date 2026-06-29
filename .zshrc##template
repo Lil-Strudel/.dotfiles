@@ -14,8 +14,6 @@ plug "zap-zsh/vim"
 plug "zap-zsh/exa"
 plug "zap-zsh/fnm"
 
-if [[ "$(hostname)" == "strudel-rx" ]]; then
-    plug "$HOME/Documents/code/infra-live/completions/pu.plugin.zsh"
-    plug "$HOME/Documents/code/infra-org/completions/pu.plugin.zsh"
-fi
-
+{% if yadm.hostname == "strudel-rx" %}
+[[ -f "$HOME/.config/zsh/work.zsh" ]] && source "$HOME/.config/zsh/work.zsh"
+{% endif %}
