@@ -74,6 +74,19 @@ widget > * {
   color: #f46b73;
 }
 
+/* Healthy: inherits the dark-on-cream of every other right module.
+   Connecting: red accent on cream (transient).
+   Down / error: red chip, mirroring #workspaces button.urgent. */
+#custom-netbird.connecting {
+  color: #f46b73;
+}
+
+#custom-netbird.disconnected,
+#custom-netbird.error {
+  background-color: #f46b73;
+  color: #262321;
+}
+
 @keyframes blink {
   to {
     color: #fef6e6;

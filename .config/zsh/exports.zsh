@@ -4,7 +4,7 @@ SAVEHIST=1000000
 
 export EDITOR="nvim"
 export TERMINAL="ghostty"
-export BROWSER="firefox"
+export BROWSER="google-chrome"
 
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -24,3 +24,6 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS=@im=fcitx
 
+export ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+export ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=120
