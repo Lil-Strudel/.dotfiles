@@ -1,0 +1,74 @@
+return {
+    {
+        'saghen/blink.cmp',
+        dependencies = {},
+        version = '1.*',
+        opts = {
+            keymap = { preset = 'default' },
+            appearance = {
+                nerd_font_variant = 'mono'
+            },
+            sources = {
+                default = { 'lsp', 'path', 'snippets', 'buffer' },
+            },
+            fuzzy = { implementation = "prefer_rust_with_warning" },
+        },
+        opts_extend = { "sources.default" }
+    },
+    {
+        "stevearc/conform.nvim",
+        event = { "BufWritePre" },
+        cmd = { "ConformInfo" },
+        keys = {
+            {
+                "<leader>f",
+                function()
+                    require("conform").format({ async = true, lsp_format = "fallback", quiet = true })
+                end
+            }
+        },
+        opts = {
+            formatters_by_ft = {
+{% if yadm.hostname == "strudel-rx" %}
+                javascript = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                javascriptreact = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                typescript = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                typescriptreact = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                vue = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                css = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                scss = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                html = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                json = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                jsonc = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                yaml = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                markdown = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                graphql = { "oxfmt", "prettierd", "prettier", stop_after_first = true },
+                astro = { "oxfmt", "prettier" },
+                svelte = { "oxfmt", "prettier" },
+{% else %}
+                javascript = { "prettierd", "prettier", stop_after_first = true },
+                javascriptreact = { "prettierd", "prettier", stop_after_first = true },
+                typescript = { "prettierd", "prettier", stop_after_first = true },
+                typescriptreact = { "prettierd", "prettier", stop_after_first = true },
+                vue = { "prettierd", "prettier", stop_after_first = true },
+                css = { "prettierd", "prettier", stop_after_first = true },
+                scss = { "prettierd", "prettier", stop_after_first = true },
+                html = { "prettierd", "prettier", stop_after_first = true },
+                json = { "prettierd", "prettier", stop_after_first = true },
+                jsonc = { "prettierd", "prettier", stop_after_first = true },
+                yaml = { "prettierd", "prettier", stop_after_first = true },
+                markdown = { "prettierd", "prettier", stop_after_first = true },
+                graphql = { "prettierd", "prettier", stop_after_first = true },
+                astro = { "prettier" },
+                svelte = { "prettier" },
+{% endif %}
+                go = { "gofumpt" },
+                terraform = { "terraform_fmt" },
+                tf = { "terraform_fmt" },
+                hcl = { "terraform_fmt" },
+                python = { "black" },
+            },
+            format_on_save = { timeout_ms = 3000, lsp_format = "fallback", quiet = true }
+        }
+    }
+}

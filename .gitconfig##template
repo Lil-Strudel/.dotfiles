@@ -1,6 +1,12 @@
+{% if yadm.hostname == "strudel-rx" %}
 [user]
 	name = Aaron Santo
 	email = 281754851+aaron-santo-rx@users.noreply.github.com
+{% else %}
+[user]
+	name = Lil-Strudel
+	email = 42657503+Lil-Strudel@users.noreply.github.com
+{% endif %}
 [init]
 	defaultBranch = main
 [push]
