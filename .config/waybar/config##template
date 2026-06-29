@@ -1,6 +1,16 @@
 {
   "modules-left": ["hyprland/workspaces", "hyprland/submap"],
-  "modules-right": ["tray", "pulseaudio", "backlight", {% if yadm.hostname == "strudel-rx" %}"custom/netbird", {% endif %}"network", "battery", "clock"],
+  "modules-right": [
+    "tray",
+    "pulseaudio",
+    "backlight",
+{% if yadm.hostname == "strudel-rx" %}
+    "custom/netbird",
+{% endif %}
+    "network",
+    "battery",
+    "clock"
+  ],
   "clock": {
     "timezone": "America/Denver",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
@@ -45,7 +55,7 @@
     "format": "{ifname}",
     "format-wifi": "Connected ",
     "format-ethernet": "{ipaddr}/{cidr} 󰈀",
-    "format-disconnected": "Disconnected 󱛅", //An empty format will hide the module.
+    "format-disconnected": "Disconnected 󱛅",
     "tooltip-format": "{ifname} via {gwaddr} 󰛳",
     "tooltip-format-wifi": "{essid} ({signalStrength}%) ",
     "tooltip-format-ethernet": "{ifname} ",
@@ -54,12 +64,15 @@
   },
   "hyprland/workspaces": {
     "disable-scroll": true
-  }{% if yadm.hostname == "strudel-rx" %},
+  }
+{% if yadm.hostname == "strudel-rx" %}
+  ,
   "custom/netbird": {
     "return-type": "json",
     "exec": "~/.config/waybar/scripts/netbird-waybar.sh status",
     "on-click": "~/.config/waybar/scripts/netbird-waybar.sh toggle-action",
     "interval": 5,
     "tooltip": true
-  }{% endif %}
+  }
+{% endif %}
 }
