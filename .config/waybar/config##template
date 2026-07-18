@@ -2,6 +2,9 @@
   "modules-left": ["hyprland/workspaces", "hyprland/submap"],
   "modules-right": [
     "tray",
+{% if yadm.hostname == "strudel-framework" %}
+    "custom/vpn",
+{% endif %}
     "pulseaudio",
     "backlight",
 {% if yadm.hostname == "strudel-rx" %}
@@ -73,6 +76,18 @@
     "on-click": "~/.config/waybar/scripts/netbird-waybar.sh toggle-action",
     "interval": 5,
     "tooltip": true
+  }
+{% endif %}
+{% if yadm.hostname == "strudel-framework" %}
+  ,
+  "custom/vpn": {
+    "return-type": "json",
+    "exec": "~/.config/waybar/scripts/vpn.sh",
+    "interval": 5,
+    "signal": 8,
+    "on-click": "~/.config/waybar/scripts/vpn.sh home",
+    "on-click-right": "~/.config/waybar/scripts/vpn.sh mgmt",
+    "on-click-middle": "~/.config/waybar/scripts/vpn.sh off"
   }
 {% endif %}
 }

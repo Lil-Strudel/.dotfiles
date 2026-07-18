@@ -87,6 +87,17 @@ widget > * {
   color: #262321;
 }
 
+/* WireGuard toggle (strudel-framework). off inherits dark-on-cream;
+   home: red accent; mgmt (admin tunnel): red chip as a "live" cue. */
+#custom-vpn.home {
+  color: #f46b73;
+}
+
+#custom-vpn.mgmt {
+  background-color: #f46b73;
+  color: #262321;
+}
+
 @keyframes blink {
   to {
     color: #fef6e6;
