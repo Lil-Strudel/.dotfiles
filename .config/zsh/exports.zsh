@@ -18,6 +18,8 @@ export PATH="$GOROOT/bin:$GOPATH/bin":$PATH
 export PATH="$HOME/.local/bin":$PATH
 export PATH="$HOME/.cargo/bin":$PATH
 
+export PATH="$HOME/.local/bin/llama-b9952":$PATH
+
 export GPG_TTY=$(tty)
 
 export GTK_IM_MODULE=fcitx
