@@ -17,6 +17,7 @@ vim.lsp.enable({
     "gopls",
     "lua_ls",
     "pyright",
+    "rust_analyser",
     "tailwindcss",
     "terraformls",
     "vtsls"

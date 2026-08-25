@@ -7,7 +7,13 @@
 # touch on the opencode side.
 #
 # To add or change a model: edit the registry() table below. Fields are
-# pipe-separated:  label | hf-repo | extra launch flags
+# pipe-separated:  label | hf-repo | extra launch flags | vision
+#
+# The 4th field is `vision` to load the repo's multimodal projector, so the
+# model can accept images and video, or `text` to force text-only. It is not
+# cosmetic: llama.cpp auto-downloads and loads an mmproj whenever the repo
+# ships one, so `text` is what stops that happening. A missing 4th field is
+# read as `text`.
 set -euo pipefail
 
 HOST=127.0.0.1
@@ -18,30 +24,60 @@ SELF=$(realpath "${BASH_SOURCE[0]}")
 # ── model registry ─────────────────────────────────────────────────────────
 registry() {
   cat <<'EOF'
-Qwen3.6 35B A3B · Q8  — newest coding driver|unsloth/Qwen3.6-35B-A3B-GGUF:Q8_0|-c 131072 --temp 0.7 --top-p 0.8 --top-k 20 --min-p 0.0 --repeat-penalty 1.05
-Qwen3-Coder 30B · Q8  — daily coding driver|unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q8_0|-c 131072 --temp 0.7 --top-p 0.8 --top-k 20 --min-p 0.0 --repeat-penalty 1.05
-Qwen3-Coder 30B · Q4  — fast / light coding|unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_M|-c 131072 --temp 0.7 --top-p 0.8 --top-k 20 --min-p 0.0 --repeat-penalty 1.05
-GLM-4.5-Air · Q4  — heavy / agentic coding|unsloth/GLM-4.5-Air-GGUF:Q4_K_M|-c 131072 --cache-type-k q8_0 --cache-type-v q8_0 --temp 0.6 --top-p 0.95 --top-k 40
-gpt-oss 120B  — all-round reasoning + code|ggml-org/gpt-oss-120b-GGUF|-c 131072 --cache-type-k q8_0 --cache-type-v q8_0 --temp 1.0 --top-p 1.0 --top-k 0
-Qwen3 30B Instruct · Q8  — general chat (not code)|unsloth/Qwen3-30B-A3B-Instruct-2507-GGUF:Q8_0|-c 131072 --temp 0.7 --top-p 0.8 --top-k 20 --min-p 0.0
+Qwen3.8 27B · Q4  — newest / smartest per token|unsloth/Qwen3.8-27B-GGUF:Q4_K_M|-c 131072 --temp 1.0 --top-p 0.95 --top-k 20 --min-p 0.0 --repeat-penalty 1.0|vision
+Qwen3.6 35B A3B · Q8  — fast MoE coding driver|unsloth/Qwen3.6-35B-A3B-GGUF:Q8_0|-c 131072 --temp 0.7 --top-p 0.8 --top-k 20 --min-p 0.0 --repeat-penalty 1.05|text
+Qwen3-Coder 30B · Q8  — daily coding driver|unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q8_0|-c 131072 --temp 0.7 --top-p 0.8 --top-k 20 --min-p 0.0 --repeat-penalty 1.05|text
+Qwen3-Coder 30B · Q4  — fast / light coding|unsloth/Qwen3-Coder-30B-A3B-Instruct-GGUF:Q4_K_M|-c 131072 --temp 0.7 --top-p 0.8 --top-k 20 --min-p 0.0 --repeat-penalty 1.05|text
+GLM-4.5-Air · Q4  — heavy / agentic coding|unsloth/GLM-4.5-Air-GGUF:Q4_K_M|-c 131072 --cache-type-k q8_0 --cache-type-v q8_0 --temp 0.6 --top-p 0.95 --top-k 40|text
+gpt-oss 120B  — all-round reasoning + code|ggml-org/gpt-oss-120b-GGUF|-c 131072 --cache-type-k q8_0 --cache-type-v q8_0 --temp 1.0 --top-p 1.0 --top-k 0|text
+Qwen3 30B Instruct · Q8  — general chat (not code)|unsloth/Qwen3-30B-A3B-Instruct-2507-GGUF:Q8_0|-c 131072 --temp 0.7 --top-p 0.8 --top-k 20 --min-p 0.0|text
 EOF
 }
 
 # ── strengths shown in the fzf preview pane ────────────────────────────────
 preview() {
   case "${1:-}" in
+  "Qwen3.8 27B · Q4"*)
+    cat <<'EOF'
+
+  Qwen3.8 27B  ·  Q4_K_M
+
+  NEWEST — SMARTEST PER TOKEN, BUT SLOW
+
+  DENSE 27B (not MoE): every param runs for every
+  token, so it is far slower than the MoE entries
+  below — but markedly stronger on hard, long-horizon
+  agentic work (SWE-bench Pro 61.7 vs 53.5 for 3.6).
+
+  Hybrid attention: 3 x Gated DeltaNet (linear) per
+  1 full-attention layer, so the KV cache stays small
+  even at long context.
+
+   • Thinking mode is ON by default; depth is tunable
+     per request via reasoning_effort
+   • Native vision-language — the only entry here
+     with vision ON: it takes images and video
+   • Reach for it when 3.6 isn't good enough and you
+     can wait
+
+  RAM    ~27 GB   (17 GB weights + KV at 128K + 1 GB
+                   vision projector)
+  Speed  ~4-6 tok/s     (estimate for this iGPU)
+  Ctx    128K here, 256K native
+EOF
+    ;;
   "Qwen3.6 35B A3B · Q8"*)
     cat <<'EOF'
 
   Qwen3.6 35B A3B  ·  Q8_0
 
-  NEWEST CODING DRIVER
+  THE FAST CODING DRIVER
 
   MoE: 35B total params, ~3B active per token —
   a newer generation than Qwen3-Coder 30B, so it
   stays just as fast while loaded at full Q8.
 
-   • Latest Qwen coding-capable release
+   • Best speed/quality balance here for coding
    • Strong at agentic / tool-use workflows (opencode)
    • Reliable native function calling
 
@@ -163,6 +199,10 @@ local-llm — pick a local LLM and serve it on :$PORT for opencode
 
   Add or edit models in the registry() table inside this script:
     $SELF
+
+  Registry fields:  label | hf-repo | launch flags | vision
+  where vision is 'vision' to load the repo's multimodal projector
+  (images + video) or 'text' to force text-only.
 EOF
 }
 
@@ -188,6 +228,14 @@ choice=$(registry | cut -d'|' -f1 \
 row=$(registry | awk -F'|' -v l="$choice" '$1==l {print; exit}')
 repo=$(cut -d'|' -f2 <<<"$row")
 flags=$(cut -d'|' -f3 <<<"$row")
+vision=$(cut -d'|' -f4 <<<"$row")
+
+# llama.cpp loads a repo's mmproj automatically whenever one is published, so
+# text-only entries have to opt out by hand.
+case "$vision" in
+  vision) vision_flags=""           ; vision_note="on  — images + video" ;;
+  *)      vision_flags="--no-mmproj"; vision_note="off — text only" ;;
+esac
 
 # replace any model already serving on this port
 if pids=$(pgrep -f "llama-server.*--port $PORT" 2>/dev/null); then
@@ -199,12 +247,13 @@ fi
 
 echo "→ serving: $choice"
 echo "→ model:   $repo"
+echo "→ vision:  $vision_note"
 echo "→ url:     http://$HOST:$PORT   (Ctrl+C to stop)"
 echo
 
-# word-splitting of $flags is intentional
+# word-splitting of $vision_flags and $flags is intentional
 # shellcheck disable=SC2086
 exec llama-server -hf "$repo" \
   -ngl 99 -fa on -t "$THREADS" \
   --host "$HOST" --port "$PORT" --jinja \
-  $flags
+  $vision_flags $flags

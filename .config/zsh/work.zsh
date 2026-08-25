@@ -7,32 +7,7 @@ DISABLE_TELEMETRY=1 \
 claude'
 
 alogin() {
-    local profiles=$(grep -B 1 "sso_session =" ~/.aws/config | grep "\[profile" | sed -e 's/\[profile \(.*\)\]/\1/')
-
-    if [[ -z "$profiles" ]]; then
-        echo "No SSO profiles found in ~/.aws/config"
-        return 1
-    fi
-
-    local profile_list=(${(f)profiles})
-
-    local first=$profile_list[1]
-    echo "Keying into profile: $first..."
-    if ! aws sso login --profile "$first"; then
-        echo "Login failed for $first, aborting"
-        return 1
-    fi
-
-    local pids=()
-    for profile in $profile_list[2,-1]; do
-        echo "Keying into profile: $profile..."
-        aws sso login --profile "$profile" &
-        pids+=($!)
-    done
-
-    for pid in $pids; do
-        wait "$pid"
-    done
+    aws sso login --sso-session rxco
 }
 
 plug "$HOME/Documents/code/infra-live/completions/pu.plugin.zsh"
