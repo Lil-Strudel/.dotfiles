@@ -1,0 +1,7 @@
+nerdfont: true
+status_format: false
+
+panes:
+  - command: <agent>
+    focus: true
+  - split: horizontal
