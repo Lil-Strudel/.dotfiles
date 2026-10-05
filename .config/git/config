@@ -10,6 +10,8 @@
 	gpgsign = true
 [includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"]
 	path = gitlab
+[includeIf "hasconfig:remote.*.url:git@github.com:rx-co/**"]
+	path = work
 [init]
 	defaultBranch = main
 [push]
