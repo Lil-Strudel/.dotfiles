@@ -1,0 +1,73 @@
+{
+  "reload_style_on_change": true,
+
+  "modules-left": ["ext/workspaces", "hyprland/submap"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "custom/dnd",
+    "privacy",
+    "systemd-failed-units",
+    "network",
+    "wireplumber",
+    "tray"
+  ],
+
+  "ext/workspaces": {
+    "on-click": "activate"
+  },
+
+  "hyprland/submap": {
+    "tooltip": false
+  },
+
+  "clock": {
+    "format": "{:%a %d %b  %H:%M}",
+    "timezones": ["", "Etc/UTC"],
+    "timezone-tooltip-format": "{:%H:%M  %Z}",
+    "tooltip-format": "<tt>{calendar}</tt>\n\n<tt>{tz_list}</tt>",
+    "calendar": {
+      "format": {
+        "months": "<b>{}</b>",
+        "weekdays": "<span color='#7a8382'>{}</span>",
+        "today": "<span color='#181616' background='#c4b28a'><b>{}</b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-click-middle": "shift_reset",
+      "on-scroll-up": "shift_down",
+      "on-scroll-down": "shift_up"
+    }
+  },
+
+  "custom/dnd": {
+    "exec": "makoctl mode | grep -qx do-not-disturb && echo 󰂛",
+    "signal": 8,
+    "on-click": "makoctl mode -t do-not-disturb",
+    "tooltip": false
+  },
+
+  "systemd-failed-units": {
+    "format": "󰀦 {nr_failed}"
+  },
+
+  "network": {
+    "format": "",
+    "format-wifi": "󰖩 {essid}",
+    "format-linked": "󰖪 no ip",
+    "format-disconnected": "󰖪 offline",
+    "tooltip-format": "{ifname}  {ipaddr}"
+  },
+
+  "wireplumber": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟 {volume}%",
+    "format-icons": ["󰕿", "󰖀", "󰕾"],
+    "scroll-step": 5,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+
+  "tray": {
+    "spacing": 8
+  }
+}
