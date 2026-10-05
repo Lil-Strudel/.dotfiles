@@ -1,2 +1,3 @@
 [user]
 	email = 281754851+aaron-santo-rx@users.noreply.github.com
+	signingkey = ~/.ssh/id_signing_work.pub

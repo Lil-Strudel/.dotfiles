@@ -16,3 +16,5 @@
 	defaultBranch = main
 [push]
 	autoSetupRemote = true
+[url "git@github-work:rx-co/"]
+	insteadOf = git@github.com:rx-co/
