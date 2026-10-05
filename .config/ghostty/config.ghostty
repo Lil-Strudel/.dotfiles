@@ -1,0 +1,3 @@
+command = direct:tmux new -A -s main
+font-family = MonoLisa
+theme = Kanagawa Dragon
