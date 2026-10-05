@@ -119,7 +119,7 @@ I partition before installing anything, from an Ubuntu live USB with GParted. GP
 
 ### 2. Install Windows (if dual booting)
 
-See [Windows side](#windows-side-dual-boot) for my unattended install. The settings that matter for dual booting:
+My [answer file](#windows-side-dual-boot) installs Windows unattended and already handles these. If you install by hand, the settings that matter for dual booting are:
 
 - **Fast Startup and hibernation off.** Otherwise Windows leaves the NTFS drives half-mounted and the shared EFI partition can get corrupted.
 - **Hardware clock in UTC** so the time doesn't jump when you switch OSes:
@@ -631,52 +631,71 @@ Things that are about me or my hardware:
 
 ## Windows side (dual boot)
 
+Two files in [`.github/windows/`](/.github/windows) make the Windows install mostly hands-off:
+
+| File | What it does |
+|---|---|
+| [`autounattend.xml`](/.github/windows/autounattend.xml) | Answers Windows Setup for you: skips the Microsoft account, removes bloat, applies the dual-boot fixes |
+| [`winget.json`](/.github/windows/winget.json) | Every app I install, as a `winget import` list |
+
+The answer file has no passwords, no Wi-Fi details and no computer name in it. Setup asks for your local account and Wi-Fi, so anyone can use it as is.
+
 <details>
-<summary><b>How I install and set up Windows 11</b></summary>
+<summary><b>Using the answer file</b></summary>
 
 <br>
 
-**Unattended install.** I generate an `autounattend.xml` with [schneegans' generator](https://schneegans.de/windows/unattend-generator/) and let Ventoy inject it. In `ventoy.json`:
+1. **Optional: make your own copy.** Open [my settings, pre-filled in the generator][unattend-settings], change anything you like (language, keyboard, which apps to remove), and download it. The link at the top of the XML opens the same page.
+2. **Put it on a Ventoy USB** next to the Windows ISO and add this to `ventoy/ventoy.json`. When you boot the ISO, Ventoy asks whether to use the template:
+   ```json
+   "auto_install": [
+     { "image": "/OSimages/Win11_25H2_English_x64_v2.iso", "template": ["/ventoy/script/autounattend.xml"] }
+   ]
+   ```
+   No Ventoy? Copy `autounattend.xml` to the root of a normal Windows USB made with the Media Creation Tool.
+3. **Partition:** pick the Windows partition you made earlier, click *Format*, then *Next*. Everything else runs by itself until the account and Wi-Fi screens.
 
-```json
-"auto_install": [
-  { "image": "/OSimages/Win11_25H2_English_x64_v2.iso", "template": ["/ventoy/script/autounattend.xml"] }
-]
-```
+> [!NOTE]
+> If Windows has no driver for your Wi-Fi card, setup can't get online. My Netgear adapter only ships an installer, so I installed it on another PC, exported the driver to a USB stick, and loaded it at the network screen with *Install driver*. That dialog wants a **folder**, not a file. Ethernet avoids all of this.
 
-What I pick in the generator:
+</details>
 
-- Local account, no Microsoft account.
-- TPM, Secure Boot and RAM checks bypassed.
-- **Fast Startup off, hibernation off, `RealTimeIsUniversal=1`.** These are the dual-boot essentials.
-- **Explorer:** file extensions shown, opens to This PC, classic context menu.
-- **Taskbar:** left-aligned, no search box, no Task View, no widgets, no pins, *End Task* on right-click.
-- **Theme and input:** dark theme, Caps Lock and Scroll Lock disabled, mouse acceleration off, Sticky Keys off.
-- **Turned off:** Copilot, Recall, Bing in search, ads and suggestions, BitLocker auto-encryption, VBS/HVCI, Smart App Control, Edge's startup boost.
-- **Removed:** almost every preinstalled app, and OneDrive.
+<details>
+<summary><b>What the answer file sets</b></summary>
 
-Mistakes to avoid when generating it:
+<br>
 
-- **"Hide files: none"** also shows protected OS files. Pick "show hidden files" only.
-- **Desktop icons:** only tick the ones you want. If extras show up anyway, run `reg delete "HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\HideDesktopIcons\NewStartPanel" /f`, then restart Explorer.
-- **The Wi-Fi profile** won't connect if Windows has no driver for your card. My Netgear adapter only ships an installer, so I installed it on another PC, exported the driver to a USB stick, and loaded it in setup with *Install driver*. That dialog wants a **folder**, not a file.
-- **The file holds your passwords in plain text.** Don't commit it anywhere.
+- **Dual boot:** Fast Startup off, hibernation off, and the hardware clock in UTC (`RealTimeIsUniversal`), so Linux and Windows agree on the time and on the state of the disks.
+- **Install:** Windows 11 Pro with the public generic key. Activate it with your own licence afterwards. TPM, Secure Boot and RAM checks are bypassed. The account is local, created during setup.
+- **Explorer:** file extensions and hidden files shown (protected OS files stay hidden), opens to This PC, classic right-click menu.
+- **Taskbar and Start:** left-aligned, no search box, Task View or widgets, nothing pinned, *End Task* on right-click.
+- **Look and feel:** dark mode, no transparency, most animations off, mouse acceleration off, Sticky Keys off.
+- **Caps Lock and Scroll Lock are disabled.** My keyboard doesn't use Caps Lock. Untick this in the generator if yours does.
+- **Turned off:** Copilot, Recall, Bing in search, ads and suggestions, BitLocker auto-encryption, VBS/HVCI (better game performance), Smart App Control, Edge's startup boost and first-run screens, automatic reboots while signed in.
+- **Removed:** nearly every preinstalled app (Xbox, Teams, Outlook, Clipchamp, News, Weather and so on), OneDrive, Internet Explorer, WordPad, Media Player, PowerShell 2.
 
-**Partition:** choose the Windows partition you made earlier, click *Format*, then *Next*.
+</details>
 
-**After install:**
+<details>
+<summary><b>After the first boot</b></summary>
 
-- Run Windows Update and Store updates until there are none left.
-- Install apps:
-  ```powershell
-  winget install -e --accept-package-agreements --accept-source-agreements Valve.Steam Hibbiki.Chromium 7zip.7zip Spotify.Spotify Discord.Discord OO-Software.ShutUp10 EpicGames.EpicGamesLauncher BlenderFoundation.Blender RiotGames.Valorant.NA Microsoft.PowerToys
-  ```
-- PowerToys: only FancyZones on.
-- Disable every startup app.
-- Run O&O ShutUp10 from `%LOCALAPPDATA%\Microsoft\WinGet\Packages\`.
-- Use the High Performance power plan with sleep off.
-- Disable every sound device except the one you use.
-- Point game libraries at the second drive.
+<br>
+
+1. Run Windows Update and *Microsoft Store → Downloads → Update all* until nothing is left. Reboot, and repeat once.
+2. Install the apps:
+   ```powershell
+   winget import -i winget.json --accept-package-agreements --accept-source-agreements
+   ```
+   That's Steam, Epic, Valorant, Discord, Spotify, Chromium, Blender, 7-Zip, PowerToys and O&O ShutUp10.
+3. Rename the PC: *Settings → System → About → Rename this PC*.
+4. Then the manual bits:
+   - **PowerToys:** turn off everything except FancyZones.
+   - **Task Manager → Startup apps:** disable all of them.
+   - **O&O ShutUp10:** winget doesn't add a Start menu shortcut, so run it from `%LOCALAPPDATA%\Microsoft\WinGet\Packages\`, then apply the recommended settings.
+   - **Power:** High Performance plan, sleep off.
+   - **Sound:** disable every device you don't use, and set *Communications* to *Do nothing*.
+   - **Games:** point the Steam, Epic and Valorant libraries at the second drive.
+   - **Chromium:** set it up the same way as on Linux.
 
 </details>
 
@@ -685,3 +704,5 @@ Mistakes to avoid when generating it:
 <p align="center">
   Looking for the old i3 / AwesomeWM / Sway setup? It lives on the <a href="https://github.com/Lil-Strudel/.dotfiles/tree/legacy"><code>legacy</code></a> tag.
 </p>
+
+[unattend-settings]: https://schneegans.de/windows/unattend-generator/?LanguageMode=Unattended&UILanguage=en-US&Locale=en-US&Keyboard=00000409&GeoLocation=244&PEMode=Default&WindowsEditionMode=Generic&WindowsEdition=pro&ProcessorArchitecture=amd64&BypassRequirementsCheck=true&ComputerNameMode=Random&TimeZoneMode=Implicit&UserAccountMode=InteractiveLocal&PasswordExpirationMode=Unlimited&LockoutMode=Default&HideFiles=HiddenSystem&ShowFileExtensions=true&ClassicContextMenu=true&HideInfoTip=true&LaunchToThisPC=true&ShowEndTask=true&TaskbarSearch=Hide&TaskbarIconsMode=Empty&DisableWidgets=true&LeftTaskbar=true&HideTaskViewButton=true&DisableBingResults=true&StartTilesMode=Empty&StartPinsMode=Empty&DisableSac=true&DisableFastStartup=true&DisableSystemRestore=true&EnableLongPaths=true&HardenSystemDriveAcl=true&AllowPowerShellScripts=true&DisableLastAccess=true&PreventAutomaticReboot=true&DisableAppSuggestions=true&PreventDeviceEncryption=true&HideEdgeFre=true&DisableEdgeStartupBoost=true&DisablePointerPrecision=true&DeleteWindowsOld=true&DisableAutomaticRestartSignOn=true&DisableWpbt=true&PreventDeviceApps=true&EffectsMode=Custom&ThumbnailsOrIcon=true&ListviewAlphaSelect=true&DragFullWindows=true&FontSmoothing=true&DeleteEdgeDesktopIcon=true&DesktopIconsMode=Default&StartFoldersMode=Default&CoreIsolationMode=Disabled&WifiMode=Interactive&ExpressSettings=DisableAll&LockKeysMode=Configure&CapsLockInitial=Off&CapsLockBehavior=Ignore&NumLockInitial=On&NumLockBehavior=Toggle&ScrollLockInitial=Off&ScrollLockBehavior=Ignore&StickyKeysMode=Disabled&ColorMode=Custom&SystemColorTheme=Dark&AppsColorTheme=Dark&AccentColor=%230078d4&WallpaperMode=Default&LockScreenMode=Default&Remove3DViewer=true&RemoveBingSearch=true&RemoveCamera=true&RemoveClipchamp=true&RemoveClock=true&RemoveCopilot=true&RemoveCortana=true&RemoveDevHome=true&RemoveWindowsHello=true&RemoveFamily=true&RemoveFeedbackHub=true&RemoveGameAssist=true&RemoveGetHelp=true&RemoveHandwriting=true&RemoveInternetExplorer=true&RemoveMailCalendar=true&RemoveMaps=true&RemoveMathInputPanel=true&RemoveMixedReality=true&RemoveZuneVideo=true&RemoveNews=true&RemoveOffice365=true&RemoveOneDrive=true&RemoveOneNote=true&RemoveOneSync=true&RemoveOutlook=true&RemovePaint3D=true&RemovePeople=true&RemovePhotos=true&RemovePowerAutomate=true&RemovePowerShell2=true&RemovePowerShellISE=true&RemoveQuickAssist=true&RemoveRecall=true&RemoveRdpClient=true&RemoveSkype=true&RemoveSolitaire=true&RemoveSpeech=true&RemoveStepsRecorder=true&RemoveStickyNotes=true&RemoveTeams=true&RemoveGetStarted=true&RemoveToDo=true&RemoveVoiceRecorder=true&RemoveWallet=true&RemoveWeather=true&RemoveWindowsMediaPlayer=true&RemoveWordPad=true&RemoveXboxApps=true&RemoveYourPhone=true&SystemScript0=reg.exe+add+%22HKLM%5CSYSTEM%5CCurrentControlSet%5CControl%5CTimeZoneInformation%22+%2Fv+RealTimeIsUniversal+%2Ft+REG_DWORD+%2Fd+1+%2Ff%0D%0Apowercfg.exe+%2Fhibernate+off&SystemScriptType0=Cmd&AppLockerMode=Skip
