@@ -11,8 +11,7 @@ local dirs = { h = "left", j = "down", k = "up", l = "right" }
 bind(M .. " + Return",    hl.dsp.exec_cmd("ghostty"),                                 "Terminal")
 bind(M .. " + Space",     hl.dsp.exec_cmd("hyprlauncher"),                            "Launcher")
 bind(M .. " + b",         hl.dsp.exec_cmd("pkill -x -SIGUSR1 waybar"),                "Toggle bar")
-bind(M .. " + SHIFT + s", hl.dsp.exec_cmd('g=$(slurp) && grim -g "$g" - | wl-copy'), "Screenshot region")
-bind("Print",             hl.dsp.exec_cmd("grim - | wl-copy"),                        "Screenshot screen")
+bind("Print",             hl.dsp.exec_cmd('g=$(slurp) && grim -g "$g" - | wl-copy'), "Screenshot region")
 
 bind(M .. " + q", hl.dsp.window.close(), "Close window")
 bind(M .. " + f", hl.dsp.window.fullscreen(), "Toggle fullscreen")
