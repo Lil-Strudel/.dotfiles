@@ -8,4 +8,5 @@ packages = [
 [mise]
 packages = [
     { name = "node", options = { version = "lts" } },
+    { name = "pnpm", options = { version = "latest" } },
 ]
