@@ -65,6 +65,8 @@
     }
   },
   "enabledPlugins": {
-    "workmux-status@workmux": true
+    "workmux-status@workmux": true,
+    "slack@claude-plugins-official": true,
+    "atlassian@claude-plugins-official": true
   }
 }
