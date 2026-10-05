@@ -1,0 +1,16 @@
+[user]
+	name = Aaron Santo
+	email = 42657503+Lil-Strudel@users.noreply.github.com
+	signingkey = ~/.ssh/id_signing.pub
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = ~/.ssh/allowed_signers
+[commit]
+	gpgsign = true
+[includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"]
+	path = gitlab
+[init]
+	defaultBranch = main
+[push]
+	autoSetupRemote = true
