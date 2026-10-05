@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 510" width="1200" height="510" font-family="MonoLisa, 'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" role="img" aria-label="The stack, top to bottom: zsh, Neovim and Claude Code; tmux; Ghostty; Hyprland; metapac; Arch Linux. yadm tracks the config for all of it.">
+<rect width="1200" height="510" rx="16" fill="#181616"/>
+<text x="32" y="40" font-size="13" text-anchor="start" xml:space="preserve"><tspan fill="#7a8382" font-weight="bold">the stack</tspan><tspan fill="#625e5a">   top is what you touch, bottom is what boots</tspan></text>
+<rect x="32" y="64" width="952" height="58" rx="10" fill="#1d1c19" stroke="#282727"/>
+<rect x="32" y="64" width="4" height="58" rx="2" fill="#a292a3"/>
+<text x="54" y="98.0" font-size="14" text-anchor="start" xml:space="preserve"><tspan fill="#a292a3" font-weight="bold">zsh · nvim · claude</tspan></text>
+<rect x="260" y="79" width="56" height="28" rx="14" fill="#282727"/>
+<text x="288.2" y="98" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">plug</tspan></text>
+<rect x="324.4" y="79" width="134" height="28" rx="14" fill="#282727"/>
+<text x="391.29999999999995" y="98" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">native prompt</tspan></text>
+<rect x="466.2" y="79" width="82" height="28" rx="14" fill="#282727"/>
+<text x="507.29999999999995" y="98" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">vi mode</tspan></text>
+<rect x="556.4" y="79" width="91" height="28" rx="14" fill="#282727"/>
+<text x="601.8" y="98" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">vim.pack</tspan></text>
+<rect x="655.1999999999999" y="79" width="65" height="28" rx="14" fill="#282727"/>
+<text x="687.6999999999999" y="98" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">mason</tspan></text>
+<rect x="728.1999999999999" y="79" width="82" height="28" rx="14" fill="#282727"/>
+<text x="769.3" y="98" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">conform</tspan></text>
+<rect x="818.3999999999999" y="79" width="108" height="28" rx="14" fill="#282727"/>
+<text x="872.3999999999999" y="98" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">statusline</tspan></text>
+<rect x="32" y="134" width="952" height="58" rx="10" fill="#1d1c19" stroke="#282727"/>
+<rect x="32" y="134" width="4" height="58" rx="2" fill="#87a987"/>
+<text x="54" y="168.0" font-size="14" text-anchor="start" xml:space="preserve"><tspan fill="#87a987" font-weight="bold">tmux</tspan></text>
+<rect x="260" y="149" width="108" height="28" rx="14" fill="#282727"/>
+<text x="314.0" y="168" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">no plugins</tspan></text>
+<rect x="376.0" y="149" width="56" height="28" rx="14" fill="#282727"/>
+<text x="404.2" y="168" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">sesh</tspan></text>
+<rect x="440.4" y="149" width="82" height="28" rx="14" fill="#282727"/>
+<text x="481.5" y="168" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">workmux</tspan></text>
+<rect x="530.5999999999999" y="149" width="168" height="28" rx="14" fill="#282727"/>
+<text x="614.6999999999999" y="168" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">C-hjkl everywhere</tspan></text>
+<rect x="32" y="204" width="952" height="58" rx="10" fill="#1d1c19" stroke="#282727"/>
+<rect x="32" y="204" width="4" height="58" rx="2" fill="#b6927b"/>
+<text x="54" y="238.0" font-size="14" text-anchor="start" xml:space="preserve"><tspan fill="#b6927b" font-weight="bold">Ghostty</tspan></text>
+<rect x="260" y="219" width="151" height="28" rx="14" fill="#282727"/>
+<text x="335.5" y="238" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">Kanagawa Dragon</tspan></text>
+<rect x="419.0" y="219" width="91" height="28" rx="14" fill="#282727"/>
+<text x="464.4" y="238" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">MonoLisa</tspan></text>
+<rect x="517.8" y="219" width="142" height="28" rx="14" fill="#282727"/>
+<text x="589.0" y="238" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">tmux on launch</tspan></text>
+<rect x="32" y="274" width="952" height="58" rx="10" fill="#1d1c19" stroke="#282727"/>
+<rect x="32" y="274" width="4" height="58" rx="2" fill="#8ea4a2"/>
+<text x="54" y="308.0" font-size="14" text-anchor="start" xml:space="preserve"><tspan fill="#8ea4a2" font-weight="bold">Hyprland</tspan></text>
+<rect x="260" y="289" width="108" height="28" rx="14" fill="#282727"/>
+<text x="314.0" y="308" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">Lua config</tspan></text>
+<rect x="376.0" y="289" width="74" height="28" rx="14" fill="#282727"/>
+<text x="412.8" y="308" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">waybar</tspan></text>
+<rect x="457.6" y="289" width="56" height="28" rx="14" fill="#282727"/>
+<text x="485.8" y="308" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">mako</tspan></text>
+<rect x="522.0" y="289" width="56" height="28" rx="14" fill="#282727"/>
+<text x="550.2" y="308" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">awww</tspan></text>
+<rect x="586.4" y="289" width="125" height="28" rx="14" fill="#282727"/>
+<text x="649.0" y="308" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">hyprlauncher</tspan></text>
+<rect x="719.5999999999999" y="289" width="91" height="28" rx="14" fill="#282727"/>
+<text x="764.9999999999999" y="308" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">hypridle</tspan></text>
+<rect x="818.3999999999999" y="289" width="91" height="28" rx="14" fill="#282727"/>
+<text x="863.7999999999998" y="308" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">hyprlock</tspan></text>
+<rect x="32" y="344" width="952" height="58" rx="10" fill="#1d1c19" stroke="#282727"/>
+<rect x="32" y="344" width="4" height="58" rx="2" fill="#c4b28a"/>
+<text x="54" y="378.0" font-size="14" text-anchor="start" xml:space="preserve"><tspan fill="#c4b28a" font-weight="bold">metapac</tspan></text>
+<rect x="260" y="359" width="125" height="28" rx="14" fill="#282727"/>
+<text x="322.6" y="378" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">pacman + yay</tspan></text>
+<rect x="393.2" y="359" width="56" height="28" rx="14" fill="#282727"/>
+<text x="421.4" y="378" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">mise</tspan></text>
+<rect x="457.6" y="359" width="151" height="28" rx="14" fill="#282727"/>
+<text x="533.1" y="378" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">groups per tool</tspan></text>
+<rect x="616.6" y="359" width="151" height="28" rx="14" fill="#282727"/>
+<text x="692.1" y="378" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">hostname groups</tspan></text>
+<rect x="775.6" y="359" width="65" height="28" rx="14" fill="#282727"/>
+<text x="808.1" y="378" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">hooks</tspan></text>
+<rect x="32" y="414" width="952" height="58" rx="10" fill="#1d1c19" stroke="#282727"/>
+<rect x="32" y="414" width="4" height="58" rx="2" fill="#8ba4b0"/>
+<text x="54" y="448.0" font-size="14" text-anchor="start" xml:space="preserve"><tspan fill="#8ba4b0" font-weight="bold">Arch Linux</tspan></text>
+<rect x="260" y="429" width="56" height="28" rx="14" fill="#282727"/>
+<text x="288.2" y="448" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">LUKS</tspan></text>
+<rect x="324.4" y="429" width="177" height="28" rx="14" fill="#282727"/>
+<text x="412.79999999999995" y="448" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">systemd-boot + UKI</tspan></text>
+<rect x="509.19999999999993" y="429" width="185" height="28" rx="14" fill="#282727"/>
+<text x="601.9" y="448" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">Secure Boot (sbctl)</tspan></text>
+<rect x="702.5999999999999" y="429" width="48" height="28" rx="14" fill="#282727"/>
+<text x="726.4999999999999" y="448" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">ufw</tspan></text>
+<rect x="758.3999999999999" y="429" width="99" height="28" rx="14" fill="#282727"/>
+<text x="808.0999999999999" y="448" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">reflector</tspan></text>
+<rect x="1000" y="64" width="168" height="408" rx="10" fill="#1d1c19" stroke="#393836" stroke-dasharray="4 4"/>
+<text x="1084.0" y="104" font-size="16" text-anchor="middle" xml:space="preserve"><tspan fill="#c4746e" font-weight="bold">yadm</tspan></text>
+<text x="1084.0" y="142" font-size="12.5" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">tracks the config</tspan></text>
+<text x="1084.0" y="164" font-size="12.5" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">for every layer</tspan></text>
+<text x="1084.0" y="186" font-size="12.5" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c"></tspan></text>
+<text x="1084.0" y="208" font-size="12.5" text-anchor="middle" xml:space="preserve"><tspan fill="#c5c9c5">~/.config</tspan></text>
+<text x="1084.0" y="230" font-size="12.5" text-anchor="middle" xml:space="preserve"><tspan fill="#c5c9c5">~/.claude</tspan></text>
+<text x="1084.0" y="252" font-size="12.5" text-anchor="middle" xml:space="preserve"><tspan fill="#c5c9c5">~/.zshenv</tspan></text>
+<text x="1084.0" y="274" font-size="12.5" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c"></tspan></text>
+<text x="1084.0" y="296" font-size="12.5" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">yadm bootstrap</tspan></text>
+<text x="1084.0" y="318" font-size="12.5" text-anchor="middle" xml:space="preserve"><tspan fill="#a6a69c">installs the rest</tspan></text>
+</svg>

@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" width="1200" height="470" font-family="MonoLisa, 'JetBrains Mono', 'SF Mono', Menlo, Consolas, 'DejaVu Sans Mono', monospace" role="img" aria-label="A mock Hyprland desktop: waybar on top, a zsh terminal, Neovim in the centre and a tmux pane with workmux and Claude Code">
+<defs>
+<clipPath id="card"><rect width="1200" height="470" rx="16"/></clipPath>
+<radialGradient id="wall" cx="50%" cy="38%" r="75%"><stop offset="0" stop-color="#2a2421"/><stop offset=".55" stop-color="#1d1c19"/><stop offset="1" stop-color="#0d0c0c"/></radialGradient>
+</defs><g clip-path="url(#card)">
+<rect width="1200" height="470" fill="url(#wall)"/>
+<rect width="1200" height="30" fill="#181616" fill-opacity=".85"/>
+<text x="22" y="20" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#7a8382">1</tspan></text>
+<text x="48" y="20" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#c5c9c5">2</tspan></text>
+<rect x="39" y="28" width="18" height="2" fill="#c4b28a"/>
+<text x="74" y="20" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#7a8382">3</tspan></text>
+<text x="100" y="20" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#7a8382">4</tspan></text>
+<text x="600.0" y="20" font-size="13" text-anchor="middle" xml:space="preserve"><tspan fill="#c5c9c5">Sun 04 Oct  22:48</tspan></text>
+<text x="1180" y="20" font-size="13" text-anchor="end" xml:space="preserve"><tspan fill="#c5c9c5">♪ 65%</tspan></text>
+<circle cx="1118" cy="15.5" r="4" fill="#8ba4b0" fill-opacity=".8"/>
+<circle cx="1102" cy="15.5" r="4" fill="#87a987" fill-opacity=".8"/>
+<circle cx="1086" cy="15.5" r="4" fill="#a292a3" fill-opacity=".8"/>
+<rect x="12" y="42" width="290" height="416" rx="8" fill="#181616" stroke="#282727" stroke-width="1"/>
+<text x="28" y="72" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8ea4a2" font-weight="bold">~</tspan><tspan fill="#a292a3" font-weight="bold"> main</tspan><tspan fill="#87a987"> ❯ </tspan><tspan fill="#c5c9c5">yadm status -s</tspan></text>
+<text x="28" y="98" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8ea4a2" font-weight="bold">~</tspan><tspan fill="#a292a3" font-weight="bold"> main</tspan><tspan fill="#87a987"> ❯ </tspan><tspan fill="#c5c9c5">metapac unmanaged</tspan></text>
+<text x="28" y="117" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#87a987">INFO</tspan><tspan fill="#a6a69c"> no unmanaged packages</tspan></text>
+<text x="28" y="143" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8ea4a2" font-weight="bold">~</tspan><tspan fill="#a292a3" font-weight="bold"> main</tspan><tspan fill="#87a987"> ❯ </tspan><tspan fill="#c5c9c5">time zsh -i -c exit</tspan></text>
+<text x="28" y="162" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#a6a69c">0.039 total</tspan></text>
+<text x="28" y="188" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8ea4a2" font-weight="bold">~</tspan><tspan fill="#a292a3" font-weight="bold"> main</tspan><tspan fill="#87a987"> ❯ </tspan><tspan fill="#c5c9c5">git log -1 --format=%G?</tspan></text>
+<text x="28" y="207" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#87a987" font-weight="bold">G</tspan></text>
+<text x="28" y="233" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8ea4a2" font-weight="bold">~</tspan><tspan fill="#a292a3" font-weight="bold"> main</tspan><tspan fill="#87a987"> ❯ </tspan><tspan fill="#c5c9c5"></tspan><tspan fill="#c5c9c5">▋</tspan></text>
+<rect x="312" y="42" width="576" height="416" rx="8" fill="#181616" stroke="#7fb4ca" stroke-width="1.6"/>
+<text x="328" y="64" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8ba4b0" font-weight="bold">main</tspan><tspan fill="#625e5a">   </tspan><tspan fill="#c5c9c5" font-weight="bold">1 nvim</tspan><tspan fill="#625e5a">   2 zsh   3 claude</tspan></text>
+<text x="350" y="92" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">9</tspan></text>
+<text x="364" y="92" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8992a7">local</tspan><tspan fill="#c5c9c5"> M </tspan><tspan fill="#9e9b93">=</tspan><tspan fill="#8a9a7b"> &quot;SUPER&quot;</tspan></text>
+<text x="350" y="111" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">8</tspan></text>
+<text x="350" y="130" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">7</tspan></text>
+<text x="364" y="130" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8992a7">local function</tspan><tspan fill="#8ba4b0"> bind</tspan><tspan fill="#9e9b93">(keys, action, desc, opts)</tspan></text>
+<text x="350" y="149" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">6</tspan></text>
+<text x="364" y="149" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#c5c9c5">    opts </tspan><tspan fill="#9e9b93">=</tspan><tspan fill="#c5c9c5"> opts </tspan><tspan fill="#8992a7">or</tspan><tspan fill="#9e9b93"> {}</tspan></text>
+<text x="350" y="168" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">5</tspan></text>
+<text x="364" y="168" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#c5c9c5">    opts</tspan><tspan fill="#9e9b93">.</tspan><tspan fill="#c4b28a">description</tspan><tspan fill="#9e9b93"> = </tspan><tspan fill="#c5c9c5">desc</tspan></text>
+<text x="350" y="187" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">4</tspan></text>
+<text x="364" y="187" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#c5c9c5">    hl</tspan><tspan fill="#9e9b93">.</tspan><tspan fill="#8ba4b0">bind</tspan><tspan fill="#9e9b93">(keys, action, opts)</tspan></text>
+<text x="350" y="206" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">3</tspan></text>
+<text x="364" y="206" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8992a7">end</tspan></text>
+<text x="350" y="225" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">2</tspan></text>
+<text x="350" y="244" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">1</tspan></text>
+<text x="364" y="244" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8ba4b0">bind</tspan><tspan fill="#9e9b93">(M </tspan><tspan fill="#9e9b93">..</tspan><tspan fill="#8a9a7b"> &quot; + Return&quot;</tspan><tspan fill="#9e9b93">, hl.dsp.</tspan><tspan fill="#8ba4b0">exec_cmd</tspan><tspan fill="#8a9a7b">(&quot;ghostty&quot;)</tspan></text>
+<rect x="313" y="249" width="574" height="19" fill="#282727" fill-opacity=".7"/>
+<text x="350" y="263" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#c4b28a">10</tspan></text>
+<text x="364" y="263" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8ba4b0">bind</tspan><tspan fill="#9e9b93">(M </tspan><tspan fill="#9e9b93">..</tspan><tspan fill="#8a9a7b"> &quot; + Space&quot;</tspan><tspan fill="#9e9b93">,  hl.dsp.</tspan><tspan fill="#8ba4b0">exec_cmd</tspan><tspan fill="#8a9a7b">(&quot;hyprlauncher&quot;)</tspan></text>
+<text x="350" y="282" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">1</tspan></text>
+<text x="364" y="282" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8ba4b0">bind</tspan><tspan fill="#9e9b93">(M </tspan><tspan fill="#9e9b93">..</tspan><tspan fill="#8a9a7b"> &quot; + b&quot;</tspan><tspan fill="#9e9b93">,      hl.dsp.</tspan><tspan fill="#8ba4b0">exec_cmd</tspan><tspan fill="#8a9a7b">(&quot;pkill -x -SIGUSR1 waybar&quot;)</tspan></text>
+<text x="350" y="301" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">2</tspan></text>
+<text x="350" y="320" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">3</tspan></text>
+<text x="364" y="320" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8992a7">for</tspan><tspan fill="#c5c9c5"> key, dir </tspan><tspan fill="#8992a7">in</tspan><tspan fill="#8ba4b0"> pairs</tspan><tspan fill="#9e9b93">(dirs) </tspan><tspan fill="#8992a7">do</tspan></text>
+<text x="350" y="339" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">4</tspan></text>
+<text x="364" y="339" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8ba4b0">    bind</tspan><tspan fill="#9e9b93">(M .. </tspan><tspan fill="#8a9a7b">&quot; + &quot;</tspan><tspan fill="#9e9b93"> .. key, hl.dsp.</tspan><tspan fill="#8ba4b0">focus</tspan><tspan fill="#9e9b93">({ direction </tspan><tspan fill="#9e9b93">=</tspan><tspan fill="#9e9b93"> dir })</tspan></text>
+<text x="350" y="358" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#625e5a">5</tspan></text>
+<text x="364" y="358" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8992a7">end</tspan></text>
+<rect x="313" y="432" width="574" height="20" fill="#282727"/>
+<text x="328" y="446" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#c5c9c5">hypr/conf/binds.lua</tspan></text>
+<text x="872" y="446" font-size="12" text-anchor="end" xml:space="preserve"><tspan fill="#7a8382">10,1           Top</tspan></text>
+<rect x="898" y="42" width="290" height="416" rx="8" fill="#181616" stroke="#282727" stroke-width="1"/>
+<text x="914" y="68" font-size="11" text-anchor="start" xml:space="preserve"><tspan fill="#7a8382" font-weight="bold">WORKTREES</tspan></text>
+<text x="914" y="94" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#c4b28a">● </tspan><tspan fill="#c5c9c5">readme-rewrite</tspan></text>
+<text x="1172" y="94" font-size="11" text-anchor="end" xml:space="preserve"><tspan fill="#7a8382">working</tspan></text>
+<text x="914" y="116" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#8ba4b0">● </tspan><tspan fill="#a6a69c">waybar-height</tspan></text>
+<text x="1172" y="116" font-size="11" text-anchor="end" xml:space="preserve"><tspan fill="#7a8382">waiting</tspan></text>
+<text x="914" y="138" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#87a987">✓ </tspan><tspan fill="#a6a69c">dpms-watchdog</tspan></text>
+<text x="1172" y="138" font-size="11" text-anchor="end" xml:space="preserve"><tspan fill="#7a8382">done</tspan></text>
+<line x1="899" y1="174" x2="1187" y2="174" stroke="#393836" stroke-width="2"/>
+<text x="914" y="204" font-size="12" text-anchor="start" xml:space="preserve"><tspan fill="#b6927b" font-weight="bold">&gt; </tspan><tspan fill="#c5c9c5">rewrite the readme</tspan></text>
+<rect x="914" y="222" width="237" height="7" rx="3.5" fill="#393836"/>
+<rect x="914" y="239" width="201" height="7" rx="3.5" fill="#393836"/>
+<rect x="914" y="256" width="222" height="7" rx="3.5" fill="#393836"/>
+<rect x="914" y="273" width="103" height="7" rx="3.5" fill="#393836"/>
+<rect x="914" y="307" width="181" height="7" rx="3.5" fill="#393836"/>
+<rect x="914" y="324" width="214" height="7" rx="3.5" fill="#393836"/>
+<rect x="914" y="341" width="142" height="7" rx="3.5" fill="#393836"/>
+<line x1="899" y1="392" x2="1187" y2="392" stroke="#282727"/>
+<text x="914" y="410" font-size="11.5" text-anchor="start" xml:space="preserve"><tspan fill="#8ba4b0">Opus 5.5</tspan><tspan fill="#a292a3"> high</tspan><tspan fill="#625e5a">  │  </tspan><tspan fill="#8ea4a2">↑12.4k</tspan><tspan fill="#87a987"> ↓3.1k</tspan></text>
+<text x="914" y="430" font-size="11.5" text-anchor="start" xml:space="preserve"><tspan fill="#b6927b">5h </tspan><tspan fill="#8a9a7b">23%</tspan><tspan fill="#a6a69c"> 2h14m</tspan><tspan fill="#625e5a">  │  </tspan><tspan fill="#949fb5">7d </tspan><tspan fill="#8a9a7b">41%</tspan><tspan fill="#a6a69c"> Thu</tspan></text>
+</g></svg>
