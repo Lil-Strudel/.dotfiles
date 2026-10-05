@@ -1,0 +1,25 @@
+#!/bin/sh
+set -eu
+
+host=$(cat /proc/sys/kernel/hostname)
+if ! grep -q "^$host = \[" ~/.config/metapac/config.toml; then
+    echo "Add $host to [hostname_groups] in ~/.config/metapac/config.toml, then rerun yadm bootstrap" >&2
+    exit 1
+fi
+
+if ! command -v yay >/dev/null; then
+    dir=$(mktemp -d)
+    git clone --depth 1 https://aur.archlinux.org/yay-bin.git "$dir"
+    (cd "$dir" && makepkg -si --noconfirm)
+    rm -rf "$dir"
+fi
+
+command -v metapac >/dev/null || yay -S --needed --noconfirm metapac
+metapac sync
+
+[ "$(basename "$(getent passwd "$USER" | cut -d: -f7)")" = zsh ] || chsh -s /usr/bin/zsh
+
+if ! mise exec -- claude plugin list | grep -q workmux-status; then
+    mise exec -- claude plugin marketplace add raine/workmux
+    mise exec -- claude plugin install workmux-status
+fi
