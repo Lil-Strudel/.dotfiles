@@ -1,5 +1,4 @@
-
-typeset -U path
+typeset -gU path
 path=(~/.local/bin $path)
 
 ZSH_AUTOSUGGEST_MANUAL_REBIND=1
