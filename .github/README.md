@@ -486,7 +486,17 @@ To change languages, edit `plugin/mason.lua`, `plugin/lsp.lua`, `plugin/treesitt
 
 [`git/config`](/.config/git/config) signs every commit with the SSH signing key. Git can't tell which SSH key a push will use, so the identity follows the remote instead: an `includeIf "hasconfig:remote.*.url:git@gitlab.com:*/**"` switches to the GitLab noreply email for GitLab repos. A new repo with no remote uses the GitHub identity until you add one.
 
-The same trick handles a work account. Add an SSH host alias such as `github-work` with its own key, and an `includeIf` on `git@github-work:*/**` pointing at a file with the work name and email.
+A work account on the same host is an extension, and work URLs stay plain `git@github.com:` ones:
+
+- **`~/.ssh/config`** gets an alias for `github.com` that offers the work key:
+  ```
+  Host github-work
+      HostName github.com
+      IdentityFile ~/.ssh/id_github_work
+      IdentitiesOnly yes
+  ```
+- **[`git/config`](/.config/git/config)** sends the work org through that alias with `url "git@github-work:rx-co/"` and `insteadOf = git@github.com:rx-co/`. It lives in the main config because an `includeIf` isn't active yet during `git clone`.
+- **[`git/work`](/.config/git/work)**, included for `git@github.com:rx-co/**` remotes, switches to the work email and a work signing key, `id_signing_work`. List that key against the work email in `allowed_signers`.
 
 </details>
 
@@ -601,7 +611,7 @@ Things that are about me or my hardware:
 
 - [ ] `~/.config/metapac/config.toml`: your hostname and groups
 - [ ] `~/.config/hypr/hosts/strudel-linux.lua`: rename it to your hostname and set your monitor, or delete it
-- [ ] `~/.config/git/config` and `git/gitlab`: your name, emails and signing key path
+- [ ] `~/.config/git/config`, `git/gitlab` and `git/work`: your name, emails, signing key paths and work org
 - [ ] `~/.claude/CLAUDE.md`: your own instructions
 - [ ] `~/.claude/settings.json`: the `ask` and `deny` lists, and the model in `modelSettings`
 - [ ] `~/.config/ghostty/config.ghostty`: a font you own
