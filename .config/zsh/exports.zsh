@@ -1,0 +1,7 @@
+
+typeset -U path
+path=(~/.local/bin $path)
+
+ZSH_AUTOSUGGEST_MANUAL_REBIND=1
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=120
