@@ -1,0 +1,22 @@
+enabled_backends = ["arch", "mise"]
+hostname_groups_enabled = true
+
+[arch]
+package_manager = "yay"
+
+[hostname_groups]
+strudel-linux = [
+    "base",
+    "audio",
+    "amd",
+    "nvidia",
+    "desktop",
+    "fonts",
+    "git",
+    "zsh",
+    "tmux",
+    "nvim",
+    "languages",
+    "claude",
+    "apps",
+]

@@ -1,0 +1,8 @@
+[arch]
+packages = [
+    "neovim",
+    "ripgrep",
+    "fd",
+    "unzip",
+    "tree-sitter-cli",
+]

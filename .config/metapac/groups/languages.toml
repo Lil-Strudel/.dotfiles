@@ -1,0 +1,11 @@
+[arch]
+packages = [
+    "go",
+    { name = "rustup", hooks = { after_install = ["rustup", "default", "stable"] } },
+    "terraform",
+]
+
+[mise]
+packages = [
+    { name = "node", options = { version = "lts" } },
+]

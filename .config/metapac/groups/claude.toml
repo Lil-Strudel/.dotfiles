@@ -1,0 +1,9 @@
+[arch]
+packages = [
+    "jq",
+]
+
+[mise]
+packages = [
+    { name = "claude", options = { version = "latest" } },
+]

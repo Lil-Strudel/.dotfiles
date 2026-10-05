@@ -1,0 +1,7 @@
+[arch]
+packages = [
+    "noto-fonts",
+    "noto-fonts-cjk",
+    "noto-fonts-emoji",
+    "ttf-firacode-nerd",
+]

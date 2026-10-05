@@ -1,0 +1,6 @@
+[arch]
+packages = [
+    "zsh",
+    "fzf",
+    "zoxide",
+]

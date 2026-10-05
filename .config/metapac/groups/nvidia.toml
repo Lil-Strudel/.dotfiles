@@ -1,0 +1,4 @@
+[arch]
+packages = [
+    "nvidia-open",
+]

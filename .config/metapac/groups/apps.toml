@@ -1,0 +1,6 @@
+[arch]
+packages = [
+    "chromium",
+    "vesktop-bin",
+    "spotify-launcher",
+]

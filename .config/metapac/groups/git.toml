@@ -1,0 +1,6 @@
+[arch]
+packages = [
+    "git",
+    "openssh",
+    "github-cli",
+]

@@ -1,0 +1,21 @@
+[arch]
+packages = [
+    "base",
+    "base-devel",
+    "linux",
+    "linux-firmware",
+    "mkinitcpio",
+    "efibootmgr",
+    "sbctl",
+    "sudo",
+    "vim",
+    "less",
+    "networkmanager",
+    "wpa_supplicant",
+    { name = "ufw", hooks = { after_install = ["sudo", "sh", "-c", "systemctl enable --now ufw && ufw --force enable"] } },
+    { name = "reflector", hooks = { after_install = ["sudo", "systemctl", "enable", "reflector.timer"] } },
+    "yay-bin",
+    "metapac",
+    "mise",
+    "yadm",
+]

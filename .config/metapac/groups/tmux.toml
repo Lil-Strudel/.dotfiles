@@ -1,0 +1,10 @@
+[arch]
+packages = [
+    "tmux",
+    "sesh-bin",
+]
+
+[mise]
+packages = [
+    { name = "workmux", options = { version = "latest" } },
+]

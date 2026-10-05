@@ -1,0 +1,18 @@
+[arch]
+packages = [
+    "hyprland",
+    "hyprlauncher",
+    "hypridle",
+    "hyprlock",
+    "xdg-desktop-portal-hyprland",
+    "hyprpolkitagent",
+    "ghostty",
+    "waybar",
+    "mako",
+    "awww",
+    "wl-clipboard",
+    "grim",
+    "slurp",
+    "playerctl",
+    "brightnessctl",
+]
