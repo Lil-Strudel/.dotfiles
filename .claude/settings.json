@@ -1,0 +1,70 @@
+{
+  "editorMode": "vim",
+  "env": {
+    "DISABLE_AUTOUPDATER": "1"
+  },
+  "disableClaudeAiConnectors": true,
+  "autoMemoryEnabled": false,
+  "awaySummaryEnabled": false,
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.zsh"
+  },
+  "permissions": {
+    "defaultMode": "auto",
+    "ask": [
+      "Bash(git push *)",
+      "Bash(git -C * push *)",
+      "Bash(gh pr create *)",
+      "Bash(terraform apply *)",
+      "Bash(terraform * apply *)",
+      "Bash(terraform destroy *)",
+      "Bash(terraform * destroy *)",
+      "Bash(terraform import *)",
+      "Bash(terraform * import *)",
+      "Bash(terraform state *)",
+      "Bash(terraform * state *)",
+      "Bash(pulumi up *)",
+      "Bash(pulumi * up *)",
+      "Bash(pulumi destroy *)",
+      "Bash(pulumi * destroy *)",
+      "Bash(pulumi refresh *)",
+      "Bash(pulumi * refresh *)",
+      "Bash(pulumi import *)",
+      "Bash(pulumi * import *)",
+      "Bash(pulumi state *)",
+      "Bash(pulumi * state *)"
+    ],
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.aws/credentials)",
+      "Read(~/.config/gh/hosts.yml)",
+      "Read(~/.pulumi/credentials.json)",
+      "Read(~/.terraform.d/credentials.tfrc.json)",
+      "Read(~/.kube/config)",
+      "Read(~/.docker/config.json)",
+      "Read(~/.claude/.credentials.json)"
+    ]
+  },
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "extraKnownMarketplaces": {
+    "workmux": {
+      "source": {
+        "source": "github",
+        "repo": "raine/workmux"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "workmux-status@workmux": true
+  }
+}
