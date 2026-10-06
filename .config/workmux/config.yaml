@@ -4,4 +4,8 @@ status_format: false
 panes:
   - command: <agent>
     focus: true
-  - split: horizontal
+  - command: nvim
+    split: horizontal
+    percentage: 40
+  - split: vertical
+    percentage: 20
