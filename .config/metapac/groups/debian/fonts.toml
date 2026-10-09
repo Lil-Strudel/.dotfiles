@@ -1,0 +1,6 @@
+[apt]
+packages = [
+    "fonts-noto-core",
+    "fonts-noto-cjk",
+    "fonts-noto-color-emoji",
+]

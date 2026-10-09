@@ -1,22 +1,41 @@
-enabled_backends = ["arch", "mise"]
+enabled_backends = ["mise"]
 hostname_groups_enabled = true
 
 [arch]
 package_manager = "yay"
 
+[hostname_enabled_backends]
+strudel-linux = ["arch"]
+strudel-rx = ["apt", "flatpak", "cargo"]
+
 [hostname_groups]
 strudel-linux = [
-    "base",
-    "audio",
-    "amd",
-    "nvidia",
-    "desktop",
-    "fonts",
-    "git",
-    "zsh",
-    "tmux",
-    "nvim",
-    "languages",
-    "claude",
-    "apps",
+    "arch/base",
+    "arch/audio",
+    "arch/amd",
+    "arch/nvidia",
+    "arch/desktop",
+    "arch/fonts",
+    "arch/git",
+    "arch/zsh",
+    "arch/tmux",
+    "arch/nvim",
+    "arch/languages",
+    "arch/claude",
+    "arch/apps",
+]
+strudel-rx = [
+    "debian/base",
+    "debian/audio",
+    "debian/amd",
+    "debian/laptop",
+    "debian/desktop",
+    "debian/fonts",
+    "debian/git",
+    "debian/zsh",
+    "debian/tmux",
+    "debian/nvim",
+    "debian/languages",
+    "debian/claude",
+    "debian/apps",
 ]

@@ -1,0 +1,6 @@
+[apt]
+packages = [
+    "git",
+    "openssh-client",
+    "gh",
+]

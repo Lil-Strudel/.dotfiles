@@ -1,0 +1,10 @@
+[apt]
+packages = [
+    "pipewire",
+    "pipewire-alsa",
+    "pipewire-jack",
+    "pipewire-pulse",
+    "wireplumber",
+    "gstreamer1.0-pipewire",
+    "libpulse0",
+]

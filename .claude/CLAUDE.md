@@ -29,7 +29,7 @@ When building or changing configs, interview first, then build. For every settin
 
 # Packages
 
-Packages are declared in metapac groups at `~/.config/metapac/groups/*.toml`, one group per tool area. Arch (official or a clean AUR / `-bin` package with no build step) versus mise is case by case: mise is preferred for tools that need version management (node) or whose AUR package is poor (claude). metapac only accepts mise registry short names (`workmux`, not `github:raine/workmux`). zsh plugins are cloned by my own `plug` function in `~/.config/zsh/plug.zsh`, never installed as packages. `metapac sync` needs sudo, so ask me to run it.
+Packages are declared in metapac groups at `~/.config/metapac/groups/<distro>/*.toml` (`arch/` and `debian/`), one group per tool area. Arch (official or a clean AUR / `-bin` package with no build step) versus mise is case by case: mise is preferred for tools that need version management (node) or whose AUR package is poor (claude). metapac only accepts mise registry short names (`workmux`, not `github:raine/workmux`). zsh plugins are cloned by my own `plug` function in `~/.config/zsh/plug.zsh`, never installed as packages. `metapac sync` needs sudo, so ask me to run it.
 
 # Memory
 

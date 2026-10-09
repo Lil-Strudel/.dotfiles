@@ -1,0 +1,12 @@
+[apt]
+packages = [
+    "golang-go",
+    "rustup",
+]
+
+[mise]
+packages = [
+    { name = "node", options = { version = "lts" } },
+    { name = "pnpm", options = { version = "latest" } },
+    { name = "terraform", options = { version = "latest" } },
+]

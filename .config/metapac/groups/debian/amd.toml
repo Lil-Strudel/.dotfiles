@@ -1,0 +1,5 @@
+[apt]
+packages = [
+    "amd64-microcode",
+    "firmware-amd-graphics",
+]

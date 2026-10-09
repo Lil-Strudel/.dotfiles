@@ -1,0 +1,9 @@
+[apt]
+packages = [
+    "tmux",
+]
+
+[mise]
+packages = [
+    { name = "workmux", options = { version = "latest" } },
+]

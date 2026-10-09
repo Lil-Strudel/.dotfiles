@@ -1,0 +1,38 @@
+[apt]
+packages = [
+    "linux-image-amd64",
+    "firmware-linux",
+    "grub-efi-amd64",
+    "shim-signed",
+    "efibootmgr",
+    "cryptsetup-initramfs",
+    "lvm2",
+    "locales",
+    "build-essential",
+    "sudo",
+    "vim",
+    "less",
+    "curl",
+    "iproute2",
+    "network-manager",
+    "wpasupplicant",
+    { name = "ufw", hooks = { after_install = ["sudo", "sh", "-c", "systemctl enable --now ufw && ufw --force enable"] } },
+    "iputils-ping",
+    "traceroute",
+    "bind9-dnsutils",
+    "bind9-host",
+    "inetutils-telnet",
+    "netcat-traditional",
+    "usbutils",
+    "dmidecode",
+    "fdisk",
+    "lsof",
+    "extrepo",
+    "mise",
+    "yadm",
+]
+
+[cargo]
+packages = [
+    "metapac",
+]

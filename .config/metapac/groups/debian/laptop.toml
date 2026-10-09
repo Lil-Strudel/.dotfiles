@@ -1,0 +1,11 @@
+[apt]
+packages = [
+    "firmware-mediatek",
+    "firmware-realtek",
+    "firmware-sof-signed",
+    "iw",
+    "bluez",
+    "rfkill",
+    "power-profiles-daemon",
+    "powertop",
+]

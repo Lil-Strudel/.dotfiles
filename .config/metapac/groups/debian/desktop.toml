@@ -1,0 +1,21 @@
+[apt]
+packages = [
+    "hyprland",
+    "hyprlauncher",
+    "hypridle",
+    "hyprlock",
+    "xdg-desktop-portal-hyprland",
+    "hyprpolkitagent",
+    "ghostty",
+    "waybar",
+    "mako-notifier",
+    "wl-clipboard",
+    "grim",
+    "slurp",
+    "playerctl",
+    "brightnessctl",
+    "pkg-config",
+    "libwayland-dev",
+    "liblz4-dev",
+    "wayland-protocols",
+]

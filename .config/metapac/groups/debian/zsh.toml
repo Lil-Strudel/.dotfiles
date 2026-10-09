@@ -1,0 +1,6 @@
+[apt]
+packages = [
+    "zsh",
+    "fzf",
+    "zoxide",
+]

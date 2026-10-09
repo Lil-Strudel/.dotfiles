@@ -1,0 +1,13 @@
+[apt]
+packages = [
+    "ripgrep",
+    "fd-find",
+    "unzip",
+    "python3-venv",
+]
+
+[mise]
+packages = [
+    { name = "neovim", options = { version = "latest" } },
+    { name = "tree-sitter", options = { version = "latest" } },
+]

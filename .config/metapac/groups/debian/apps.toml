@@ -1,0 +1,14 @@
+[apt]
+packages = [
+    "chromium",
+    "flatpak",
+]
+
+[flatpak]
+repos = [
+    { name = "user:flathub", options = { url = "https://dl.flathub.org/repo/flathub.flatpakrepo" } },
+]
+packages = [
+    { name = "user:com.spotify.Client", options = { remote = "flathub" } },
+    { name = "user:com.slack.Slack", options = { remote = "flathub" } },
+]
