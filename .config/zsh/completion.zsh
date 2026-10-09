@@ -7,9 +7,12 @@ zstyle ':completion:*' list-colors ''
 _comp_options+=(globdots)
 
 () {
-  local dump=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump
+  local dump=${XDG_CACHE_HOME:-$HOME/.cache}/zsh/zcompdump dir
   [[ -d ${dump:h} ]] || mkdir -p ${dump:h}
-  [[ -n $dump(#qN.mh+24) || /usr/share/zsh/site-functions -nt $dump ]] && rm -f $dump
+  [[ -n $dump(#qN.mh+24) ]] && rm -f $dump
+  for dir in /usr/share/zsh/{site-functions,vendor-completions}; do
+    [[ $dir -nt $dump ]] && rm -f $dump
+  done
   compinit -C -d $dump
   [[ $dump.zwc -nt $dump ]] || zcompile $dump
 }
