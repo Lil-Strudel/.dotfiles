@@ -1,7 +1,3 @@
-# About me
-
-Software developer at home, DevOps engineer at work. I write a lot of infrastructure as code (Terraform, Pulumi) and build apps in many languages. My machine runs Arch Linux with Hyprland, Ghostty, tmux, zsh in vi mode and Neovim. Dotfiles are tracked with yadm.
-
 # Git
 
 - Write every commit message as a Conventional Commit.
@@ -18,7 +14,7 @@ Software developer at home, DevOps engineer at work. I write a lot of infrastruc
 I follow Rob Pike ("Notes on Programming in C", Comments) and Jeff Atwood ("Coding Without Comments").
 
 - Clear code with good names comes first. If code needs a comment to be understood, try rewriting it before commenting it.
-- Never write comments that restate what the code does. Comment only the non-obvious *why*: a constraint, a workaround, a surprising decision.
+- Never write comments that restate what the code does. Comment only the non-obvious _why_: a constraint, a workaround, a surprising decision.
 - Comments go stale and mislead; fewer, accurate comments beat many.
 - Never litter code with comments, section banners or commented-out code.
 - Config files (dotfiles, YAML, TOML, tmux, zsh, etc.) get no comments at all.
