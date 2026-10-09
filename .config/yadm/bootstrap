@@ -69,7 +69,8 @@ esac
 
 metapac sync
 
-if [ "$ID" = debian ]; then
+# Swif installs compliance packages metapac doesn't declare, and they must stay manual to survive autoremove.
+if [ "$ID" = debian ] && ! command -v swifteam >/dev/null; then
     mark_undeclared_auto
 fi
 

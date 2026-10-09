@@ -6,6 +6,7 @@ packages = [
     "hyprlock",
     "xdg-desktop-portal-hyprland",
     "hyprpolkitagent",
+    "hyprland-guiutils",
     "ghostty",
     "waybar",
     "mako-notifier",

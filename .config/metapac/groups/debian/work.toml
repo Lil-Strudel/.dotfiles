@@ -1,0 +1,4 @@
+[apt]
+packages = [
+    { name = "netbird", hooks = { before_install = ["sudo", "sh", "-c", '''curl -fsSL -o /etc/apt/keyrings/netbird.asc https://pkgs.netbird.io/debian/public.key && printf 'Types: deb\nURIs: https://pkgs.netbird.io/debian\nSuites: stable\nComponents: main\nSigned-By: /etc/apt/keyrings/netbird.asc\n' > /etc/apt/sources.list.d/netbird.sources && apt-get update'''] } },
+]

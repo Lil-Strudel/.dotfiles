@@ -9,4 +9,6 @@ packages = [
     { name = "node", options = { version = "lts" } },
     { name = "pnpm", options = { version = "latest" } },
     { name = "terraform", options = { version = "latest" } },
+    { name = "pulumi", options = { version = "latest" } },
+    { name = "aws-cli", options = { version = "latest" } },
 ]

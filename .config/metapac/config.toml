@@ -21,6 +21,7 @@ strudel-linux = [
     "arch/tmux",
     "arch/nvim",
     "arch/languages",
+    "arch/kubernetes",
     "arch/claude",
     "arch/apps",
 ]
@@ -36,6 +37,8 @@ strudel-rx = [
     "debian/tmux",
     "debian/nvim",
     "debian/languages",
+    "debian/kubernetes",
     "debian/claude",
     "debian/apps",
+    "debian/work",
 ]
