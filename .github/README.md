@@ -52,13 +52,16 @@ sudo pacman -S yadm
 yadm clone --no-bootstrap https://github.com/Lil-Strudel/.dotfiles.git
 ```
 
-Packages are picked per hostname, so add yours to the `[hostname_groups]` table in `~/.config/metapac/config.toml` and keep the groups you want (drop `nvidia` and `amd` if they don't match your hardware):
+Packages are picked per hostname, so add yours to both tables in `~/.config/metapac/config.toml` and keep the groups you want (add `arch/nvidia` and `arch/amd` only if they match your hardware):
 
 ```toml
+[hostname_enabled_backends]
+your-hostname = ["arch"]
+
 [hostname_groups]
 your-hostname = [
-    "base", "audio", "desktop", "fonts", "git",
-    "zsh", "tmux", "nvim", "languages", "claude", "apps",
+    "arch/base", "arch/audio", "arch/desktop", "arch/fonts", "arch/git",
+    "arch/zsh", "arch/tmux", "arch/nvim", "arch/languages", "arch/claude", "arch/apps",
 ]
 ```
 
@@ -82,6 +85,52 @@ yadm bootstrap
 5. Installs the workmux plugin for Claude Code.
 
 Some things it deliberately doesn't do because they're personal or touch the bootloader: SSH keys, fonts, Secure Boot and mirrors. They're covered below.
+
+</details>
+
+<details>
+<summary><b>On Debian instead?</b></summary>
+
+<br>
+
+My work laptop runs Debian 13 from the same dotfiles. Install Debian with no desktop environment, then:
+
+```sh
+sudo apt install yadm
+yadm clone --no-bootstrap https://github.com/Lil-Strudel/.dotfiles.git
+```
+
+Give your hostname the Debian backends and the `debian/` groups (add `debian/amd` and `debian/laptop` only if they match your hardware), then run `yadm bootstrap`:
+
+```toml
+[hostname_enabled_backends]
+your-hostname = ["apt", "flatpak", "cargo"]
+
+[hostname_groups]
+your-hostname = [
+    "debian/base", "debian/audio", "debian/desktop", "debian/fonts", "debian/git",
+    "debian/zsh", "debian/tmux", "debian/nvim", "debian/languages", "debian/claude", "debian/apps",
+]
+```
+
+The bootstrap handles what Debian makes harder than Arch:
+
+- **Hyprland comes from backports.** apt won't pick a backport over a stable version by itself, and Hyprland needs a newer `libxkbcommon` than stable has, so the script adds the backports source and pins that library to it. Go is pinned the same way.
+- **Ghostty and metapac aren't packaged.** Ghostty comes from [mkasberg/ghostty-ubuntu](https://github.com/mkasberg/ghostty-ubuntu)'s installer, and metapac is built with cargo. mise comes from its own apt repo through `extrepo`.
+- **Missing or too old in Debian:** Neovim, tree-sitter, Terraform, workmux and sesh come from mise, awww is built from source, the Nerd Font is downloaded, and Spotify and Slack are Flatpaks.
+- **The installer marks the whole base system as manually installed.** After the sync, every package no group declares is marked automatic, so `metapac unmanaged` stays useful. sesh is the one exception: metapac can't declare it, so it is always listed.
+
+Two things are left to do by hand, in this order:
+
+1. The installer leaves your network interface in `/etc/network/interfaces`, which hides it from NetworkManager. Hand it over:
+   ```sh
+   sudo ifdown <interface>
+   sudo sed -i '/<interface>/d' /etc/network/interfaces
+   sudo systemctl restart NetworkManager
+   ```
+2. Clear out the installer's leftovers, which include the old network tools, with `sudo apt autoremove`.
+
+Secure Boot needs no sbctl: Debian's bootloader is already signed, so it is only a switch in the BIOS.
 
 </details>
 
@@ -172,7 +221,7 @@ On NVIDIA, Hyprland won't start until the driver is installed. The `nvidia` grou
 | NVIDIA RTX 20-series or newer | `nvidia` (`nvidia-open`) |
 | AMD or Intel | nothing extra, mesa is pulled in by Hyprland |
 
-Do the same for CPU microcode: `amd` has `amd-ucode`. Create an `intel.toml` with `intel-ucode` on Intel.
+Do the same for CPU microcode: `amd` has `amd-ucode`. Create an `arch/intel.toml` with `intel-ucode` on Intel.
 
 ### 6. Secure Boot with sbctl
 
@@ -337,7 +386,7 @@ Don't want to pay? Ghostty falls back to its built-in JetBrains Mono automatical
 
 <br>
 
-[metapac](https://github.com/ripytide/metapac) installs everything listed in `~/.config/metapac/groups/*.toml` and reports anything installed that isn't listed. Run `metapac sync` to install, and `metapac unmanaged` to find stray packages.
+[metapac](https://github.com/ripytide/metapac) installs everything listed in `~/.config/metapac/groups/arch/*.toml` and reports anything installed that isn't listed. Run `metapac sync` to install, and `metapac unmanaged` to find stray packages. `groups/debian/` holds the same groups for my Debian laptop.
 
 | Group | What's in it |
 |---|---|
@@ -492,11 +541,11 @@ A work account on the same host is an extension, and work URLs stay plain `git@g
   ```
   Host github-work
       HostName github.com
-      IdentityFile ~/.ssh/id_github_work
+      IdentityFile ~/.ssh/id_github_rx
       IdentitiesOnly yes
   ```
-- **[`git/config`](/.config/git/config)** sends the work org through that alias with `url "git@github-work:rx-co/"` and `insteadOf = git@github.com:rx-co/`. It lives in the main config because an `includeIf` isn't active yet during `git clone`.
-- **[`git/work`](/.config/git/work)**, included for `git@github.com:rx-co/**` remotes, switches to the work email and a work signing key, `id_signing_work`. List that key against the work email in `allowed_signers`.
+- **[`git/config`](/.config/git/config)** sends each work org (`rx-co` and `rxco-archive`) through that alias with a `url "git@github-work:rx-co/"` section and `insteadOf = git@github.com:rx-co/`. They live in the main config because an `includeIf` isn't active yet during `git clone`.
+- **[`git/work`](/.config/git/work)**, included for remotes in either org, switches to the work email and a work signing key, `id_signing_rx`. List that key against the work email in `allowed_signers`.
 
 </details>
 
