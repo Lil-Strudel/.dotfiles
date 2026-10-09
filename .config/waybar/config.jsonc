@@ -9,6 +9,7 @@
     "systemd-failed-units",
     "network",
     "wireplumber",
+    "battery",
     "tray"
   ],
 
@@ -65,6 +66,16 @@
     "format-icons": ["󰕿", "󰖀", "󰕾"],
     "scroll-step": 5,
     "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+  },
+
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰁹"],
+    "states": {
+      "critical": 15
+    },
+    "tooltip-format": "{timeTo}"
   },
 
   "tray": {

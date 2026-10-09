@@ -65,6 +65,7 @@ tooltip label {
 #systemd-failed-units,
 #network,
 #wireplumber,
+#battery,
 #tray {
   padding: 0 10px;
 }
@@ -80,6 +81,7 @@ tooltip label {
 #privacy,
 #systemd-failed-units,
 #network.linked,
-#network.disconnected {
+#network.disconnected,
+#battery.critical:not(.charging) {
   color: @alert;
 }
