@@ -1,21 +1,97 @@
 #!/bin/sh
 set -eu
 
+# The first run is from bash, before zsh exists to read where cargo, rustup and the mise shims live.
+. ~/.zshenv
+
 host=$(cat /proc/sys/kernel/hostname)
 if ! grep -q "^$host = \[" ~/.config/metapac/config.toml; then
-    echo "Add $host to [hostname_groups] in ~/.config/metapac/config.toml, then rerun yadm bootstrap" >&2
+    echo "Add $host to ~/.config/metapac/config.toml, then rerun yadm bootstrap" >&2
     exit 1
 fi
 
-if ! command -v yay >/dev/null; then
+prepare_arch() {
+    if ! command -v yay >/dev/null; then
+        dir=$(mktemp -d)
+        git clone --depth 1 https://aur.archlinux.org/yay-bin.git "$dir"
+        (cd "$dir" && makepkg -si --noconfirm)
+        rm -rf "$dir"
+    fi
+
+    command -v metapac >/dev/null || yay -S --needed --noconfirm metapac
+}
+
+# apt only takes a backport over the stable version of a package when it is pinned.
+pin_backports() {
+    [ -e "/etc/apt/preferences.d/$1" ] && return
+    printf 'Package: %s\nPin: release n=%s-backports\nPin-Priority: 500\n' "$2" "$VERSION_CODENAME" |
+        sudo tee "/etc/apt/preferences.d/$1" >/dev/null
+}
+
+prepare_debian() {
+    sources=/etc/apt/sources.list.d
+
+    [ -e $sources/backports.list ] ||
+        echo "deb http://deb.debian.org/debian $VERSION_CODENAME-backports main" | sudo tee $sources/backports.list >/dev/null
+    pin_backports xkbcommon 'libxkbcommon* libxkbregistry*'
+    pin_backports golang 'golang-go golang-src'
+
+    sudo apt-get update
+    sudo apt-get install -y build-essential curl extrepo flatpak rustup
+    if [ ! -e $sources/extrepo_mise.sources ]; then
+        sudo extrepo enable mise
+        sudo apt-get update
+    fi
+    sudo apt-get install -y mise
+
+    if ! command -v ghostty >/dev/null; then
+        dir=$(mktemp -d)
+        curl -fsSL -o "$dir/install.sh" https://raw.githubusercontent.com/mkasberg/ghostty-ubuntu/HEAD/install.sh
+        bash "$dir/install.sh"
+        rm -rf "$dir"
+    fi
+
+    rustup toolchain list | grep -q default || rustup default stable
+    command -v metapac >/dev/null || cargo install metapac
+}
+
+# Debian's installer marks the whole base system as manually installed, which metapac reports as unmanaged.
+mark_undeclared_auto() {
+    metapac unmanaged | sed -n '/^apt = /,/^] }/s/^ *"\(.*\)",$/\1/p' | xargs -r sudo apt-mark auto
+}
+
+. /etc/os-release
+case $ID in
+    arch) prepare_arch ;;
+    debian) prepare_debian ;;
+    *) echo "No bootstrap for $ID" >&2; exit 1 ;;
+esac
+
+metapac sync
+
+if [ "$ID" = debian ]; then
+    mark_undeclared_auto
+fi
+
+# metapac's mise backend only accepts registry short names, and sesh has none.
+command -v sesh >/dev/null || mise use --global aqua:joshmedeski/sesh
+
+# awww-daemon only compiles as part of its whole workspace, which cargo install can't build.
+if ! command -v awww-daemon >/dev/null; then
     dir=$(mktemp -d)
-    git clone --depth 1 https://aur.archlinux.org/yay-bin.git "$dir"
-    (cd "$dir" && makepkg -si --noconfirm)
+    git clone --depth 1 https://codeberg.org/LGFae/awww "$dir"
+    (cd "$dir" && cargo build --release)
+    install -Dm755 -t "$CARGO_HOME/bin" "$dir/target/release/awww" "$dir/target/release/awww-daemon"
     rm -rf "$dir"
 fi
 
-command -v metapac >/dev/null || yay -S --needed --noconfirm metapac
-metapac sync
+if ! fc-list : family | grep -q 'FiraCode Nerd Font'; then
+    fonts=~/.local/share/fonts/FiraCodeNerdFont
+    mkdir -p "$fonts"
+    curl -fsSL https://github.com/ryanoasis/nerd-fonts/releases/latest/download/FiraCode.tar.xz |
+        tar -xJ -C "$fonts" --wildcards '*.ttf'
+    fc-cache -f
+fi
 
 [ "$(basename "$(getent passwd "$USER" | cut -d: -f7)")" = zsh ] || chsh -s /usr/bin/zsh
 
