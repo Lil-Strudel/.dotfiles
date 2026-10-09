@@ -12,9 +12,13 @@
 	path = gitlab
 [includeIf "hasconfig:remote.*.url:git@github.com:rx-co/**"]
 	path = work
+[includeIf "hasconfig:remote.*.url:git@github.com:rxco-archive/**"]
+	path = work
 [init]
 	defaultBranch = main
 [push]
 	autoSetupRemote = true
 [url "git@github-work:rx-co/"]
 	insteadOf = git@github.com:rx-co/
+[url "git@github-work:rxco-archive/"]
+	insteadOf = git@github.com:rxco-archive/
