@@ -1,0 +1,6 @@
+[arch]
+packages = [
+    { name = "docker", hooks = { after_install = ["sudo", "sh", "-c", "systemctl enable --now docker.socket && usermod -aG docker strudel"] } },
+    "docker-buildx",
+    "docker-compose",
+]
