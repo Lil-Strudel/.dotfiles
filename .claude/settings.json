@@ -1,21 +1,23 @@
 {
-  "editorMode": "vim",
   "env": {
     "DISABLE_AUTOUPDATER": "1"
   },
-  "disableClaudeAiConnectors": true,
-  "autoMemoryEnabled": false,
-  "awaySummaryEnabled": false,
   "attribution": {
     "commit": "",
     "pr": ""
   },
-  "statusLine": {
-    "type": "command",
-    "command": "~/.claude/statusline.zsh"
-  },
   "permissions": {
-    "defaultMode": "auto",
+    "deny": [
+      "Read(~/.ssh/**)",
+      "Read(~/.gnupg/**)",
+      "Read(~/.aws/credentials)",
+      "Read(~/.config/gh/hosts.yml)",
+      "Read(~/.pulumi/credentials.json)",
+      "Read(~/.terraform.d/credentials.tfrc.json)",
+      "Read(~/.kube/config)",
+      "Read(~/.docker/config.json)",
+      "Read(~/.claude/.credentials.json)"
+    ],
     "ask": [
       "Bash(git push *)",
       "Bash(git -C * push *)",
@@ -39,22 +41,15 @@
       "Bash(pulumi state *)",
       "Bash(pulumi * state *)"
     ],
-    "deny": [
-      "Read(~/.ssh/**)",
-      "Read(~/.gnupg/**)",
-      "Read(~/.aws/credentials)",
-      "Read(~/.config/gh/hosts.yml)",
-      "Read(~/.pulumi/credentials.json)",
-      "Read(~/.terraform.d/credentials.tfrc.json)",
-      "Read(~/.kube/config)",
-      "Read(~/.docker/config.json)",
-      "Read(~/.claude/.credentials.json)"
-    ]
+    "defaultMode": "auto"
   },
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "high"
-    }
+  "disableClaudeAiConnectors": true,
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.zsh"
+  },
+  "enabledPlugins": {
+    "workmux-status@workmux": true
   },
   "extraKnownMarketplaces": {
     "workmux": {
@@ -64,9 +59,12 @@
       }
     }
   },
-  "enabledPlugins": {
-    "workmux-status@workmux": true,
-    "slack@claude-plugins-official": true,
-    "atlassian@claude-plugins-official": true
-  }
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "high"
+    }
+  },
+  "awaySummaryEnabled": false,
+  "autoMemoryEnabled": false,
+  "editorMode": "vim"
 }
