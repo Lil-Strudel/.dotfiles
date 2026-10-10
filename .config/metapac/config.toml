@@ -22,6 +22,7 @@ strudel-linux = [
     "arch/nvim",
     "arch/languages",
     "arch/kubernetes",
+    "arch/network",
     "arch/claude",
     "arch/apps",
 ]
