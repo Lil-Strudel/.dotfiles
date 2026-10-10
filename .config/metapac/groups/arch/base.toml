@@ -10,6 +10,7 @@ packages = [
     "sudo",
     "vim",
     "less",
+    "7zip",
     "networkmanager",
     "wpa_supplicant",
     { name = "ufw", hooks = { after_install = ["sudo", "sh", "-c", "systemctl enable --now ufw && ufw --force enable"] } },
