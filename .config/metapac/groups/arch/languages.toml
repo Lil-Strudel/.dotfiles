@@ -1,6 +1,8 @@
 [arch]
 packages = [
     "go",
+    "air-bin",
+    "migrate-bin",
     { name = "rustup", hooks = { after_install = ["rustup", "default", "stable"] } },
     "terraform",
     "aws-cli-v2",
