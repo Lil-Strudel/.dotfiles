@@ -3,6 +3,7 @@ packages = [
     "go",
     { name = "rustup", hooks = { after_install = ["rustup", "default", "stable"] } },
     "terraform",
+    "aws-cli-v2",
 ]
 
 [mise]

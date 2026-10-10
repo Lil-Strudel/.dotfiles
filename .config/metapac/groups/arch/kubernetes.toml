@@ -2,4 +2,12 @@
 packages = [
     "kubectl",
     "k9s",
+    "talosctl",
+    "fluxcd",
+    "helm",
+    "velero",
+    "cilium-cli",
+    "sops",
+    "age",
+    "mdbook",
 ]
