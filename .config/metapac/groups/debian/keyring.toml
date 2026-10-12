@@ -1,0 +1,6 @@
+[apt]
+packages = [
+    "gnome-keyring",
+    { name = "libpam-gnome-keyring", hooks = { after_install = ["sudo", "sh", "-c", "grep -q pam_gnome_keyring /etc/pam.d/login || { echo 'auth optional pam_gnome_keyring.so'; echo 'session optional pam_gnome_keyring.so auto_start'; } >> /etc/pam.d/login"] } },
+    "libsecret-tools",
+]
