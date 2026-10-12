@@ -1,7 +1,6 @@
 require("conf.monitors")
 require("conf.autostart")
 require("conf.look")
-require("conf.layout")
 require("conf.input")
 require("conf.binds")
 require("conf.rules")

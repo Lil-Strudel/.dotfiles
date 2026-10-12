@@ -22,14 +22,6 @@ for key, dir in pairs(dirs) do
     bind(M .. " + SHIFT + " .. key,     hl.dsp.window.move({ direction = dir }), "Move window " .. dir)
 end
 
-bind(M .. " + c",             hl.dsp.layout("swapwithmaster"),   "Swap with master")
-bind(M .. " + comma",         hl.dsp.layout("mfact -0.05"),      "Master narrower")
-bind(M .. " + period",        hl.dsp.layout("mfact +0.05"),      "Master wider")
-bind(M .. " + bracketleft",   hl.dsp.layout("cycleprev"),        "Focus previous window")
-bind(M .. " + bracketright",  hl.dsp.layout("cyclenext"),        "Focus next window")
-bind(M .. " + CTRL + h",      hl.dsp.layout("orientationprev"),  "Previous master orientation")
-bind(M .. " + CTRL + l",      hl.dsp.layout("orientationnext"),  "Next master orientation")
-
 hl.bind(M .. " + mouse:272", hl.dsp.window.drag(),   { mouse = true, description = "Drag window" })
 hl.bind(M .. " + mouse:273", hl.dsp.window.resize(), { mouse = true, description = "Resize window" })
 
