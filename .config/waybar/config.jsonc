@@ -1,7 +1,7 @@
 {
   "reload_style_on_change": true,
 
-  "modules-left": ["ext/workspaces", "hyprland/submap"],
+  "modules-left": ["hyprland/workspaces", "hyprland/submap"],
   "modules-center": ["clock"],
   "modules-right": [
     "custom/dnd",
@@ -13,7 +13,7 @@
     "tray"
   ],
 
-  "ext/workspaces": {
+  "hyprland/workspaces": {
     "on-click": "activate"
   },
 
