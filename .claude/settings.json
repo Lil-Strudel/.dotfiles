@@ -39,7 +39,28 @@
       "Bash(pulumi import *)",
       "Bash(pulumi * import *)",
       "Bash(pulumi state *)",
-      "Bash(pulumi * state *)"
+      "Bash(pulumi * state *)",
+      "mcp__plugin_atlassian_atlassian__addGraphContext",
+      "mcp__plugin_atlassian_atlassian__addOrEditJiraIssueComment",
+      "mcp__plugin_atlassian_atlassian__createConfluenceContent",
+      "mcp__plugin_atlassian_atlassian__createJiraIssue",
+      "mcp__plugin_atlassian_atlassian__editJiraIssue",
+      "mcp__plugin_atlassian_atlassian__executeDestructive",
+      "mcp__plugin_atlassian_atlassian__executeWrite",
+      "mcp__plugin_atlassian_atlassian__transitionJiraIssue",
+      "mcp__plugin_atlassian_atlassian__updateConfluenceContent",
+      "mcp__plugin_slack_slack__slack_add_list_record",
+      "mcp__plugin_slack_slack__slack_add_reaction",
+      "mcp__plugin_slack_slack__slack_complete_file_upload",
+      "mcp__plugin_slack_slack__slack_create_canvas",
+      "mcp__plugin_slack_slack__slack_create_conversation",
+      "mcp__plugin_slack_slack__slack_create_list",
+      "mcp__plugin_slack_slack__slack_schedule_message",
+      "mcp__plugin_slack_slack__slack_send_message",
+      "mcp__plugin_slack_slack__slack_send_message_draft",
+      "mcp__plugin_slack_slack__slack_update_canvas",
+      "mcp__plugin_slack_slack__slack_update_list",
+      "mcp__plugin_slack_slack__slack_update_list_record"
     ],
     "defaultMode": "auto"
   },
@@ -49,7 +70,10 @@
     "command": "~/.claude/statusline.zsh"
   },
   "enabledPlugins": {
-    "workmux-status@workmux": true
+    "workmux-status@workmux": true,
+    "cc-plugin-you-should-know@builtin": true,
+    "atlassian@claude-plugins-official": true,
+    "slack@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "workmux": {
