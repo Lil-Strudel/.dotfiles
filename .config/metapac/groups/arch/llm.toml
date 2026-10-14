@@ -6,4 +6,5 @@ packages = [
 [mise]
 packages = [
     { name = "llama.cpp", options = { version = "latest" } },
+    { name = "pi", options = { version = "latest" } },
 ]
