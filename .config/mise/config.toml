@@ -3,4 +3,4 @@ claude = "latest"
 node = "lts"
 pnpm = "latest"
 workmux = "latest"
-"llama.cpp" = { version = "latest", asset_pattern = "llama-*-bin-ubuntu-cuda-13*-x64.tar.gz" }
+"llama.cpp" = { version = "latest", prerelease = true, version_prefix = "b", asset_pattern = "llama-*-bin-ubuntu-cuda-13*-x64.tar.gz" }
