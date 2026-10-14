@@ -26,6 +26,7 @@ strudel-linux = [
     "arch/docker",
     "arch/network",
     "arch/claude",
+    "arch/llm",
     "arch/apps",
 ]
 strudel-rx = [

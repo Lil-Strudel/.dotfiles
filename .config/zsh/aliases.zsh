@@ -32,3 +32,5 @@ alias grss='git restore --staged'
 alias gsta='git stash'
 alias gstp='git stash pop'
 alias glog='git log --oneline --graph --decorate'
+
+alias llm='llama-server -m ~/.local/share/llama.cpp/models/Huihui-Qwen3.6-35B-A3B-abliterated-Q4_K.gguf -ngl 99 --n-cpu-moe 26 -c 65536'

@@ -1,0 +1,6 @@
+[tools]
+claude = "latest"
+node = "lts"
+pnpm = "latest"
+workmux = "latest"
+"llama.cpp" = { version = "latest", asset_pattern = "llama-*-bin-ubuntu-cuda-13*-x64.tar.gz" }
