@@ -44,6 +44,7 @@ strudel-rx = [
     "debian/languages",
     "debian/kubernetes",
     "debian/claude",
+    "debian/llm",
     "debian/apps",
     "debian/work",
 ]
