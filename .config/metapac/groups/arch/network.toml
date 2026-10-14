@@ -1,4 +1,5 @@
 [arch]
 packages = [
     "winbox",
+    "ipmitool",
 ]
