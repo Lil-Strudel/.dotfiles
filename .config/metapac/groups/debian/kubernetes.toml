@@ -2,4 +2,5 @@
 packages = [
     { name = "kubectl", options = { version = "latest" } },
     { name = "k9s", options = { version = "latest" } },
+    { name = "helm", options = { version = "latest" } },
 ]
