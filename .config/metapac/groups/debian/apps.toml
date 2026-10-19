@@ -2,6 +2,7 @@
 packages = [
     "chromium",
     "flatpak",
+    { name = "signal-desktop", hooks = { before_install = ["sudo", "sh", "-c", '''curl -fsSL -o /etc/apt/keyrings/signal.asc https://updates.signal.org/desktop/apt/keys.asc && printf 'Types: deb\nURIs: https://updates.signal.org/desktop/apt\nSuites: xenial\nComponents: main\nArchitectures: amd64\nSigned-By: /etc/apt/keyrings/signal.asc\n' > /etc/apt/sources.list.d/signal.sources && apt-get update'''] } },
 ]
 
 [flatpak]
