@@ -24,6 +24,7 @@ strudel-linux = [
     "arch/languages",
     "arch/kubernetes",
     "arch/docker",
+    "arch/database",
     "arch/network",
     "arch/claude",
     "arch/llm",
