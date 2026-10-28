@@ -2,3 +2,8 @@
 packages = [
     "postgresql-client",
 ]
+
+[mise]
+packages = [
+    { name = "flyway", options = { version = "latest" } },
+]
