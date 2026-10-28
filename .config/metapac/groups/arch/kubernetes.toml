@@ -10,4 +10,5 @@ packages = [
     "sops",
     "age",
     "mdbook",
+    "go-yq",
 ]
