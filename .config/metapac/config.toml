@@ -29,6 +29,7 @@ strudel-linux = [
     "arch/claude",
     "arch/llm",
     "arch/apps",
+    "arch/devices",
 ]
 strudel-rx = [
     "debian/base",
