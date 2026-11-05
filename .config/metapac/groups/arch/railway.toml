@@ -1,0 +1,4 @@
+[mise]
+packages = [
+    { name = "railway", options = { version = "latest" } },
+]
