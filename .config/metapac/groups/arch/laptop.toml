@@ -1,0 +1,7 @@
+[arch]
+packages = [
+    "bluez",
+    "bluez-utils",
+    "power-profiles-daemon",
+    "sof-firmware",
+]

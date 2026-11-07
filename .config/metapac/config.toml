@@ -6,6 +6,7 @@ package_manager = "yay"
 
 [hostname_enabled_backends]
 strudel-linux = ["arch"]
+strudel-framework = ["arch"]
 strudel-rx = ["apt", "flatpak", "cargo"]
 
 [hostname_groups]
@@ -13,7 +14,31 @@ strudel-linux = [
     "arch/base",
     "arch/audio",
     "arch/amd",
+    "arch/laptop",
     "arch/nvidia",
+    "arch/desktop",
+    "arch/keyring",
+    "arch/fonts",
+    "arch/git",
+    "arch/zsh",
+    "arch/tmux",
+    "arch/nvim",
+    "arch/languages",
+    "arch/kubernetes",
+    "arch/docker",
+    "arch/database",
+    "arch/network",
+    "arch/claude",
+    "arch/llm",
+    "arch/apps",
+    "arch/devices",
+    "arch/railway",
+]
+strudel-framework = [
+    "arch/base",
+    "arch/audio",
+    "arch/amd",
+    "arch/laptop",
     "arch/desktop",
     "arch/keyring",
     "arch/fonts",
