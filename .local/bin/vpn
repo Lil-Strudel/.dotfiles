@@ -1,0 +1,174 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+prog="${0##*/}"
+icon=$'\U000f0582'
+
+usage() {
+  cat <<EOF
+usage: $prog [command]
+
+  status            show the active tunnel (default)
+  list              list tunnels, marking the active one
+  use [name|none]   switch tunnel; pick with fzf when no name is given
+  off               disconnect
+  import <file>     add a wg-quick config as a tunnel (wg-home.conf -> home)
+  remove <name>     delete a tunnel and its keys
+  menu              pick a tunnel with hyprlauncher (for the bar)
+  waybar            print the bar module's JSON
+
+Tunnels are NetworkManager WireGuard connections with autoconnect off.
+Names may be abbreviated to any unique prefix.
+EOF
+}
+
+die() { echo "$prog: $*" >&2; exit 1; }
+
+connections() { nmcli -t -f NAME,TYPE connection show "$@" | awk -F: '$2 == "wireguard" { print $1 }'; }
+active() { connections --active; }
+current() { active | awk 'NR == 1'; }
+short() { echo "${1#wg-}"; }
+choices() { echo none; connections | while read -r c; do short "$c"; done; }
+refresh_bar() { pkill -x -RTMIN+9 waybar 2>/dev/null || true; }
+
+address() {
+  local addr
+  addr="$(nmcli -g ipv4.addresses connection show "$1")"
+  echo "${addr%%,*}"
+}
+
+traffic() {
+  local dev rx tx
+  dev="$(nmcli -g GENERAL.DEVICES connection show "$1")"
+  rx="$(numfmt --to=iec --suffix=B <"/sys/class/net/$dev/statistics/rx_bytes")"
+  tx="$(numfmt --to=iec --suffix=B <"/sys/class/net/$dev/statistics/tx_bytes")"
+  echo "$rx in, $tx out"
+}
+
+resolve() {
+  local want="$1" conn matches=()
+  while read -r conn; do
+    [ "$conn" = "$want" ] || [ "$conn" = "wg-$want" ] && { echo "$conn"; return; }
+    case "$(short "$conn")" in "$want"*) matches+=("$conn") ;; esac
+  done < <(connections)
+  case "${#matches[@]}" in
+    1) echo "${matches[0]}" ;;
+    0) die "no tunnel '$want' (try: $prog list)" ;;
+    *) die "'$want' is ambiguous: $(for m in "${matches[@]}"; do short "$m"; done | paste -sd' ')" ;;
+  esac
+}
+
+list() {
+  local conn current
+  current="$(current)"
+  while read -r conn; do
+    if [ "$conn" = "$current" ]; then echo "* $(short "$conn")"; else echo "  $(short "$conn")"; fi
+  done < <(connections)
+}
+
+status() {
+  local conn addr gateway
+  conn="$(current)"
+  if [ -z "$conn" ]; then echo "vpn: none"; return; fi
+
+  addr="$(address "$conn")"
+  gateway="$(nmcli -g ipv4.dns connection show "$conn")"
+  gateway="${gateway%%,*}"
+  [ -n "$gateway" ] || gateway="${addr%.*}.1"
+
+  echo "vpn:      $(short "$conn")"
+  echo "address:  $addr"
+  echo "traffic:  $(traffic "$conn")"
+  if ping -c1 -W2 "$gateway" >/dev/null 2>&1; then
+    echo "gateway:  $gateway reachable"
+  else
+    echo "gateway:  $gateway unreachable (no handshake?)"
+    return 1
+  fi
+}
+
+off() {
+  local conn
+  while read -r conn; do nmcli connection down "$conn" >/dev/null; done < <(active)
+  refresh_bar
+  echo "vpn: none"
+}
+
+pick() {
+  command -v fzf >/dev/null || die "fzf is needed to pick; name a tunnel instead"
+  choices | fzf --prompt="vpn> " --height=~10 --reverse --header="current: $(short "$(current)" | sed 's/^$/none/')" || true
+}
+
+use() {
+  local target="${1:-}" conn other
+  [ -n "$target" ] || target="$(pick)"
+  [ -n "$target" ] || return 0
+  [ "$target" = none ] && { off; return; }
+
+  conn="$(resolve "$target")"
+  while read -r other; do
+    [ "$other" = "$conn" ] || nmcli connection down "$other" >/dev/null
+  done < <(active)
+  nmcli connection up "$conn" >/dev/null
+  refresh_bar
+  status
+}
+
+menu() {
+  local choice
+  choice="$(choices | hyprlauncher -m)" || true
+  [ -z "$choice" ] || use "$choice" >/dev/null
+}
+
+waybar_json() {
+  local conn tooltip
+  if [ -z "$(connections)" ]; then echo '{"text": ""}'; return; fi
+
+  conn="$(current)"
+  if [ -z "$conn" ]; then
+    jq -cn --arg text "$icon off" '{text: $text, tooltip: "no vpn", class: "off"}'
+    return
+  fi
+  tooltip="$(address "$conn")"$'\n'"$(traffic "$conn")"
+  jq -cn --arg text "$icon $(short "$conn")" --arg tooltip "$tooltip" '{text: $text, tooltip: $tooltip, class: "on"}'
+}
+
+full_tunnel() { grep -Eqi '^[[:space:]]*AllowedIPs[[:space:]]*=.*(0\.0\.0\.0/0|::0?/0)' "$1"; }
+
+import_conf() {
+  local file="${1:-}" name existing
+  [ -f "$file" ] || die "usage: $prog import <file.conf>"
+  name="$(basename "$file" .conf)"
+  existing="$(connections)"
+  grep -qxF "$name" <<<"$existing" && die "tunnel '$(short "$name")' exists; '$prog remove $(short "$name")' first"
+  nmcli connection import type wireguard file "$file" >/dev/null
+  nmcli connection modify "$name" connection.autoconnect no
+  if full_tunnel "$file"; then
+    # Without systemd-resolved, NM keeps the LAN resolver as a fallback, so lookups leak past the tunnel.
+    nmcli connection modify "$name" ipv4.dns-priority -50 ipv6.dns-priority -50
+  fi
+  nmcli connection down "$name" >/dev/null 2>&1 || true # import activates it immediately
+  echo "imported $(short "$name")"
+}
+
+remove() {
+  local conn
+  [ -n "${1:-}" ] || die "usage: $prog remove <name>"
+  conn="$(resolve "$1")"
+  nmcli connection delete "$conn" >/dev/null
+  refresh_bar
+  echo "removed $(short "$conn")"
+}
+
+case "${1:-status}" in
+  status) status ;;
+  list | ls) list ;;
+  use) use "${2:-}" ;;
+  off | down | none) off ;;
+  import) import_conf "${2:-}" ;;
+  remove | rm) remove "${2:-}" ;;
+  menu) menu ;;
+  waybar) waybar_json ;;
+  -h | --help | help) usage ;;
+  *) usage >&2; exit 1 ;;
+esac

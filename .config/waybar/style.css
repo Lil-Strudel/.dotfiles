@@ -64,6 +64,8 @@ tooltip label {
 #privacy,
 #systemd-failed-units,
 #network,
+#custom-vpn,
+#custom-netbird,
 #wireplumber,
 #battery,
 #tray {
@@ -74,7 +76,9 @@ tooltip label {
   color: @accent;
 }
 
-#wireplumber.muted {
+#wireplumber.muted,
+#custom-vpn.off,
+#custom-netbird.off {
   color: @dim;
 }
 
@@ -82,6 +86,7 @@ tooltip label {
 #systemd-failed-units,
 #network.linked,
 #network.disconnected,
+#custom-netbird.expired,
 #battery.critical:not(.charging) {
   color: @alert;
 }

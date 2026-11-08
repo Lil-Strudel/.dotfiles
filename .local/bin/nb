@@ -1,0 +1,246 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+icon=$'\U000f0582'
+
+usage() {
+  cat <<'EOF'
+usage: nb [command]
+
+  status       connection, exit node and session expiry (default)
+  up           connect, logging in again first if the session expired
+  down         disconnect
+  toggle       down when connected, otherwise up
+  login        SSO login
+  exit         pick an exit node with fzf (lists them when not on a terminal)
+  exit <name>  use the exit node whose name is or contains <name>, e.g. ubb
+  exit none    use no exit node
+  menu         pick an exit node with hyprlauncher (for the bar)
+  waybar       print the bar module's JSON
+EOF
+}
+
+refresh_bar() { pkill -x -RTMIN+10 waybar 2>/dev/null || true; }
+
+daemon_status() {
+  netbird status --json | jq -r .daemonStatus
+}
+
+session_expires_at() {
+  netbird status --json | jq -r '.sessionExpiresAt // empty'
+}
+
+is_expired() {
+  local state=$1 expires=$2
+  case $state in
+    NeedsLogin | SessionExpired | LoginFailed) return 0 ;;
+  esac
+  [[ -n $expires ]] && (($(date -d "$expires" +%s) <= $(date +%s)))
+}
+
+session_expired() {
+  is_expired "$(daemon_status)" "$(session_expires_at)"
+}
+
+require_connected() {
+  if [[ $(daemon_status) != Connected ]]; then
+    echo "not connected, run: nb up" >&2
+    exit 1
+  fi
+}
+
+# netbird logout is deregister: it drops this peer from management, so it is
+# only the fallback when a plain login does not bring the session back.
+relogin() {
+  if netbird login && netbird up && [[ $(daemon_status) == Connected ]]; then
+    return
+  fi
+  echo "login did not restore the session, deregistering and logging in fresh" >&2
+  netbird deregister
+  netbird login
+  netbird up
+}
+
+networks_list() {
+  local attempts=${1:-20} list attempt
+  for ((attempt = 1; attempt <= attempts; attempt++)); do
+    list=$(netbird networks list)
+    [[ $list == *"ID: "* ]] && break
+    if ((attempt < attempts)); then sleep 0.5; fi
+  done
+  printf '%s\n' "$list"
+}
+
+exit_nodes() {
+  networks_list "$@" | awk '
+    /^ *- ID: /  { id = substr($0, index($0, "ID: ") + 4) }
+    /^ *Network: / { net = $2 }
+    /^ *Status: / && net == "0.0.0.0/0" { print ($2 == "Selected" ? "* " : "  ") id }
+  '
+}
+
+selected_exit() {
+  exit_nodes "$@" | sed -n 's/^\* //p' | paste -sd, -
+}
+
+remaining() {
+  local secs=$(($(date -d "$1" +%s) - $(date +%s)))
+  if ((secs <= 0)); then
+    echo expired
+  elif ((secs >= 86400)); then
+    echo "in $((secs / 86400))d $((secs % 86400 / 3600))h"
+  else
+    echo "in $((secs / 3600))h $((secs % 3600 / 60))m"
+  fi
+}
+
+session_line() {
+  [[ -n $1 ]] && echo "session: expires $(date -d "$1" '+%a %b %-d %H:%M') ($(remaining "$1"))"
+}
+
+cmd_status() {
+  local state expires selected
+  state=$(daemon_status)
+  echo "status: $state"
+  if [[ $state == Connected ]]; then
+    echo "ip: $(netbird status --json | jq -r .netbirdIp)"
+    selected=$(selected_exit)
+    echo "exit: ${selected:-none}"
+  fi
+  expires=$(session_expires_at)
+  session_line "$expires" || true
+  if is_expired "$state" "$expires"; then
+    echo "session expired, run: nb up" >&2
+  fi
+}
+
+cmd_up() {
+  if session_expired; then
+    echo "session expired, logging in again" >&2
+    relogin
+  else
+    netbird up
+  fi
+  refresh_bar
+}
+
+cmd_down() {
+  netbird down
+  refresh_bar
+}
+
+cmd_toggle() {
+  if [[ $(daemon_status) == Connected ]]; then cmd_down; else cmd_up; fi
+}
+
+pick_exit() {
+  local picker=$1 lines=$2 current choice
+  current=$(sed -n 's/^\* //p' <<<"$lines" | paste -sd, -)
+  case $picker in
+    fzf)
+      command -v fzf >/dev/null || { echo "fzf is needed to pick; name an exit node instead" >&2; exit 1; }
+      choice=$(printf '%s\n  none\n' "$lines" |
+        fzf --prompt='exit> ' --height=~10 --reverse --header="current: ${current:-none}") || true
+      ;;
+    hyprlauncher)
+      choice=$(printf '%s\n  none\n' "$lines" | hyprlauncher -m) || true
+      ;;
+  esac
+  sed -E 's/^[* ] //' <<<"$choice"
+}
+
+cmd_exit() {
+  local want=${1:-} picker=${2:-fzf} line id
+  local -a lines=() ids=() selected=() matches=()
+
+  require_connected
+  while IFS= read -r line; do
+    lines+=("$line")
+    id=${line:2}
+    ids+=("$id")
+    if [[ $line == '* '* ]]; then selected+=("$id"); fi
+  done < <(exit_nodes)
+
+  if ((${#ids[@]} == 0)); then
+    echo "no exit nodes available" >&2
+    exit 1
+  fi
+
+  if [[ -z $want ]]; then
+    if [[ $picker == fzf && ! ( -t 0 && -t 1 ) ]]; then
+      printf '%s\n' "${lines[@]}"
+      return
+    fi
+    want=$(pick_exit "$picker" "$(printf '%s\n' "${lines[@]}")")
+    [[ -n $want ]] || return 0
+  fi
+
+  if [[ $want != none ]]; then
+    for id in "${ids[@]}"; do
+      if [[ ${id,,} == "${want,,}" ]]; then
+        matches=("$id")
+        break
+      fi
+      if [[ ${id,,} == *"${want,,}"* ]]; then matches+=("$id"); fi
+    done
+    if ((${#matches[@]} != 1)); then
+      echo "'$want' must match exactly one exit node:" >&2
+      printf '  %s\n' "${ids[@]}" >&2
+      exit 1
+    fi
+  fi
+
+  for id in "${selected[@]}"; do
+    [[ $want != none && $id == "${matches[0]}" ]] && continue
+    netbird networks deselect "$id" >/dev/null
+  done
+  if [[ $want == none ]]; then
+    refresh_bar
+    echo "exit node: none"
+    return
+  fi
+  netbird networks select --append "${matches[0]}" >/dev/null
+  refresh_bar
+  echo "exit node: ${matches[0]}"
+}
+
+cmd_waybar() {
+  local json state expires exit_node text tooltip class
+  json=$(netbird status --json 2>/dev/null) || json='{}'
+  state=$(jq -r '.daemonStatus // "unavailable"' <<<"$json")
+  expires=$(jq -r '.sessionExpiresAt // empty' <<<"$json")
+
+  if is_expired "$state" "$expires"; then
+    text="$icon netbird"
+    tooltip="session expired, click to log in"
+    class=expired
+  elif [[ $state == Connected ]]; then
+    exit_node=$(selected_exit 1 2>/dev/null) || exit_node=
+    text="$icon netbird${exit_node:+ via $exit_node}"
+    tooltip="ip: $(jq -r .netbirdIp <<<"$json")"$'\n'"exit: ${exit_node:-none}"
+    if [[ -n $expires ]]; then tooltip+=$'\n'"$(session_line "$expires")"; fi
+    class=connected
+  else
+    text="$icon netbird"
+    tooltip="netbird: $state"
+    class=off
+  fi
+  jq -cn --arg text "$text" --arg tooltip "$tooltip" --arg class "$class" \
+    '{text: $text, tooltip: $tooltip, class: $class}'
+}
+
+case ${1:-status} in
+  status) cmd_status ;;
+  up) cmd_up ;;
+  down) cmd_down ;;
+  toggle) cmd_toggle ;;
+  login) netbird login ;;
+  exit) cmd_exit "${2:-}" ;;
+  menu) cmd_exit "" hyprlauncher ;;
+  waybar) cmd_waybar ;;
+  -h | --help | help) usage ;;
+  *)
+    usage >&2
+    exit 1
+    ;;
+esac

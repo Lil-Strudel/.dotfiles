@@ -8,6 +8,8 @@
     "privacy",
     "systemd-failed-units",
     "network",
+    "custom/vpn",
+    "custom/netbird",
     "wireplumber",
     "battery",
     "tray"
@@ -53,11 +55,35 @@
   },
 
   "network": {
-    "format": "",
-    "format-wifi": "󰖩 {essid}",
+    "format": "{icon} {ipaddr}",
+    "format-icons": {
+      "ethernet": "󰈀",
+      "wifi": ["󰤟", "󰤢", "󰤥", "󰤨"]
+    },
     "format-linked": "󰖪 no ip",
     "format-disconnected": "󰖪 offline",
-    "tooltip-format": "{ifname}  {ipaddr}"
+    "tooltip-format": "{ifname}  {ipaddr}/{cidr}\ngateway {gwaddr}",
+    "tooltip-format-wifi": "{essid}  {signalStrength}%\n{ifname}  {ipaddr}/{cidr}\ngateway {gwaddr}"
+  },
+
+  "custom/vpn": {
+    "exec": "~/.local/bin/vpn waybar",
+    "exec-if": "command -v nmcli",
+    "return-type": "json",
+    "interval": 30,
+    "signal": 9,
+    "on-click": "~/.local/bin/vpn menu",
+    "on-click-right": "~/.local/bin/vpn off"
+  },
+
+  "custom/netbird": {
+    "exec": "~/.local/bin/nb waybar",
+    "exec-if": "command -v netbird",
+    "return-type": "json",
+    "interval": 30,
+    "signal": 10,
+    "on-click": "~/.local/bin/nb toggle",
+    "on-click-right": "~/.local/bin/nb menu"
   },
 
   "wireplumber": {
