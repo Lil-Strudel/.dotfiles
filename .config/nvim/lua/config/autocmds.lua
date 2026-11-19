@@ -19,3 +19,9 @@ vim.api.nvim_create_autocmd("FileType", {
     pattern = "qf",
     callback = function(ev) vim.keymap.set("n", "<CR>", "<CR><cmd>cclose<cr>", { buffer = ev.buf }) end,
 })
+
+vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+    group = group,
+    pattern = "*.rs",
+    command = "silent! update",
+})
