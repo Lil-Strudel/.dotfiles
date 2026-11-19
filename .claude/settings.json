@@ -73,7 +73,8 @@
   "enabledPlugins": {
     "workmux-status@workmux": true,
     "atlassian@claude-plugins-official": true,
-    "slack@claude-plugins-official": true
+    "slack@claude-plugins-official": true,
+    "rust-analyzer-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "workmux": {
