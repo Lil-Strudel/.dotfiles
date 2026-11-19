@@ -1,4 +1,6 @@
 [apt]
 packages = [
+    "ansible",
     { name = "netbird", hooks = { before_install = ["sudo", "sh", "-c", '''curl -fsSL -o /etc/apt/keyrings/netbird.asc https://pkgs.netbird.io/debian/public.key && printf 'Types: deb\nURIs: https://pkgs.netbird.io/debian\nSuites: stable\nComponents: main\nSigned-By: /etc/apt/keyrings/netbird.asc\n' > /etc/apt/sources.list.d/netbird.sources && apt-get update'''] } },
+    { name = "session-manager-plugin", hooks = { before_install = ["sudo", "sh", "-c", '''curl -fsSLo /tmp/session-manager-plugin.deb https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb && dpkg -i /tmp/session-manager-plugin.deb && rm /tmp/session-manager-plugin.deb'''] } },
 ]
