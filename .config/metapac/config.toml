@@ -71,6 +71,7 @@ strudel-rx = [
     "debian/nvim",
     "debian/languages",
     "debian/kubernetes",
+    "debian/docker",
     "debian/database",
     "debian/claude",
     "debian/llm",
