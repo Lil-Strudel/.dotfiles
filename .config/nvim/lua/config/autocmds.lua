@@ -22,7 +22,8 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
     group = group,
-    pattern = "*.rs",
     nested = true,
-    command = "silent! update",
+    callback = function(ev)
+        if vim.bo[ev.buf].buftype == "" then vim.cmd("silent! update") end
+    end,
 })
