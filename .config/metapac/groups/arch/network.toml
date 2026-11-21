@@ -2,4 +2,5 @@
 packages = [
     "winbox",
     "ipmitool",
+    "croc",
 ]
