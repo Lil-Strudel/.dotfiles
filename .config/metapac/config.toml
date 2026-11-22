@@ -38,6 +38,7 @@ strudel-framework = [
     "arch/base",
     "arch/audio",
     "arch/amd",
+    "arch/radeon",
     "arch/laptop",
     "arch/desktop",
     "arch/keyring",
