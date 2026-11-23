@@ -33,4 +33,4 @@ alias gsta='git stash'
 alias gstp='git stash pop'
 alias glog='git log --oneline --graph --decorate'
 
-alias llm='llama-server --models-preset ~/.config/llama.cpp/models.ini'
+alias llm='llama-server --models-preset ~/.config/llama.cpp/models.$HOST.ini'
