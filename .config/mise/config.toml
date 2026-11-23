@@ -1,8 +1,0 @@
-[tools]
-claude = "latest"
-"llama.cpp" = { version = "latest", prerelease = true, version_prefix = "b", asset_pattern = "llama-*-bin-ubuntu-vulkan-x64.tar.gz" }
-node = "lts"
-pi = "latest"
-pnpm = "latest"
-railway = "latest"
-workmux = "latest"
